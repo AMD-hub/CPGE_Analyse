@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper]{article}
+
+% ======== PACKAGES ========
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{tikz}          % For shading and drawing
+\usepackage{xcolor}        % For colors
+\usepackage[T1]{fontenc}   % Better font encoding
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+
+
+\definecolor{darkgray}{gray}{0.1} 
+\usepackage[colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor =blue
+]{hyperref}
+
+
+
+
+\usepackage{helvet}        % For qhv font family (Helvetica-like)
+\renewcommand{\familydefault}{\sfdefault} % Make Helvetica default
+
+% ======== COMMANDS ========
+\newcommand{\BigTitle}{Maths pour GPGE}
+\newcommand{\LittleTitle}{Méthodes Pour l'Analyse en Prépa}
+
+% ======== DOCUMENT ========
+\begin{document}
+
+\begin{titlepage}
+\begin{flushleft}
+
+% Title
+\textbf{\fontfamily{qhv}\selectfont\Huge \BigTitle}
+
+% Line separator
+\par\noindent\rule{\textwidth}{4pt}\\[0.5cm]
+
+% Subtitle box
+\begin{tikzpicture}
+\shade[bottom color=lightgray, top color=white]
+    (0,0) rectangle (\textwidth,1.5)
+    node[midway] {\textbf{\large \textit{\LittleTitle}}};
+\end{tikzpicture}
+
+% Edition info
+\begin{flushright}
+\Large First Edition
+\end{flushright}
+
+\vspace{0.3\linewidth}
+
+% Author info
+\begin{tabular}{lcl}
+    \textbf{Author}   & : & \textit{EL YOUSEFI AHMED} \\
+    \textbf{Institut} & : & \textit{Institut National de Statistique et d'Économie Appliquée} \\
+    \textbf{E-mail}   & : & \href{mailto:elyousefi.ahmed@outlook.com}{elyousefi.ahmed@outlook.com}
+\end{tabular}
+
+\end{flushleft}
+\end{titlepage}
+
+\restoregeometry
+
+\end{document}

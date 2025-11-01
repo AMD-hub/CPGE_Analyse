@@ -1,0 +1,81 @@
+
+
+
+\subsection{Espérance}
+\paragraph{Cas Discret}
+Soit \( X \) une variable aléatoire discrète prenant des valeurs \( x_i \) avec des probabilités \( p_i = P(X = x_i) \).
+
+\[
+\mathbb{E}[X] = \sum_{i} x_i \cdot p_i
+\]
+
+\paragraph{Cas Continu}
+Soit \( X \) une variable aléatoire continue avec une densité de probabilité \( f(x) \).
+
+\[
+\mathbb{E}[X] = \int_{-\infty}^{+\infty} x \cdot f(x) \, dx
+\]
+
+\subsection{Formule de Transfert}
+
+\paragraph{Cas Discret}
+Pour une fonction \( g(X) \) d’une variable discrète \( X \) :
+
+\[
+\mathbb{E}[g(X)] = \sum_{i} g(x_i) \cdot p_i
+\]
+
+\paragraph{Cas Continu}
+Pour une fonction \( g(X) \) d’une variable continue \( X \) :
+
+\[
+\mathbb{E}[g(X)] = \int_{-\infty}^{+\infty} g(x) \cdot f(x) \, dx
+\]
+
+\subsection{Variance et Écart-type}
+
+La variance de \( X \) est définie par :
+
+\[
+\text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2]
+\]
+
+\paragraph{Cas Discret}
+\[
+\text{Var}(X) = \sum_{i} (x_i - \mathbb{E}[X])^2 \cdot p_i
+\]
+
+\paragraph{Cas Continu}
+\[
+\text{Var}(X) = \int_{-\infty}^{+\infty} (x - \mathbb{E}[X])^2 \cdot f(x) \, dx
+\]
+
+L’écart-type est donné par : \( \sigma(X) = \sqrt{\text{Var}(X)} \).
+
+\subsection{Fonction Génératrice des Moments (MGF)}
+
+La fonction génératrice des moments de \( X \), notée \( M_X(t) \), est définie par :
+
+\paragraph{Cas Discret}
+\[
+M_X(t) = \mathbb{E}[e^{tX}] = \sum_{i} e^{t x_i} \cdot p_i
+\]
+
+\paragraph{Cas Continu}
+\[
+M_X(t) = \mathbb{E}[e^{tX}] = \int_{-\infty}^{+\infty} e^{t x} \cdot f(x) \, dx
+\]
+
+\subsection{Fonction Caractéristique}
+
+La fonction caractéristique de \( X \), notée \( \phi_X(t) \), est définie par :
+
+\paragraph{Cas Discret}
+\[
+\phi_X(t) = \mathbb{E}[e^{itX}] = \sum_{i} e^{it x_i} \cdot p_i
+\]
+
+\paragraph{Cas Continu}
+\[
+\phi_X(t) = \mathbb{E}[e^{itX}] = \int_{-\infty}^{+\infty} e^{it x} \cdot f(x) \, dx
+\]

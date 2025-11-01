@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'Body/chapter1.blg'
+[101] biber:340> INFO - === Sun Oct 26, 2025, 15:20:44
+[118] Biber.pm:419> INFO - Reading 'Body/chapter1.bcf'
+[183] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
+[196] Biber.pm:4419> INFO - Processing section 0
+[208] Biber.pm:4610> INFO - Looking for bibtex file 'References.bib' for section 0
+[209] bibtex.pm:1713> INFO - LaTeX decoding ...
+[213] bibtex.pm:1519> INFO - Found BibTeX data source 'References.bib'
+[256] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[257] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[257] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'fr-FR'
+[257] Biber.pm:4245> INFO - No sort tailoring available for locale 'fr-FR'
+[259] bbl.pm:660> INFO - Writing 'Body/chapter1.bbl' with encoding 'UTF-8'
+[261] bbl.pm:763> INFO - Output to Body/chapter1.bbl

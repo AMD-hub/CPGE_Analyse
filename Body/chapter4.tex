@@ -1,0 +1,469 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+
+
+\chapter{INTÉGRALES GÉNÉRALISÉES}
+\intro{
+\textbf{Prérequis}
+\begin{itemize}
+    \item Développement limité. 
+    \item Manipuler les Inégalités.
+\end{itemize}
+\textbf{Objectifs}
+
+\begin{itemize}
+    \item  Rencontre l'extension des intégrales de Riemann sur un intervalle quelconque.
+    \item Savoir montrer la convergence/divergence d'une intégrale généralisée. 
+\end{itemize} 
+}{
+Dans ce chapitre, on acquerra l'un des compétences indispensables pour faire le chapitre d'étude des fonctions définit par une intégrale généralisée, ce qui est le tiers de programme d'analyse.
+Dans ce chapitre : 
+\begin{enumerate}
+\item On prend $I$ un intervalle de $\RR$. \\
+On rappelle que les intervalles de $\RR$ sont d'une des formes suivante : ( $\left[ a, b\right]$ , $\left[ a, b\right[$ , $\left] a, b\right]$ , $\left] a, b\right[$) qu'on traitera chaque tout seul. 
+\item Une fonction définie sur cet intervalle $f : x \in I \longrightarrow f(x) $. On supposera la fonction est continue par morceaux sur cet intervalle.
+\end{enumerate}
+}
+
+\section{Définitions et propriétés fondamentales}
+\subsection{Définition de la convergence d'une intégrale -- Intégrabilité} 
+Pour ne pas sortir de cadre de ce livre, on ne redéfinira pas l'intégrabilité au sens de Riemann, en fait, on rappellera la propriété qui nous suffira pour la compréhension du contenu de cet ouvrage...\\
+\prop{Intégrabilité sur un segment}{
+Supp que l'intervalle $I$ est un segment, c.-à-d. s'écrit sous la forme $I=[a,b]$ (avec $a<b$ deux réels) 
+\\ ALORS : la fonction $f$ est intégrable au sens de Riemann sur $I$.
+}
+
+En outre, cette propriété va nous permettre de définir dans les cas restants : 
+\subsubsection{Cas d'un intervalle semi-ouvert :}
+\defn{}{
+Supp que l'intervalle $I$ s'écrit sous la forme : $[a,b[$ avec $b\in\RR\cup \{+\infty\}$ (resp. $]a,b]$ avec $a\in\RR\cup \{-\infty\}$ ).\\
+On dit que l'intégrale $\displaystyle \int_{a}^{b} f(x)dx$ converge lorsque : \\ La fonction $\displaystyle F : x \in [a,b[\  \longrightarrow F(x) = \int_{a}^{x} f(u)du $ admet une limite finie en $b$. Et dans ce cas : $$ \int_{a}^{b} f(x)dx  \underset{{\scriptsize \textit{par def}}}{=} \lim_{x\rightarrow b} F(x) \text{ \ qu'on note également } \int_{I} f(x)dx $$
+
+() resp. La fonction $\displaystyle F : x \in ]a,b] \  \longrightarrow F(x) = \int_{x}^{b} f(u)du $ admet une limite finie en $a$.Et dans ce cas : $$ \int_{a}^{b} f(x)dx  \underset{{\scriptsize \textit{par def}}}{=} \lim_{x\rightarrow a} F(x) \text{ \ qu'on note également } \int_{I} f(x)dx $$
+\textit{ \\ NB : la fonction $F$ qu'on a défini dans les deux cas est bien définie puisque $f$ est continu par morceaux en tout segment $[a,x]$ tq : $a\leq x<b $ (resp. $[x,b]$ tq : $a< x\leq b $) }
+}
+
+\subsubsection{ Cas d'un intervalle ouvert :}
+\defn{}{
+Supp que l'intervalle $I$ s'écrit sous la forme : $[a,b[$ avec $a,b\in\RR\cup \{+\infty, - \infty \}$. Soit $c\in ]a,b[$.\\
+On dit que l'intégrale $\displaystyle \int_{a}^{b} f(x)dx$ converge lorsque : \\ La fonction $\displaystyle F : x \in ]a,b[\  \longrightarrow F(x) = \int_{c}^{x} f(u)du $ admet une limite finie en $a$ et en $b$. Et dans ce cas : $$ \int_{a}^{b} f(x)dx  \underset{{\scriptsize \textit{par def}}}{=} \lim_{x\rightarrow b} F(x) - \lim_{x\rightarrow a} F(x) \text{ \ qu'on note également } \int_{I} f(x)dx $$
+\\
+\textit{\noindent NB : la fonction $F$ qu'on a défini dans les deux cas est bien définie puisque $f$ est continu par morceaux en tout segment $[c,x]$ si : $c\leq x<b $ et $[x,c]$ tq : $a< x\leq c $ }
+}
+
+\subsubsection{Définition de l'intégrabilité}
+\defn{Définition de l'intégrabilité}{
+On dit que la fonction $f$ est intégrable sur l'intervalle $I$ lorsque l'intégrale $\displaystyle \int_{I} |f(x)|dx$ converge.
+\textit{ \\ NB : Lorsque la fonction $f$ est positive, la notion de l'intégrabilité se confondre avec la notion de la convergence de l'intégrale.}
+}
+
+
+\subsection{MÉTHODES --- Intégrabilité des fonctions } 
+On suppose dans cette sous-section que la fonction $f$ est bien positive, et on considère une autre fonction $g$ définit sur le même intervalle que $g$ est également continue par morceaux et positive sur cet intervalle.
+\\ Alors : la notion de convergence, d'intégrale et d'intégralité se confondre… on préfère utiliser la notion d'intégrabilité.
+
+\thm{La comparaison des intégrales\label{thm:Régles de comparaison (Intégrales)}}{
+	On suppose ici que l'intervalle $I=[a,b[$... On a les assertions suivantes qui démontrent l'intégrabilité de $f$.
+	\begin{enumerate}
+		\item Si $f(x) \leq g(x) \  \forall x \in I$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+		\item Si $f(x) \underset{x\rightarrow b}{= o} \left( g(x) \right)$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+		\item Si $f(x) \underset{x\rightarrow b}{= O} \left( g(x) \right)$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+		\item Si $f(x) \underset{x\rightarrow b}{\sim} g(x) $ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+	\end{enumerate}
+		On suppose ici que l'intervalle $I=]a,b]$... On a les assertions suivantes qui démontrent l'intégrabilité de $f$.
+	\begin{enumerate}
+		\item Si $f(x) \leq g(x) \  \forall x \in I$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+		\item Si $f(x) \underset{x\rightarrow a}{= o} \left( g(x) \right)$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+		\item Si $f(x) \underset{x\rightarrow a}{= O} \left( g(x) \right)$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+		\item Si $f(x) \underset{x\rightarrow a}{\sim} g(x)$ et la fonction $g$ est intégrable sur $I$ : \\ Alors : $f$ est aussi intégrable sur $I$.
+	\end{enumerate}
+}
+
+
+\NB{ Rappelez bien que dans tout le chapitre on suppose que $f$ est continue par morceaux sur l'Intervalle $I$, N'oublier pas à mentionner cela dans la rédaction de vos exercices } 
+
+
+\meth{En utilisant la comparaison aux intégrales classiques : }{
+Il suffit d'utiliser le théorème précédent en comparons l'intégrale aux intégrales classiques qu'on citera dans le corollaire suivant… On peut aussi penser à utiliser le développement limité si la fonction n'est pas évidente à se comparer.
+}
+\cor{Intégrales classiques}{
+\textbf{Intégrales classiques :} 
+\begin{enumerate} 
+\item \textbf{Sur $[1,+\infty[$ : } 
+	\begin{enumerate}
+		\item $ \displaystyle \int_{1}^{+\infty} \frac{1}{x^{\alpha}}dx\text{  converge ssi : } \alpha> 1 $
+		\item $ \displaystyle \int_{1}^{+\infty} e^{-\alpha x}dx \text{  converge ssi : } \alpha > 0$
+		\item $ \displaystyle \int_{e}^{+\infty} \frac{1}{x^{\alpha}\ln(x)^\beta}dx \text{  converge ssi : } \left(\alpha >  1\right) \textbf{ ou bien } \left(\alpha = 1 \text{ et } \beta > 1 \right) $ 
+	\end{enumerate}
+\item \textbf{Sur $]0,1]$ : }
+	\begin{enumerate}
+		\item $ \displaystyle \int_{0}^{1} \frac{1}{x^{\alpha}}dx \text{  converge ssi : } \alpha<1 $
+
+		\item $ \displaystyle \int_{0}^{\frac{1}{e}} \frac{1}{x^{\alpha}\ln(x)^\beta}dx \text{  converge ssi : } \left(\alpha < 1\right) \textbf{ ou bien } \left(\alpha = 1 \text{ et } \beta > 1 \right) $ 
+	\end{enumerate}
+\end{enumerate}
+
+}
+\exm{}{
+Étudier l'intégrabilité de $f: x \mapsto \frac{\sqrt{x} \sin \left(1 / x^2\right)}{\ln (1+x)}$ sur $[1,+\infty[$. \\
+\sol 
+\begin{itemize}
+\item On a la fonction $f$ est continue sur $[1,+\infty[$.
+\item On a $f(x) \underset{x \rightarrow+\infty}{\sim} \frac{\sqrt{x}}{x^2 \ln (1+x)} \underset{x \rightarrow+\infty}{\sim} \frac{1}{x^{3 / 2} \ln (1+x)}=\underset{x \rightarrow+\infty}{o}\left(\frac{1}{x^{3 / 2}}\right)$.
+\end{itemize}
+Donc $f$ est intégrable sur $[1,+\infty[$, par la méthode de comparaison à l'intégrale de Riemann \eqref{thm:Régles de comparaison (Intégrales)}.
+
+\textbf{Exemple  }
+Étudier l'intégrabilité de $f: x \mapsto \frac{\sqrt{x} \sin \left(1 / x^2\right)}{\ln (1+x)}$ sur $]0,1]$.
+\sol 
+\begin{itemize}
+\item On a la fonction $f$ est continue sur $]0,1]$.
+\item On a $f(x) \leq \frac{\sqrt{x}}{\ln(x+1)}$ , et puisque : $\frac{\sqrt{x}}{\ln(x+1)} = \frac{x}{\ln(x+1)} \times \frac{1}{\sqrt{x}}  \underset{x \rightarrow 0}{\sim} {\frac{1}{x^{1/2}}}$ 
+\end{itemize}
+Donc $f$ est intégrable sur $]0,1]$, par la méthode de comparaison à l'intégrale de Riemann \eqref{thm:Régles de comparaison (Intégrales)}.
+}
+
+
+
+\meth{En utilisant CHÂLES : }{
+On a vu précédemment les cas où $I=[a,b[$ ou bien $I=]a,b]$, Pour le cas où $I=]a,b[$ on peut utiliser la relation de CHÂLES pour revenir au cas de $I=[a,b[$ ou bien $I=]a,b]$ ... \\ 
+En effet, soit $c\in ]a,b[$ : \\
+L'intégrale $\displaystyle \int_a^b f(x)dx $ converge SSI Les deux intégrales $\displaystyle \int_a^c f(x)dx $ et $\displaystyle \int_c^b f(x)dx $ converge et dans ce cas : 
+\[  \int_a^b f(x)dx = \int_a^c f(x)dx +  \int_c^b f(x)dx  \]
+}
+
+\exm{}{
+Dans l'exemple précédent, on a montré l'intégrabilité de la fonction \[ f : x \mapsto \frac{\sqrt{x} \sin \left(1 / x^2 \right) }{ \ln (1+x) }\] 
+sur $[1,+\infty[$ et sur $]0,1]$ \\
+Alors, elle est intégrable sur  $]0,+\infty[$.
+}
+
+
+
+\subsection{MÉTHODES --- Convergence d'intégrales généralisées }
+
+\thm{}{
+Si une fonction $f$ est intégrable dans un intervalle $I$, alors l'intégrale $\displaystyle \int_{I} f(x)dx $ converge.
+}
+
+\meth{En utilisant l'intégrabilité : }{
+	Pour Étudier la convergence d'une intégrale, il suffit d'étudier l'intégrabilité pour se rendre aux méthodes de sous-section précédente.
+}
+
+\meth{En utilisant la Définition : }{
+Il est généralement très utile d'utiliser la définition pour montrer l'intégrabilité… Cela se fait en pratique en considérons un $X\in I=[a,b[$ (resp. $X\in I=]a,b]$) puis en essaie à montrer que la fonction $\displaystyle F(X) = \int_{a}^{X}$ admet une limite finie en $b$ (resp. $\displaystyle F(X) = \int_{X}^{b}$ admet une limite finie en $a$ ) à l'aide des manipulations classiques des intégrales sur un segment (Intégration par partie, changement de variable ...).
+}
+
+
+\exm{}{
+Soit $\alpha>0$, soit la fonction $f_\alpha: t \mapsto \frac{\sin t}{t^\alpha}$ 
+\\
+Montrer que $\displaystyle \int_1^{+\infty} \frac{\sin t}{t^\alpha} d t$ est convergente.
+
+\begin{enumerate}
+\item \textbf{cas : $\alpha>1$ : \\ }
+On a pour tout $t>0,\left|\frac{\sin t}{t^\alpha}\right| \leqslant \frac{1}{t^\alpha}$. La fonction $t \mapsto \frac{1}{t^\alpha}$ est intégrable sur $[1,+\infty[$ lorsque $\alpha>1$. Donc $f_\alpha$ est intégrable sur $\left[1,+\infty\left[\right.\right.$ et $\int_1^{+\infty} f_\alpha(t) d t$ converge.
+\item \textbf{cas : $0<\alpha\leq 1$ : \\ }
+Soit $X>1$. En intégrant par parties, on obtient
+$$
+\int_1^X \frac{\sin t}{t^\alpha} d t=\left[-\frac{\cos t}{t^\alpha}\right]_1^X-\alpha \int_1^X \frac{\cos t}{t^{\alpha+1}} d t=\cos 1-\frac{\cos X}{X^\alpha}-\alpha \int_1^X \frac{\cos t}{t^{\alpha+1}} d t
+$$
+Puisque $\alpha+1>1$, on montre comme précédemment que $\displaystyle t \mapsto \frac{\cos t}{t^{\alpha+1}}$ est intégrable sur $\left[1,+\infty\left[\right.\right.$ , alors la fonction $\displaystyle X \mapsto \int_1^X \frac{\cos t}{t^{\alpha+1}} d t$ admet une limite finie lorsque $X$ tend vers $+\infty$, il en est de même pour $\displaystyle \frac{\cos X}{X^\alpha}$ et $\int_1^X \frac{\sin t}{t^\alpha} d t$. \\ Ce qui donne la convergence de $\int_1^{+\infty} \frac{\sin t}{t^\alpha} d t$.
+\end{enumerate}
+
+}
+
+\subsection{MÉTHODES --- Divergences d'intégrales généralisées }
+
+\meth{une condition suffisante pour les intervalles infinis}{
+On suppose que l'intervalle $I=[a,+\infty[$ : Si la fonction $f$ admet une limite en $+\infty$ différente de $0$ alors l'intégrale : $\displaystyle \int_a^{+\infty} f(x)dx $ diverge.
+}
+
+\exm{}{
+Expliquer pourquoi l'intégrale $\displaystyle \int_{0}^{+\infty} \left( 1+\frac{1}{x} \right)^x dx$ diverge.
+}
+
+\meth{Réciproque des comparaisons}{
+Il suffit d'utiliser la réciproque des règles de comparaison lorsque la fonction étudiée est positive et l'intervalle $I$ est de l'un des formes $[a,b[$ ou bien $]a,b]$.
+}
+
+\exm{}{ \label{refered exm 1}
+Montrer que si $x\leq 0$ alors l'intégrale $\displaystyle \int_0^{+\infty} t^xe^{-t}dt $  diverge.
+\sol 
+soit $x\leq 0$,donc $-x\geq 0$ : 
+\begin{enumerate}
+\item  si $0\leq -x \leq 1$ : \\
+Il suffit de Montrer que l'intégrale $\displaystyle \int_1^{+\infty} t^xe^{-t}dt $  diverge. \\
+En effet : 
+\begin{itemize}
+\item la fonction $f : x \mapsto t^xe^{-t}$ est continue par morceaux sur $[1,+\infty[$ 
+\item on a : $e^{-t} \underset{t \rightarrow +\infty	}{ = o  } (1) $ donc : $t^xe^{-t} \underset{t \rightarrow +\infty	}{ = o  } (\frac{1}{t^{-x}}) $ ... ainsi  $\displaystyle \int_1^{+\infty} \frac{1}{t^{-x}}$ diverge. 
+\end{itemize}
+
+Donc l'intégrale $\displaystyle \int_1^{+\infty} t^xe^{-t}dt $  diverge, et par conséquence : $\displaystyle \int_1^{+\infty} t^xe^{-t}dt $ 
+
+\item  si $-x > 1$ : \\
+Il suffit de Montrer que l'intégrale $\displaystyle \int_0^{1} t^xe^{-t}dt $  diverge. \\
+En effet : 
+\begin{itemize}
+\item la fonction $f : x \mapsto t^xe^{-t}$ est continue par morceaux sur $]0,1]$ 
+\item on a : $e^{-t} \underset{t \rightarrow +\infty	}{ \sim } 1 $ donc : $t^xe^{-t} \underset{t \rightarrow +\infty	}{\sim} \frac{1}{t^{-x}}1 $ ... ainsi  $\displaystyle \int_0^{1} \frac{1}{t^{-x}}$ diverge. 
+\end{itemize}
+
+Donc l'intégrale $\displaystyle \int_0^{1} t^xe^{-t}dt $  diverge, et par conséquence : $\displaystyle \int_1^{+\infty} t^xe^{-t}dt $ 
+
+\end{enumerate}
+}
+
+\meth{En utilisant la définition} {
+La définition forme une condition nécessaire et suffisante, donc on peut l'utiliser pour montrer la divergence d'une intégrale. (On utilise IPP,CHÂLES...) 
+}
+
+\exm{}{
+}
+
+\meth{En utilisant le CRITÈRE DE CAUCHY} {
+Supp que l'intervalle $I=[a,b[$ (resp. $I=]a,b]$ ). On cherche une suite $(b_n)_{n\in\NN}$ (resp. une suite $(a_n)_{n\in\NN}$) à valeur dans $I$  tq : $b_n \longrightarrow b$ (resp. $a_n \longrightarrow a$) \\
+Si de plus : la série  $\displaystyle \sum_n \int_{b_n}^{b_{n+1}} f(x)dx$ diverge (resp. la série  $\displaystyle \sum_n \int_{a_n}^{a_{n+1}} f(x)dx$ diverge) \\ Alors : l'intégrale $\displaystyle \int_{a}^{b} f(x)dx$ diverge également.
+}
+
+\exm{}{
+Montrer que l'intégrale $\displaystyle \int_{\pi}^{+\infty} \frac{|\sin(x)|}{x}dx$ diverge.
+\sol 
+prenons la suite $(b_n=n\pi)_{n\in\NN}$, On a :  
+\begin{align*}
+\int_{n\pi}^{(n+1)\pi} \frac{|\sin(x)|}{x}dx =& \ \int_{0}^{(\pi} \frac{|\sin(u)|}{u+n\pi}du   \text{ \ \  en utilisant le changement  : } u=x-n\pi  \\ 
+										\geq & \ \int_{0}^{(\pi} \frac{\sin(u)}{(1+n)\pi}du \\
+										= & \  \left( \int_{0}^{(\pi} \sin(u)du \right) \frac{1}{(1+n)\pi} \\
+										= & \  \frac{2}{(1+n)\pi} \\
+										\sim & \  \frac{2}{n\pi}  \text{ \ \  qui est une suite harmonique divergente } \\
+\end{align*} 
+}
+
+
+\section{Théorèmes de convergence dominée} \label{sec:convdom}
+Les trois théorèmes suivants sont admis, elles permettent de manipuler les suites/séries des intégrales... Ils sont les plus puissants dans le programme!!.
+
+\thm{Théorème de convergence dominée pour les suites}{
+soit $I$ un intervalle, et $(f_n)_{n\in\NN}$ une suite des fonctions définit sur $I$, Lorsque les conditions suivantes sont vérifiés :
+\begin{enumerate}
+\item pour tout entier $n$ la fonction $f_n$ est continue par morceaux sur $I$.
+\item $f_n \xrightarrow{CVS \text{ sur } I } f$ avec f une fonction définit sur $I$ et continue par morceaux sur cet intervalle.
+\item Il existe une fonction $\phi$ continue par morceaux et intégrable sur $I$ tq : 
+\[ \forall n \in \NN \text{ \ \ : \ \ }  |f(x)|\leq \phi(x) \ \forall x \in I\]
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item $f$ et $f_n$ sont intégrables sur $I$ pour tout entier $n\in\NN$.
+\item La suite $\displaystyle \left( \int_{I} f_n(x)dx \right)_{n\in\NN} $ converge.
+\item La formule d'inversion : 
+\end{itemize}
+\begin{equation}\label{eq:INV-LI-dom}
+\lim_{n\rightarrow +\infty} \int_{I} f_n(x)dx = \int_{I} \lim_{n\rightarrow +\infty} f_n(x)dx
+\end{equation} 
+}
+
+
+\thm{Théorème de convergence dominée pour les séries}{ \label{thm:CDSerie}
+soit $I$ un intervalle, et $(f_n)_{n\in\NN}$ une suite des fonctions définit sur $I$, Lorsque les conditions suivantes sont vérifiés :
+\begin{enumerate}
+\item pour tout entier, $n$ la fonction $f_n$ est continue par morceaux sur $I$.
+\item $\sum_n f_n \xrightarrow{CVS \text{ sur } I } f$ avec f une fonction définie sur $I$ et continue par morceaux sur cet intervalle.
+\item Il existe une fonction $\phi$ continue par morceaux et intégrable sur $I$ tq : 
+\[ \forall n \in \NN \text{ \ \ : \ \ }  \left| \sum_{k=0}^{n} f_n(x) \right|\leq \phi(x) \ \forall x \in I\]
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item $f$ et $f_n$ sont intégrables sur $I$ pour tout entier $n\in\NN$.
+\item La série $\displaystyle \sum_n \int_{I} f_n(x)dx  $ converge
+\item La formule d'inversion : 
+\end{itemize}
+\begin{equation}\label{eq:INV-SI-dom}
+\sum_{n=0}^{+\infty} \int_{I} f_n(x)dx = \int_{I} \left( \sum_{n=0}^{+\infty} f_n(x) \right) dx
+\end{equation} 
+}
+
+
+\thm{Théorème d'intégration terme à terme}{ \label{thm:CTT}
+soit $I$ un intervalle, et $(f_n)_{n\in\NN}$ une suite des fonctions définit sur $I$, Lorsque les conditions suivantes sont vérifiés :
+\begin{enumerate}
+\item pour tout entier $n$ la fonction $f_n$ est continue par morceaux sur $I$.
+\item $\sum_n f_n \xrightarrow{CVS \text{ sur } I } f$ avec f une fonction définit sur $I$ et continue par morceaux sur cet intervalle.
+\item La série $ \displaystyle \sum_n \int_{I} |f(x)|dx $ converge
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item $f$ est intégrable sur $I$.
+\item La série $\displaystyle \sum_n \int_{I} f_n(x)dx  $ converge
+\item La formule d'inversion : 
+\end{itemize}
+\begin{equation}\label{eq:INV-SI-fub}
+\sum_{n=0}^{+\infty} \int_{I} f_n(x)dx = \int_{I} \left( \sum_{n=0}^{+\infty} f_n(x) \right) dx
+\end{equation} 
+}
+
+Ces théorèmes peuvent avoir une application directe, comme le montre l'exemple suivante : 
+\exm{}{
+Montrer les formules suivantes : 
+\begin{enumerate}
+\item $\displaystyle \int_{0}^{+\infty} \frac{\sin(nx)}{1+nx+x^2} dx$
+
+\item $\displaystyle \sum_{n=1}^{+\infty} \int_{0}^{+\infty} \frac{1}{n+n^2x^2}dx =\frac{\pi}{2} \sum_{n=1}^{+\infty} \frac{1}{n^{3 / 2}}$
+
+
+\end{enumerate}
+
+\begin{enumerate}
+\item 
+\begin{enumerate}
+\item On a pour tout entier $n$, la fonction $f_n$ est continue sur $\left[0,+\infty\right[$ donc également continue par morceaux.
+\item Soit $x\in \left[0,+\infty\right[$ alors : $\displaystyle \frac{\sin(nx)}{1+nx+x^2} \sim \frac{\sin(nx)}{nx}  \longrightarrow 0 $ \\ ainsi pour $x=0$ la fonction  $\displaystyle \frac{\sin(nx)}{1+nx+x^2} \sim 0  \longrightarrow 0 $ donc la suite des fonctions convergent simplement vers la fonction null sur $\left[0,+\infty\right[$
+
+\item Pour tout $ x \geqslant 0 , \ \left|f_n(x)\right| \leqslant \frac{1}{1+x^2}$. Ainsi $\varphi: x \mapsto \frac{1}{1+x^2}$ est intégrable sur $\left[0,+\infty\right[$.
+\end{enumerate} 
+Les hypothèses de théorème de convergence dominée étant vérifiées alors on obtient :  $$\lim _{n \rightarrow+\infty} \int_0^{+\infty} \frac{\sin(nx)}{1+nx+x^2}  d x=  \int_0^{+\infty} \lim _{n \rightarrow+\infty} \frac{\sin(nx)}{1+nx+x^2}  d x = \int_0^{+\infty} 0dx = 0 $$
+
+\item  
+Posons pour tout $n\in\NN$ la fonction : $\displaystyle f_n : x \in \RR^*_+  \mapsto \frac{1}{n+n^2x^2} $ 
+\begin{enumerate} 
+\item  Soit $x>0$. On a $f_n(x) \underset{n \rightarrow+\infty}{\sim} \frac{1}{n^2 x^2}$ et la série numérique $\sum f_n(x)$ converge. La série de fonctions $\sum f_n$ converge simplement sur $\RR_{+}^*$, On note sa limite $S$. alors : $S(x) =\sum_{n=1}^{+\infty} \frac{1}{n+n^2x^2}$. 
+
+\item La fonction $f_n$ est continue par morceaux sur $\RR_{+}^*$, pour tout entier $n$. \\ 
+\NB{ Il faut bien noter que :  La fonction $S$ ne peut pas etre calculé explicitement ce qui nous empêche à démontrer qu'elle est continue par morceaux, donc on montre qu'elle est continue par morceaux en l'étudions comme fonction définit par une série. }
+Montrons que la fonction $S$ est bien continue par morceaux sur  $\RR_{+}^*$.
+\\ Pour cela on montre la continuité en tout segment $[a,+\infty[$.  En effet, soit $a>0$ : 
+\begin{enumerate}
+\item La série $\sum_n f_n$ converge simplement vers $S$ donc $S$ est bien définie sur  $[a,+\infty[$.
+\item Chacune des fonctions $f_n$ est continue sur  $[a,+\infty[$.
+\item Pour tout $n \in \NN^*$, la fonction $f_n$  est décroissante alors pour tout $x \geqslant a$, on a :
+$\left|f_n(x)\right| \leqslant f_n(a)$.
+\\  Puisque $\sum f_n(a)$ converge, la série $\sum f_n$ converge normalement sur $\left[a,+\infty\left[\right.\right.$. 
+\end{enumerate}
+Donc $S$ est continue sur tout intervalle $[a,+\infty[$ où $a>0$. Finalement $S$ est continue sur $\RR_{+}^*$.
+
+\item  Soit $n \in \NN^*$. et pour $A>0$, on a
+$$
+\int_0^A\left|f_n(t)\right| d t=\int_0^A f_n(t) d t=\frac{1}{n^2} \int_0^A \frac{1}{t^2+\frac{1}{n}} d t=\frac{\sqrt{n}}{n^2} \operatorname{Arctan}(A \sqrt{n}) .
+$$
+On obtient : $$\int_0^{+\infty}\left|f_n(t)\right| d t=\int_0^{+\infty} f_n(t) d t=\frac{\pi}{2 n^{3 / 2}} \text{ \ qui est une série convergence } $$ 
+\end{enumerate}
+Le théorème d'intégration terme à terme donne d'une part l'intégrabilité de $S$ sur $\RR_{+}^*$, et d'autre part, on obtient la formule voulue : $$\sum_{n=1}^{+\infty} \int_{0}^{+\infty} \frac{1}{n+n^2x^2}dx = \int_0^{+\infty} S(t) d t=\frac{\pi}{2} \sum_{n=1}^{+\infty} \frac{1}{n^{3 / 2}}$$
+
+
+
+\end{enumerate}
+
+
+}
+
+On outre, il se peut que l'intégrale ait des bornes non fixes (on peut pas alors utiliser directement les théorèmes parce qu’ils supposent que l'intervalle est fixes) dans ce cas on peut utiliser la méthode suivante : 
+\meth{Intégrales aux bornes non fixes}{
+Dans ce cas on peut penser à utiliser l'un des méthodes suivantes : 
+\begin{enumerate}
+	\item On fait un changement de variable, par exemple : \\ une intégrale de type $\displaystyle \int_{0}^{n} $ peut traité en utilisant le changement de variable $u=\frac{x}{n}$. 
+	\item En utilisant la fonction indicatrice, par exemple : \\ une intégrale de type $\displaystyle \int_{0}^{n} f_n(x)dx $ peut traiter en utilisant la formule suivante : $$\displaystyle \int_{0}^{n} f_n(x)dx = \displaystyle \int_{0}^{+\infty} f_n(x) \1_{_{[0,n]}}(x) dx $$
+\end{enumerate}
+}
+
+\exm{}{
+Montrer la formule suivante : 
+\[ \lim\limits_{n\rightarrow +\infty }\ \ \displaystyle\int_{0}^{n}(-\ln
+u)\left( 1-\displaystyle\frac{u}{n}\right) ^{n}du=\ \ \displaystyle%
+\int_{0}^{+\infty }(-\ln u)\mathrm{e}^{-u}du \] 
+
+Soit $f_{n}$ et $f$ définies sur $\left] 0,+\infty \right[ $ par :
+$$f_{n}(x) = -\ln (x)\left( 1-\ \frac{x}{n}\right) ^{n}\times \1_{_{[0,n]}}(x)  =  \left\{
+\begin{array}{ll}
+0 & \text{ si }n\leq x \\
+-\ln (x)\left( 1-\ \frac{x}{n}\right) ^{n} & \text{ si }0<x\leq n%
+\end{array}%
+\right. $$  \\ 
+et : $$f(x)=(-\ln x)\mathrm{e}^{-x}$$
+On applique le théorème de la convergence dominée :
+
+\begin{enumerate}
+\item $\ f_{n}$\ est continue par morceaux sur $]0,+\infty[$
+\item Soit $x\in \left] 0,+\infty \right[ $ pour tout $n\in \NN$ , $%
+n\geq x$ on a
+\begin{equation*}
+f_{n}(x)=-\ln (x)\left( 1-\ \frac{x}{n}\right) ^{n}\ \text{et\ }\left( 1-\
+\frac{x}{n}\right) ^{n}\underset{n\rightarrow +\infty }{\rightarrow }\mathrm{%
+e}^{-x}
+\end{equation*}%
+donc $f_{n}(x)\underset{n\rightarrow +\infty }{\rightarrow }-\ln (x)\mathrm{e%
+}^{-x}\ .$ \\ Par suite la suite de fonctions $(f_{n})_{n\geq 1}$ converge
+simplement sur $\left] 0,+\infty \right[ $ vers $f$, Ainsi $f$ est continue sur $]0,+\infty[$ donc continue par morceaux sur $]0,+\infty[$.
+\item Si $0<x\leq n$ on a $ \left( 1-\frac{x}{n}\right) ^{n}\leq \mathrm{e}%
+^{-x}$ donc $\displaystyle \left\vert f_{n}(x)\right\vert \leq \left\vert \ln x\right\vert
+\mathrm{e}^{-x}=\left\vert f(x)\right\vert $ , inégalité qui est
+aussi valable sur $\left[ n,+\infty \right[ .$
+\newline
+La fonction $f$ est intégrable sur $\left] 0,+\infty \right[ $ car : \\ $\displaystyle %
+f(x)\underset{x\rightarrow +\infty }{=}$ $o(\ \frac{1}{x^{2}})$ et $f(x)%
+\underset{x\rightarrow 0}{=}$ $o(\ \frac{1}{x^{\frac{1}{2}}})$ . \newline
+Ainsi les $f_{n}$ sont dominées sur $\left] 0,+\infty \right[ $ par une
+fonction intégrable. 
+\end{enumerate}
+Le théorème de la convergence dominée donne $\lim\limits_{n%
+\rightarrow +\infty }\ \ \displaystyle\int_{0}^{+\infty }f_{n}(u)du=\ \ %
+\displaystyle\int_{0}^{+\infty }f(u)du$ , qui s'écrit :
+\newline
+\begin{equation*}
+\fbox{$\lim\limits_{n\rightarrow +\infty }\ \ \displaystyle\int_{0}^{n}(-\ln
+u)\left( 1-\displaystyle\frac{u}{n}\right) ^{n}du=\ \ \displaystyle%
+\int_{0}^{+\infty }(-\ln u)\mathrm{e}^{-u}du$.}
+\end{equation*}
+}
+
+\newpage
+\section{Exercices}
+\exop{ Une ensemble intéressante : \label{ensemble S} }{
+Dans tout le problème, on note : \\ 
+$\S$ : $\{$ l’ensemble des fonctions 
+    $f : \RR^+ \rightarrow  \RR$, continues sur $\RR^+$, telle que, pour tout réel $x>0$, la fonction $t \mapsto f(t)e^{-xt}$ soit intégrable sur $\RR^+ \}$ .
+Soit $f\in \S$, 
+\begin{enumerate}
+    \item Montrer que l'intégrale suivante est convergente pour tout réel $x>0$ et tout entier $n\geq 0$ : 
+        \[ \int_0^{+\infty} t^nf(t)e^{-xt}dt  \]
+    \item Montrer que chacune des fonctions suivantes est un élément de $\S$ : 
+    \begin{itemize}
+        \item $t \mapsto e^{-\alpha t }$ pour tout $\alpha >0$
+        \item $t\mapsto \frac{1}{t^{\alpha}}  $  pour tout $\alpha >1$ 
+    \end{itemize}
+\end{enumerate}
+}{
+Soit $f\in \S$, 
+\begin{enumerate}
+    \item Soit $x>0$ et $n\in \NN^*$ : \\
+    \begin{itemize}
+
+        \item on a : la fonction $t\mapsto t^nf(t)e^{-xt}$  est continue par morceaux sur l'intervalle : $[0,+\infty[$.
+        \item Ainsi, on a : $\displaystyle \frac{t^nf(t)e^{-xt}}{ f(t)e^{-\frac{x}{2}t}} = t^ne^{-\frac{x}{2}t}$
+        ce qui montre que :
+        \[t^nf(t)e^{-xt} \underset{x\rightarrow +\infty}{= o } \left( f(t)e^{-\frac{x}{2}t} \right)\]
+    \end{itemize}
+    La fonction $t\mapsto f(t)e^{-\frac{x}{2}t}$ étant intégrable, alors, on déduit que l'intégrale :\\  $\displaystyle \int_0^{+\infty} t^nf(t)e^{-xt}dt$ est convergent.
+    \item 
+    \begin{enumerate}
+
+        \item soit $\alpha > 0$ et $x>0$ : \\  \\
+            $\displaystyle \int_0^{+\infty} e^{-xt}e^{-\alpha t}dt = \int_0^{+\infty} e^{-(x+\alpha)t}dt $ qui est convergente, car $\alpha+x>0$
+            \\
+        \item  soit $\alpha > 0$ et $x>0$ : 
+            On écrit : 
+            \[   \int_0^{+\infty} e^{-xt}\frac{1}{t^\alpha}dt = \int_1^{1} e^{-xt}\frac{1}{t^\alpha}dt+\int_1^{+\infty} e^{-xt}\frac{1}{t^\alpha}dt \]
+            Puis on montre les deux intégrales convergentes : 
+            \begin{itemize}
+                \item la fonction $t\mapsto e^{-xt}\frac{1}{t^\alpha}$ est continue par morceaux sur $]0,+\infty[$ donc sur les deux intervalles $]0,1]$ et $[1,+\infty[$ 
+                \item \textbf{Au voisinage de 0 : \\ }
+                    $e^{-xt}\frac{1}{t^\alpha} \underset{x\rightarrow 0}{\sim} \frac{1}{t^\alpha} $ ainsi $\displaystyle \int_0^{+\infty} \frac{1}{t^\alpha} dt$ converge. \\ Alors : $\displaystyle \int_0^{+\infty}e^{-xt}\frac{1}{t^\alpha} dt$ converge également. 
+                \item \textbf{Au voisinage de $+\infty$ : \\ }
+                    $e^{-xt}\frac{1}{t^\alpha} \underset{x\rightarrow 0}{= o} \left( e^{-\frac{x}{2}t} \right) $ ainsi $\displaystyle \int_0^{+\infty} e^{-\frac{x}{2}t} dt$ converge. \\ Alors : $\displaystyle \int_0^{+\infty}e^{-xt}\frac{1}{t^\alpha} dt$ converge également.                     
+            \end{itemize}
+    \end{enumerate}
+\end{enumerate}
+}
+
+
+\end{document}

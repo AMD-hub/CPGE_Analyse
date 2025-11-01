@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%
+\tikzstyle{deduct} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{test} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+%%%%%%%%%%%%%%%%%
+\resizebox{\linewidth}{!}{
+\begin{tikzpicture}
+
+%Nodes
+
+%%etage0 :
+\node[test](maintopic){ $u_n \longrightarrow 0 \ ? $ };
+\node[deduct](rightsquare)[right=of maintopic]{\diverge };
+%%etage1 :
+\node[test](maintopic1)[above=of maintopic]{$u_n \geq 0$ };
+\node[test](rightsquare1)[right=of maintopic1]{$ \sum |u_n| $  conv ? };
+\node[test](rightsquare12)[right=of rightsquare1]{$ u_n $  est alterné ? };
+\node[deduct](rightsquare13)[right=of rightsquare12]{Utiliser DA };
+
+%%etage2 :
+\node[deduct](rightsquare2)[above=of rightsquare1] {\conv };
+\node[deduct](rightsquare22)[above=of rightsquare12] {Utiliser CSSA };
+
+%%etage3 :
+\node[test](maintopic3)[above=of maintopic , yshift=4cm]{on choisit selon l'exo};
+\node[deduct](leftsquare3)[left=of maintopic3 ]{  régles Cauchy / D'alembert  };
+
+%%etage4 :
+\node[deduct](maintopic4)[above=of maintopic3 ]{  regles de comparaisons  };
+\node[deduct](rightsquare4)[right=of maintopic4]{comparaison avec integrale} ;
+
+%Lines
+%etage0 :
+\draw [-] (maintopic) -- node[anchor=south] {no} (rightsquare);
+\draw [-] (maintopic) -- node[anchor=east] {yes} (maintopic1);
+%etage1 :
+\draw [-] (maintopic1) -- node[anchor=south] {no} (rightsquare1);
+\draw [-] (rightsquare1) -- node[anchor=east] {yes} (rightsquare2);
+\draw [-] (rightsquare12) -- node[anchor=east] {yes} (rightsquare22);
+\draw [-] (rightsquare1) -- node[anchor=south] {no} (rightsquare12);
+\draw [-] (rightsquare12) -- node[anchor=south] {no} (rightsquare13);
+\draw [-] (rightsquare22) -| node[anchor=south] {\hspace{-2.5cm} \begin{small} ne marche pas\end{small}} (rightsquare13);
+\draw [-] (maintopic3) -|  (rightsquare13);
+\draw [-] (maintopic3) -|  (rightsquare4);
+
+\draw [-] (maintopic1) -- node[anchor=east] {yes} (maintopic3);
+\draw [-] (maintopic3) --  (maintopic4);
+\draw [-] (maintopic3) --  (leftsquare3);
+\end{tikzpicture}
+		 				}

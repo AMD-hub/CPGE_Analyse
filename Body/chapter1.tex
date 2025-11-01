@@ -1,0 +1,247 @@
+\documentclass[../Main.tex]{subfiles}
+
+
+\begin{document}
+
+\chapter{LES INÉGALITÉS }
+\intro{
+\textbf{Prérequis} 
+\begin{itemize}
+    \item  Développement limité 
+    \item  La notion de Norme
+    \item  La notion de Produit scalaire
+    \item Les fonctions dans $\RR$ [limite , dérivation, convexité]
+\end{itemize}
+
+\textbf{Objectifs} 
+ \begin{itemize}
+    \item Savoir manipuler les inégalités
+    \item  Majorer / Minorer les quantités aisément
+\end{itemize}
+}{
+\enquote{Le Calcul infinitésimal, [...], est l’apprentissage du maniement des inégalités bien plus que des égalités, et on pourrait le
+résumer en trois mots : MAJORER, MINORER, APPROCHER. } ---
+Jean Dieudonné, Calcul Infinitésimal, (1968).
+\\ Avec cette citation on vous montre l'importance de ce chapitre qui doit être bien maîtrisé.
+}
+
+\section{Techniques générales } 
+	\subsection{Majorer un Produit/Rapport} 
+	Soit $P,Q,p,q \geq 0  \tq  p \leq P $ et $ q \leq Q $ On a :
+		\meth{Majoration de Produit}{
+			\[	pq \leq	PQ	\]
+       }
+		\meth{Majoration de Produit}{
+			\[	\frac{p}{Q} \leq	\frac{p}{q}	\]
+		}
+
+	\subsection{Étude de fonction}		
+		Parmi les méthodes déconseillées, mais ça marche en plusieurs fois si vous n'avais pas d'énergie pour penser, il suffit de poser une fonction et d'étudier sa variation, ou elle est positive/négative, son maximum/minimum.
+		\exm{Inégalité $sin(x)\leq x$}{
+			Montrons que $\sin(x) \leq x ,\ \forall x \in \RR$ : \\ 
+			Il suffit de Poser la fonction, $f : x \mapsto \sin(x) - x $
+			elle est dérivable [différence entre deux fonctions usuelles] et sa dérivée :  $ f'(x) = \cos(x) - 1 \leq 0 $ donc la fonction est décroissante,  alors $$ \forall x \in \RR\ : \ \sin(x) - x = f(x) \leq f(0) = 0 $$ 
+			d'où : 
+			$$ \sin(x) \leq x ,\ \forall x \in \RR$$		
+		}
+
+\section{Inégalités Locales} 
+	\subsection{En utilisant la limite} 
+		\defn{Définition de la limite d'une suite }{ \label{def:Limit}
+		On dit qu'une suite $ ( u_n )_{n \in \NN} $ admet une limite $l$ -- ou bien converge vers $l$, SSI : 
+			\[\forall \ \epsilon \geq 0 , \ \exists \ n_0 \in \NN \tq \forall n \geq n_0 \ : \ \vert u_n \ - \ l \vert \leq \epsilon  \]
+		}
+		Cette Définition va nous permet d'obtenir des inégalités Locales en calculons les limites nécessaires. 
+		\exm{}{
+			Mq : Si une suite $ (u_n)_{n\in \NN } $ converge vers $0$, alors la suite $ (v_n)_{n\in \NN } $ définit par $$ v_n = \frac{u_1 + 2u_2 + \cdots + nu_n}{n^2}    ,\ \ \forall n \in \NN $$ converge également  vers $0$. \\
+			En effet : 
+			soit $\epsilon > 0 $ alors par définition de la convergence de $u_n$ il existe $n_0 \in \NN $ tq : pour tout $n \geq n_0 \ \ \vert u_n \vert \leq \frac{\epsilon}{2} $ \\
+			soit $n \geq n_0 +1 $ alors : 
+			\[ \left| \frac{\sum_{k=n_0}^n \ ku_k   }{n^2} \right| \leq \frac{\sum_{k=n_0}^n \ \vert k \cdot \frac{\epsilon}{2}  \vert  }{n^2} \leq \sum_{k=n_0}^n \frac{n}{n^2} \cdot \frac{\epsilon}{2}  \leq \frac{n-n_0+1 }{n} \cdot \frac{\epsilon}{2} \leq \frac{\epsilon}{2} \]
+			donc on peut déduire : 
+			\begin{align}
+			| v_n | & = 	\left| \sum_{k=0}^n \frac{ ku_k   }{n^2} \right| \nonumber \nonumber \\ 
+					&\leq  \left| \sum_{k=0}^{n_0} \frac{ ku_k   }{n^2} \right|  +  \left| \sum_{k=n_0}^n \frac{ \ ku_k   }{n^2} \right| \nonumber \\ 
+					& \leq \frac{S}{n^2} + \frac{\epsilon}{2} \nonumber 
+			\end{align}
+    Là, On peut encore utiliser la notion de limite intelligemment :  au lieu de chercher $n$ tq : $\frac{S}{n^2} \leq \frac{ \epsilon }{2} $ On peut utiliser le fait que ce terme converge vers $0$ donc à partir d'un certain range $ n_1 $ il sera inférieur à $\frac{\epsilon}{2} $ càd : $\exists n_1 \in \ \NN \ :  \forall \ n \ \geq n_1 \ \frac{S}{n^2} \leq \frac{\epsilon}{2} $  \\ donc pour $ n \geq n' = \max(n_1 , n_0) $  : 
+\[  v_n \leq \frac{\epsilon}{2} + \frac{\epsilon}{2}  = \epsilon \] 
+Ce qui montre la convergence vers $0$. 
+  }
+  
+Même si on a énoncé seulement la définition de limite des suites et on a traité juste exemple des suites, mais l'idée reste valable pour les fonctions… en faite les fonctions nous fournit beaucoup plus de limites grâce au développement de Taylor.
+    
+	\subsection{En utilisant le Développement limité} 
+		\thm{Développement de Taylor}{
+		Si f est de classe $\class^n$ sur un intervalle $I$ d'intérieur non vide et contenant 0, alors elle admet un développement limité à l'ordre n en 0 qui s’écrit : 
+		\begin{equation}\label{eq:Taylor}
+			f(x) = f(0) + f'(0)x + \frac{f^{(2)}(0)}{2!}x^2 + \cdots + \frac{f^{(n)}(0)}{n!}x^n +o(x^n) 
+		\end{equation}
+		}
+    On rappelle que $o(1) \underset{x \rightarrow 0}{\longrightarrow} 0 $ et que $\frac{o(x^n)}{x^n}  \underset{x \rightarrow 0}{\longrightarrow} 0 $ donc en choisissant un nombre quelconque -- par exemple $1$ On a : $ \exists \alpha > 0 \quad \text{tq : } \forall \ x \in \RR \quad \text{tq : } |x| \leq \alpha  \quad  |o(x)| \leq 1 \cdot x^n $ Ainsi on peut utiliser le même raisonnement développé dans la sous-section précédente.
+
+
+\section{Quelques Inégalités classiques} 
+	\subsection{Inégalités des Accroissements Finis [IAF]} 
+		\thm{IAF-- Forme Dérivé \label{thm:AF (D) } }{
+			soit $a\in \RR, \ b \in \RR \quad \text{tq : } a <b $ et, soit $f$ une fonction de classe $\class^1([a,b])$ Alors : 
+			\begin{equation}\label{ing:AF-D}
+				\underset{t \in [a,b] }{\inf} \left| f'(t) \right| \cdot (b-a) \leq \left| f(b) - f(a) \right| \leq \underset{t \in [a,b] }{\sup} \left| f'(t) \right| \cdot (b-a)
+			\end{equation}
+		}
+		\thm{IAF-- Forme Intégrale \label{thm:AF (I) }}{
+			soit $a\in \RR, \ b \in \RR \quad \text{tq : } a <b $ et, soit $f$ une fonction de classe $\class^0([a,b])$ Alors : 
+			\begin{equation}\label{ing:AF-I}
+				\underset{t \in [a,b] }{\inf} \left| f(t) \right| \cdot (b-a) \leq \left|\int_a^b f(t)\cdot dt\right| \leq \underset{t \in [a,b] }{\sup} \left| f(t) \right| \cdot (b-a)
+			\end{equation}
+		}
+  
+		\exm{}{ 
+		Mq : La suite Définit par $S_n = \sum_{i=1}^n \frac{1}{i} $ est équivalente à $\ln(n)$ lorsque $ n \rightarrow \infty $.
+		On prend la fonction $ f : t \rightarrow \frac{1}{t} $ et soit $ i \in \NN^*$ on applique l'inégalité des accroissements finis \ref{thm:AF (I)} sur l'intervalle $[i,i+1]$ on trouve que :  
+		\[ 	\frac{1}{i+1} = \underset{t \in [i,i+1] }{\inf} \left| \frac{1}{t} \right| \cdot (i+1-i) \leq \underset{=\ln(i+1)-\ln(i) }{\underbrace{\left|\int_i^{i+1} \frac{1}{t} \cdot dt\right| }} \leq \underset{t \in [i,i+1] }{\sup} \left| \frac{1}{t} \right| \cdot (i+1-i)=\frac{1}{i} \] 
+		ce qui montre que : $ \frac{1}{i+1} \leq \ln(i+1) - \ln(i) \leq \frac{1}{i}  $ puis on applique encore une fois \ref{thm:AF (I)} sur $[i+1,i+2] $ on aura : $ \frac{1}{i+2} \leq \ln(i+2) - \ln(i+1) \leq \frac{1}{i+1}  $ ce qui montre : 
+		\[  \ln(i+2) - \ln(i+1) \leq \frac{1}{i+1}  \leq \ln(i+1) - \ln(i)  \]
+		puis : 
+				\[  \sum_{i=1}^n \ln(i+2) - \ln(i+1) \leq  \sum_{i=1}^n  \frac{1}{i+1}  \leq  \sum_{i=1}^n  \ln(i+1) - \ln(i)  \]
+		alors : 
+		\[ \ln(n+2) -\ln(2) \leq S_n - 1 \leq \ln(n+1) -\ln(1)\]
+        \NB{ Remarquer qu'on a utilisé le principe de télescopage, c'est lorsqu'on a un somme des termes $u_{n+1} - u_{n}$ } 
+        
+		En divisant par $\ln(n)$ : 
+		\[ \frac{\ln(n+2) -\ln(2)+1}{\ln(n)} \leq \frac{S_n}{\ln(n)} \leq \frac{\ln(n+1) +1 }{\ln(n)} \] 
+		Les deux bornes tendent vers $1$, donc : $\frac{S_n}{\ln(n)} \underset{n \rightarrow \infty}{\longrightarrow} 1 $ ce qui montre l'équivalence.
+		}
+	\subsection{Inégalité Triangulaire} 
+		\thm{Inégalité Triangulaire}{
+			soit $||.||$ une norme sur l'ev $\RR^n$  et, soit $ \vec{x}\ , \ \vec{y} \in \RR^n $ alors, on a : 
+				\begin{equation}\label{ing:Triangulaire}
+					\left| \ ||\vec{x}|| - ||\vec{y}|| \ \right| \leq || \ \vec{x} + \vec{y} \ || \leq ||\ \vec{x} \ ||+||\ \vec{y} \ ||
+				\end{equation}
+	}
+ 
+		\exm{}{
+		L'un des simples exemples est pour l'espace $\RR$ muni de la norme -- valeur absolue --  On a : 
+		\[ |x+y| \leq |x|+|y|\]
+		}
+	\subsection{Inégalité de CAUCHY-SCHWARTZ}
+		\thm{Inégalité de CAUCHY-SCHWARTZ  \label{thm:INEG-CAUCHY}}{
+			soit $(.\ , \ .)$ une norme sur un evn $E$  et, soit $ \vec{x}\ , \ \vec{y} \in E $ alors, on a : 
+				\begin{equation}\label{ing:CAUCHY-SCHWARTZ}
+					\left| \ ( \vec{x} \ , \ \vec{y} ) \ \right| \leq ||\ \vec{x} \ ||\cdot ||\ \vec{y} \ ||
+				\end{equation}
+		}
+		\exm{}{
+			Les deux inégalités les plus classiques qui en résultent sont :  
+			sur l'espace $\RR^n $ soit  $x_1 , x_2 \cdots , x_n \in \RR$ et $ y_1 , y_2 \cdots , y_n \in \RR $
+			\[ \sum_{i=1}^{n} x_iy_i \leq \sqrt{\sum_{i=1}^n x_i}\sqrt{\sum_{i=1}^n y_i} \]
+			sur l'espace des fonctions continues $C^0([a,b])$ soit  $f ,g \in C^0([a,b])$
+			\[ \int_a^b f(t)g(t)dt \leq \sqrt{\int_a^b f(t)dt}\sqrt{\int_a^b g(t)dt} \]		
+		}
+		
+	\subsection{Inégalités de Convexité} 
+	Dans cette sous-section, On suppose que $f$ est une fonction convexe sur $I$ est un intervalle non vide de $\RR$. 
+	Il y en a plusieurs méthodes pour montrer la convexité, mais la façon la plus pratique de le faire est de se servir de la seconde dérive :
+	\meth{Montrer la convexité}{
+		Si $I$ est un intervalle non vide de $\RR$ et si $f \in C^2(I)$ alors pour que $f$ soit convexe, il suffise de montrer que $ f^{(2)} \geq 0 $ sur cet intervalle.
+	}
+	Cette propriété (convexité) nous permet de faire plusieurs inégalités qu'on a citées au-dessous :
+	\thm{Inégalité de JENSEN}{
+		Soit $a , b \ \in I$, Alors : 
+		\\ $\forall x_1 , x_2 \cdots , x_n \in \RR , \  \forall \lambda_1 , \lambda_2 \cdots , \lambda_n \in [0,1] \quad \text{tq : } \lambda_1+ \lambda_2 \cdots , \lambda_n = 1 $ On a : 
+		\begin{equation}\label{ing:JENSEN-G}
+			f(\lambda_1 x_1 + \lambda_2 x_2  +\cdots + \lambda_n x_n) \leq \lambda_1 f(x_1) + \lambda_2f(x_2)+ \cdots + \lambda_nf(x_n)
+		\end{equation}
+		Si on utilise juste $n=2$ alors On a :
+		 \\ $\forall x ,y \in \RR , \  \forall \lambda  \in [0,1] $ On a : 
+		\begin{equation}\label{ing:JENSEN-2}
+			f(\lambda x + (1-\lambda) y  \leq \lambda f(x) + (1-\lambda)f(y)
+		\end{equation}
+	}
+		\exm{}{ 
+    Soit $p,q \in\RR \tq \frac{1}{p}+\frac{1}{q} = 1$,
+    Si $u,v$ sont des réels positifs, Montrons que :
+    \[ \displaystyle uv\leq \frac{u^p}{p}+\frac{v^q}{q}.\]
+    % \sol 
+    En effet, par concavité du $\ln$ :
+    \[\displaystyle \ln\left(\frac{u^p}{p}+\frac{v^q}{q}\right)\geq\frac{\ln(u^p)}{p}+\frac{\ln(v^q)}{q}=\ln(uv).\]
+    Il suffit alors de passer à l'exponentielle.
+}
+
+	\thm{Inégalité de Tangente}{
+			soit $ a \in I$ alors :
+				\begin{equation}\label{thm:ING-Tangente}
+					y(x) = f(a) + (x-a)f'(a) \leq f(x)
+				\end{equation}						
+	}
+		\exm{}{
+			Mq les inégalités suivantes : 
+			\begin{enumerate}
+				\item $x+1 \leq e^x \quad \forall x \in \RR$ 
+				\item $\ln(x) \leq x - 1 \quad \forall x \in \RR $
+			\end{enumerate}
+			En effet : 
+			\begin{enumerate}
+			\item  ici, il suffit de considérer la fonction, $\exp$ cette fonction étant convexe [ sa dérivé seconde est positive sur tout $\RR$ ] alors pour $a=0$ et $x \in \RR$ l'application de l'inégalité de Tangente \ref{thm:ING-Tangente} nous donne : 
+			\[ \exp'(0)x + \exp(0) = x+1 \leq \exp(x) \] 
+			\item ici, on doit considérer la fonction $ f : x \rightarrow -\ln(x) $ pour que sa dérivée seconde, soit positive sur $\RR^+$ et alors de même  pour $a=1$ et $x \in \RR^+$ l'application de l'inégalité de Tangente \ref{thm:ING-Tangente} nous donne : 
+			\[ f'(1)(x-1) + f(1) = -(x-1) \leq f(x) = -\ln(x)  \]
+			d'ou : 
+			 \[ \ln(x) \leq x - 1 \quad \forall x \in \RR \]
+			 \end{enumerate}
+		}
+	\subsection{Inégalité des Moyennes}
+		\thm{Inégalité des moyennes}{
+			soit $ \vec{x}=(x_1 , \cdots ,x_n) \ \in \left(\RR^+ \right)^n $ On définit les quantités : 
+		\begin{align}
+		\mathtt{A}(x_1 , \cdots ,x_n) &= \frac{1}{n} \sum_{i=0}^n x_i  \text{  \ \ \ \  appelé moyenne arithmetique} \nonumber \\  \vspace{10pt}
+		\mathtt{G}(x_1 , \cdots ,x_n) &= \sqrt[n]{ \prod_{i=0}^n x_i } \text{ \ \ \ \   appelé moyenne geometrique} \nonumber \\ \vspace{10pt}
+		\mathtt{H}(x_1 , \cdots ,x_n) &= \frac{n}{ \sum_{i=0}^n \frac{1}{x_i} } \text{  \ \ \ \  appelé moyenne Harmonique} \nonumber \\ \vspace{10pt}
+		\mathtt{Q}(x_1 , \cdots ,x_n) &= \sqrt{ \frac{1}{n} \sum_{i=0}^n x_i^2  } \text{  \ \ \ \  appelé moyenne quadratique} \nonumber 
+		\end{align}
+			alors on a : 
+				\begin{equation}\label{ing:HGAQ}
+					H \leq G \leq A \leq Q
+				\end{equation}	
+		}
+		\exm{}{
+			On pratique, on utilise énormément de fois le cas $n=2$ ce qui donne : 
+			\[ |ab| \leq  \frac{a^2+b^2}{2}  \] 
+		\begin{center}
+		\begin{small}
+		prendre $x_1 = a^2 \ \ x_2=b^2$
+		\end{small}
+		\end{center}
+		}
+
+\newpage 
+    \section{Exercices  }	
+\exo{}{
+    Montrer les inégalités suivantes : 
+\begin{align*}
+    &\forall x \geq 0  \quad x - \frac{x^3}{3} \leq \sin(x) \leq x, \\
+    &\forall x, y \in \RR  \quad |\sin(x) - \sin(y)| \leq |x - y|, \\
+    &\forall x \in \RR  \quad 1 - \frac{x^2}{2} \leq \cos(x) \leq 1, \\
+    &\forall x \in \left[0, \frac{\pi}{2} \right[ \quad \frac{2}{\pi} \cdot x \leq \sin(x) \leq x \leq \tan(x), \\
+    &\forall x \geq 0  \quad \sinh(x) \geq x, \\
+    &\forall x \geq 0  \quad \cosh(x) \geq 1 + \frac{x^2}{2}, \\
+    &\forall x \geq 0  \quad x - \frac{x^2}{2} \leq \ln(1 + x) \leq x, \\
+    &\forall x \geq 0  \quad \ln(x) + 1 \leq x \leq e^x - 1.
+\end{align*}
+
+}
+\exo{}{
+Posons 
+\[f(x,y) = \fparts{\frac{\sin(xy)}{|x|+|y|}}{\ (x,y) \neq  (0,0)}{1}{\text{non}} \]
+
+  Mq : 
+\[ \forall a >0 \quad \left| \frac{f(a+x,y) -y}{||(x,y)||}\right| \underset{(x,y) \rightarrow (0,0) }{\longrightarrow} 0  \] 
+    }
+
+
+
+
+
+
+
+\end{document}

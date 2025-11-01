@@ -1,0 +1,800 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{LES ÉQUATIONS DIFFÉRENTIELLES ORDINAIRES}
+
+
+\intro{
+\textbf{Prérequis}
+\begin{itemize}
+\item Les séries entières.
+\end{itemize} 
+
+\textbf{Objectifs}
+\begin{itemize}
+\item Savoir résoudre une équation différentielle ordinaire
+\end{itemize}
+}{
+Les équations différentielles ordinaires (EDO) consistent en des relations mathématiques entre une fonction inconnue et ses dérivées. Elles se présentent sous la forme générale \( F(x, y, y', \dots, y^{(n)}) = 0 \), où \( y = f(x) \) est la fonction inconnue, et leurs solutions dépendent de conditions initiales et de la nature de l’équation. Ce chapitre explore les EDO à travers leurs classifications, les méthodes de résolution et les théorèmes d’existence et d’unicité, offrant ainsi une analyse des propriétés fondamentales de ces équations.
+}
+
+Une équation différentielle Ordinaire est une équation du type $y^{\prime}=f(t, y)$ où $f$ est une fonction définie sur un ouvert $U$ de $\RR^2$ ( $U$ est appelé le domaine de l'équation différentielle). Une solution de cette équation différentielle est une fonction $y$, définie et dérivable sur un intervalle $I$, et telle que, pour tout $t$ de $I,(t, y(t))$ est dans $U$, et $y^{\prime}(t)=f(t, y(t))$.
+\\ 
+Une équation différentielle de la forme précédente s'appelle une équation différentielle du premier ordre. On rencontre aussi souvent des équations du deuxième ordre, du type $y^{\prime \prime}=f\left(t, y, y^{\prime}\right)$. Plus généralement, une équation différentielle d'ordre $m$ est une équation du type $y^{(m)}=f\left(t, y^{\prime}, \ldots, y^{(m-1)}\right)$.
+
+\section{Problème de Cauchy}
+Il y a en général plusieurs solutions à une équation différentielle. Pour espérer caractériser une solution, il faut ajouter une condition initiale qui décrit le système à un instant initial.
+\defn{Problème de Cauchy}{ Soit $U$ un ouvert de $\RR^2$, $f: U \to \RR$ et $(t_0, y_0)$ un point de $U$. On appelle \textcolor{red}{\textbf{problème de Cauchy}} en $(t_0, y_0)$ la recherche d'une solution à l'équation différentielle, sous les hypothèses supplémentaires que $y$ est définie sur un intervalle contenant $t_0$ et que $y(t_0) = y_0$.
+}
+Lorsqu'on a une équation différentielle du second ordre, le problème de Cauchy correspond à la recherche d'une solution avec $y(t_0) = y_0$, $y'(t_0) = y_1$, et ainsi de suite si l'ordre est $m$.
+\\
+Une solution d'une équation différentielle est maximale si elle n'est la restriction d'aucune autre solution. Sous ces hypothèses, on a le théorème d'existence et d'unicité des solutions suivant :
+
+\thm{Condition de Cauchy-Lipschitz}{
+Soit l'équation différentielle 
+\[
+y' = f(t, y)
+\]
+avec \( f \) définie sur un ouvert \( U \) de \( \RR^2 \), continue et localement lipschitzienne par rapport à la seconde variable. Si \( (t_0, y_0) \) est un point de \( U \), il existe une unique solution maximale au problème de Cauchy
+\[
+y' = f(t, y), \quad y(t_0) = y_0.
+\]
+Cette solution est définie sur un intervalle ouvert contenant \( t_0 \). En outre, toute autre solution à ce même problème de Cauchy est restriction de la solution maximale.
+}
+Si \( f \) est de classe \( \class^1 \), \( f \) est localement lipschitzienne en la seconde variable. C'est souvent ce que l'on rencontre dans la pratique, et le théorème de Cauchy-Lipschitz est alors applicable.
+\cor{ \textbf{Cas pratique:}}{
+Soit l'équation différentielle 
+\[
+y' = f(t, y)
+\]
+avec \( f \) définie sur un ouvert \( U \) de \( \RR^2 \), continue et de classe $\class^1$ par rapport à la seconde variable. Si \( (t_0, y_0) \) est un point de \( U \), il existe une unique solution maximale au problème de Cauchy
+\[
+y' = f(t, y), \quad y(t_0) = y_0.
+\]
+}
+
+\subsection{Des méthodes Générales pour les EDO d'ordre 1}
+
+\meth{Séparabilité de l'équation}{
+Si on peut écrire : $y^\prime = \alpha(t)\beta(y)$, Alors sous la condition que $\beta$ ne s’annule pas on peut faire ce calcul : 
+\begin{align*}
+    y^\prime & = \alpha(t)\beta(y) \\
+    y^\prime \frac{1}{\beta(y)} & = \alpha(t) \\
+    B(y)^\prime & = A^\prime(t) \\
+\end{align*}
+Avec $B$ primitive de : $t\mapsto\frac{1}{\beta(t)}$ et $A$  primitive de : $t\mapsto \alpha(t)$. \\
+Et puis déduire que : 
+\[ B(y) = A(t) + C\]
+Et si $B$ est bijective alors : 
+\[ y(t) = B^{-1}\left[ A(t) +c\right] \]
+Cette méthode est certainement puissante, mais c'est très rare qu'on peut retrouver tout ces conditions vérifiés. Toujours fait attention dans votre application. 
+}
+
+\exm{}{
+Résoudre : $y^\prime(t) = e^{t+y(t)}\quad t\in \RR$
+\sol 
+On peut remarquer que : $y^\prime(t) = e^te^{y(t)}$, Alors comme l'exponentielle est une fonction qui ne s’annule pas on peut déduire : 
+\begin{align*}
+    y^\prime(t) & = e^te^{y(t)} \\
+    y^\prime(t)e^{-y(t)} & = e^{t} \\
+    (-e^{-y(t)})^\prime & = (e^{t})^\prime \\
+\end{align*}
+Et puis déduire que : 
+\begin{align*}
+e^{-y(t)} & = -e^t + C \\ 
+y(t)      & = -\ln\left( c - e^t \right) 
+\end{align*}
+Ainsi, on remarque que $t\in ]-\infty,\ln(c)[$. alors $c>0$, et il n'y a pas de solution sur $\RR$ tout entier. On conclut finalement : 
+\cc{\operatorname{Solution} = \bigg\{t\in ]-\infty, \ln(c)[ \mapsto   -\ln\left( c - e^t \right) \bigg| c\in\RR^+ \bigg\} 
+}
+Si nous avons : $y(t_0)=y_0$ donc le choix de $c$ est la suivante : 
+\[ 
+-\ln\left( c - e^{t_0} \right) = y_0 \Longleftrightarrow  c  = e^{-y_0} + e^{t_0}\geq 0
+\]
+Et l'intervalle de définition est : $]-\infty, t_0 - y_0[$. \\
+On doit pas oublié que notre raisonnement était analyse synthèse, donc il faut vérifier que c'est bien une solution (à faire par vous même). 
+}
+\section{Les équation Linéaires }
+On appelle \textbf{\textcolor{red}{équation différentielle linéaire du premier ordre}} une équation de la forme
+\[
+y'(t) + a(t)y(t) = b(t)
+\]
+où $a : I \to \RR$ et $b : I \to \RR$ sont deux fonctions continues.
+On appelle \textbf{\textcolor{red}{équation différentielle linéaire scalaire d'ordre $2$}} définie sur $I$ toute équation de la forme
+\[
+y^{\prime\prime}(t) =  a_{1}(t) y^{\prime}(t)  + a_0(t) y(t) + b(t)
+\]
+avec $a_0, a_{1}$ et $b : I \to \RR$ des fonctions continues et $y : I \to \RR$ une fonction inconnue $2$ fois dérivable sur $I$. \\
+On appelle \textbf{\textcolor{red}{équation différentielle linéaire scalaire d'ordre $n$}} définie sur $I$ toute équation de la forme
+\[
+y^{(n)}(t) = a_{n-1}(t) y^{(n-1)}(t) + a_{n-2}(t) y^{(n-2)}(t) + \cdots + a_0(t) y(t) + b(t)
+\]
+avec $a_0, \ldots, a_{n-1}$ et $b : I \to \RR$ des fonctions continues et $y : I \to \RR$ une fonction inconnue $n$ fois dérivable sur $I$.\\
+Résoudre l'équation différentielle, c'est déterminer les fonctions $y : I \to \RR$ dérivables (selon l'ordre étudié) qui satisfont l'équation précédente. \\ 
+\textit{\textcolor{red}{Lorsque $b$ est la fonction nulle, on dit que c'est une équation homogène.}}
+
+
+\subsection{Méthodes de résolution}
+
+\subsubsection{Pour les EDO d'ordre 1}
+Les EDO linéaires d'ordre 1 sont les plus facile à traiter puisqu'on dispose d'une méthode générale qui passe par tout : 
+\meth{Solution Générale}{
+    Soit l'ODE : 
+    \[
+    y'(t) + a(t)y(t) = b(t) \quad t\in I 
+    \]
+    Si on pose $A$ une primitive de $a$, alors :
+    \[
+        (y(t)e^{A(t)})^\prime = b(t)e^{A(t)}
+    \]
+    On il suffit de calculer la primitive de $t\mapsto  b(t)e^{A(t)}$, si on note cette primitive $B$ alors la solution est : 
+    \[
+    y(t) = e^{-A(t)}(B(t) + c)
+    \]
+}
+
+La difficulté est généralement dans le calcul de la primitive $B$, on peut parfois essayer de simplifier les coefficients avec un changement de variable ou de la fonction (cf. section \ref{sec:simplify}) .
+
+\exm{}{
+Résoudre : $y^\prime(t) + \frac{1}{t}y(t) = \cos{t} \quad t\in \RR^*_+$
+\sol 
+    On a $t\mapsto \ln(t)$ une primitive de $t\mapsto \frac{1}{t}$, alors :
+    \[
+        (y(t)e^{\ln(t)})^\prime = \cos(t)e^{\ln(t)}
+    \]
+    On il suffit de prendre une primitive de $t\mapsto  \cos(t)e^{\ln(t)} = t\cos(t)$, par exemple : $t\mapsto t \sin{t} + \cos{t} $ ainsi on déduit ($c\in\RR)$ :
+\begin{align*}
+    ty(t) &= t \sin{t} + \cos{t} + c \\  
+    y(t) &= \sin{t} + \frac{1}{t}\cos{t} + \frac{1}{t}c \\  
+\end{align*}
+On conclut :
+\cc{\operatorname{Solution} = \bigg\{t \mapsto  \sin{t} + \frac{1}{t}\cos{t} + \frac{1}{t}c \bigg| c\in\RR \bigg\} 
+}
+}
+
+
+\subsubsection{Pour les EDO d'ordre 2}
+Soit une EDO d'ordre 2 : 
+\[ (E) : \quad
+y^{\prime\prime}(t) =  a_{1}(t) y^{\prime}(t)  + a_0(t) y(t) + b(t)
+\]
+Généralement, on le résoudre en deux étapes :
+\begin{itemize}
+    \item \textbf{Solution Homogène : } On trouve les solutions homogènes de l'équation homogène : 
+    \[
+    (E_h) : \quad
+    y^{\prime\prime}(t) =  a_{1}(t) y^{\prime}(t)  + a_0(t) y(t)
+    \]
+    \item \textbf{Solution Particulière :} On cherche \textit{au moins une} solution particulière $y_p$ vérifiant l'ODE $(E)$ : 
+    \[ (E) : \quad
+    y_p^{\prime\prime}(t) =  a_{1}(t) y_p^{\prime}(t)  + a_0(t) y_p(t) + b(t)
+    \]
+    \item \textbf{Superposition des solutions :} On déduit que : 
+    \[
+    \operatorname{Solution\ E} = \left\{ y_p + y_h | y_h \in \operatorname{Solution\ E_h}
+    \right\}
+    \]
+\end{itemize}
+
+Nous devrons donc savoir comment résoudre les EDO homogènes et comment trouver les solutions particulière \\ 
+En effet, il y'a pas de méthode générale de résolution ODE, on donnera juste la résolution dans le cas des coefficient constante et le cas où les coefficients sont assez simple que peut faire un développement en série entière :  
+
+\meth{Équation aux coefficients constantes}{
+On suppose qu'on a une équation homogène
+\begin{equation*}
+y^{\prime \prime}=a y^{\prime}+b y
+\end{equation*}
+à coefficients constants. On introduit l'équation caractéristique
+\begin{equation*}
+r^2=a r+b
+\end{equation*}
+\begin{enumerate}
+\item  \textbf{Résolution sur $\CC$ :}
+\begin{enumerate}
+    \item \textbf{Si l'équation caractéristique admet deux racines distinctes} $r_1$ et $r_2$, alors les solutions de l'équation homogène $y^{\prime \prime}+a y^{\prime}+b y=0$ sont les fonctions :
+    \[
+    x \mapsto \lambda e^{r_1 t} + \mu e^{r_2 t} \quad \text{avec } \lambda, \mu \in \CC.
+    \]
+
+    \item \textbf{Si l'équation caractéristique admet une racine double} $r$, alors les solutions de l'équation homogène $y^{\prime \prime}+a y^{\prime}+b y=0$ sont les fonctions :
+    \[
+    x \mapsto (\lambda t + \mu) e^{r t} \quad \text{avec } \lambda, \mu \in \CC.
+    \]
+\end{enumerate}
+\item  \textbf{Résolution sur $\RR$ :}
+\begin{enumerate}
+    \item \textbf{Si l'équation caractéristique admet deux racines réelles distinctes} $r_1$ et $r_2$, alors les solutions de l'équation homogène $y^{\prime\prime} + a y^{\prime} + b y = 0$ sont les fonctions :
+    \[
+    x \mapsto \lambda e^{r_1 t} + \mu e^{r_2 t} \quad \text{avec } \lambda, \mu \in \RR.
+    \]
+
+    \item \textbf{Si l'équation caractéristique admet une racine double} $r$, alors les solutions de l'équation homogène $y^{\prime\prime} + a y^{\prime} + b y = 0$ sont les fonctions :
+    \[
+    x \mapsto (\lambda t + \mu) e^{r t} \quad \text{avec } \lambda, \mu \in \RR.
+    \]
+
+    \item \textbf{Si l'équation caractéristique admet deux racines complexes conjuguées} $\alpha \pm i \beta$, alors les solutions de l'équation homogène sont les fonctions :
+    \[
+    x \mapsto \lambda e^{\alpha t} \cos(\beta t) + \mu e^{\alpha t} \sin(\beta t) \quad \text{avec } \lambda, \mu \in \RR.
+    \]
+\end{enumerate}
+\end{enumerate}
+}
+
+\exm{}{ \label{exm:famous_edo}
+L'équation différentielle \( z^{\prime\prime}(u) + z(u) = 0 \) est une équation différentielle linéaire homogène du second ordre à coefficients constants. Sa solution générale peut être trouvée en résolvant l'équation caractéristique associée.
+\begin{enumerate}
+\item  \textbf{Formulation de l'équation caractéristique :}
+   L'équation caractéristique associée est :
+   \[
+   r^2 + 1 = 0
+   \]
+   Cela donne :
+   \[
+   r^2 = -1
+   \]
+   Les solutions de cette équation sont :
+   \[
+   r = i \quad \text{et} \quad r = -i
+   \]
+
+\item  \textbf{Solutions de l'équation  :}
+   Les racines complexes \( r = i \) et \( r = -i \) nous permettent de formuler la solution générale. Par le théorème d'Euler, nous savons que les solutions de l'équation différentielle sont de la forme :
+   \[
+   z(u) = C_1 \cos(u) + C_2 \sin(u)
+   \]
+   où \( C_1 \) et \( C_2 \) sont des constantes déterminées par les conditions initiales.
+
+\item  \textbf{Conclusion :}
+La solution générale de l'équation \( z^{\prime\prime}(u) + z(u) = 0 \) est donc :
+\cc{ z(u) = C_1 \cos(u) + C_2 \sin(u) }
+\end{enumerate}
+
+}
+\meth{Recherche d'une solution développable en série entière}{
+Là on suppose que l'ODE admet une solution Développable en Série Entière avec un rcv non nulle :
+\[
+y(t) = \sum_{n=0}^{+\infty} \alpha_n t^n
+\]
+Et on cherche la suite $(a_n)_{n\in\NN}$ vérifiant l'ODE directement : 
+    \[
+    (E) : \quad
+    y^{\prime\prime}(t) =  a_{1}(t) y^{\prime}(t)  + a_0(t) y(t) + b(t)
+    \]
+Cette méthode est généralement utilisé lorsque les coefficients sont des puissances de $t$ (ou même des polynômes). Sinon, on aurait besoin de multiplier deux série entière ce qui peux engendré des calculs complexes (même c'est pas impossible). 
+}
+
+\exm{}{
+Résoudre : $4ty^{\prime\prime}(t) + 2y^\prime(t) - y = 0 \quad t\in \RR^*_+$
+\sol 
+
+On suppose qu'il existe une solution sous la forme \( y(t) = \sum_{n=0}^{+\infty} a_n t^n \), avec un rcv non nul. Ainsi, les dérivées de \( y \) sont :
+\[
+y'(t) = \sum_{n=1}^{+\infty} a_n n t^{n-1},
+\]
+\[
+y''(t) = \sum_{n=2}^{+\infty} a_n n (n-1) t^{n-2}.
+\]
+
+En remplaçant dans l'équation \( 4ty'' + 2y' - y = 0 \), nous avons :
+\[
+4t \sum_{n=2}^{+\infty} a_n n (n-1) t^{n-2} + 2 \sum_{n=1}^{+\infty} a_n n t^{n-1} - \sum_{n=0}^{+\infty} a_n t^n = 0.
+\]
+
+En simplifiant chaque terme :
+\[
+\sum_{n=2}^{+\infty} 4 a_n n (n-1) t^{n-1} + \sum_{n=1}^{+\infty} 2 a_n n t^{n-1} - \sum_{n=0}^{+\infty} a_n t^n = 0.
+\]
+Regroupement des puissances de \( t \) nous donne :
+\[
+(2a_1-a_0) + \sum_{n=1}^{+\infty} 4 a_{n+1} (n+1)n t^{n} + \sum_{n=1}^{+\infty} 2 a_{n+1} (n+1) t^{n} - \sum_{n=1}^{+\infty} a_n t^n = 0.
+\]
+
+On obtient une relation de récurrence :
+\[
+a_{n+1} =\frac{a_n}{(2n+1)(2n+2)}.
+\]
+
+Pour les conditions initiales, si \( a_0 = 0 \), alors la solution est triviale \( y(t) = 0 \). \\
+Sinon, on a :
+\[
+y(t) = a_0 \sum_{n=0}^{+\infty} \frac{t^n}{(2n)!}.
+\]
+
+Donc, on trouve la série entière de rcv infinie suivante :
+\[
+y(t) = a_0 \sum_{n=0}^{+\infty} \frac{t^n}{(2n)!} = a_0 \sum_{n=0}^{+\infty} \frac{\sqrt{t}^{2n}}{(2n)!}  = a_0\cosh(\sqrt{t})
+\]
+Il est facile de vérifier que cette série est effectivement une solution. \\ 
+Cependant, nous n'avons pas encore répondu à la question complète, qui est de trouver l'ensemble des solutions de classe $\class^2$; nous avons uniquement déterminé les solutions développables en séries entières. Heureusement, nous savons que l'ensemble des solutions de classe $\class^2$ constitue un espace vectoriel de dimension 2, dont nous avons trouvé une base partielle, $t \mapsto \cosh(\sqrt{t})$. Il nous reste à identifier une seconde base.
+
+En général, on utilise les mêmes méthodes pour rechercher une solution particulière, comme la variation de la constante ou l'essai de solutions de structure similaire. Dans ce cas, puisque nous avons déjà trouvé une solution de forme hyperbolique, $\cosh$, il est naturel de tester si $\sinh$ pourrait également être une solution. \\
+Essayons la fonction : $t \mapsto \sinh(\sqrt{t})$, en effet : 
+\[
+\begin{cases}
+   y^\prime(t) &= \cosh(\sqrt{t}) \cdot \frac{1}{2\sqrt{t}} = \frac{\cosh(\sqrt{t})}{2\sqrt{t}}.\\
+    y^{\prime\prime}(t) &= \frac{-\cosh(\sqrt{t})}{4t^{3/2}} + \frac{\sinh(\sqrt{t})}{4t}.
+\end{cases}
+\]
+Donc :
+\begin{align*}
+    \operatorname{Terme}
+    & = 4t y^{\prime\prime}(t) + 2y^\prime(t) - y(t) \\ 
+    &= 4t \bigg(\frac{-\cosh(\sqrt{t})}{4t^{3/2}} + \frac{\sinh(\sqrt{t})}{4t}\bigg) + 2\bigg(\cosh(\sqrt{t}) \cdot \frac{1}{2\sqrt{t}}\bigg) - \sinh(\sqrt{t}) \\
+    &= \bigg(\frac{-\cosh(\sqrt{t})}{\sqrt{t}} + \sinh(\sqrt{t}) \bigg) + \bigg(\cosh(\sqrt{t}) \cdot \frac{1}{\sqrt{t}}\bigg) - \sinh(\sqrt{t}) \\
+    &= \frac{1}{\sqrt{t}}\bigg(-\cosh(\sqrt{t}) + \sinh(\sqrt{t})\sqrt{t} + \cosh(\sqrt{t}) -\sqrt{t}\sinh(\sqrt{t}) \bigg) \\
+    &= 0
+\end{align*}
+Ce qui montre que $t \mapsto \sinh(\sqrt{t})$ est clairement une solution, donc on conclut que :
+\cc{
+\operatorname{Solution \ E} = \bigg\{  a_0  \cosh(\sqrt{t}) + a_1  \sinh(\sqrt{t}) \bigg| a_0,a_1\in \RR \bigg\}}
+}
+
+
+Pour la recherche des solutions particulières \label{meth:particularSol}, généralement on a deux méthodes : 
+\begin{itemize}
+    \item \textit{Essayer des fonctions usuelles de même structure.}
+    \item \textit{Variation de la constante}
+\end{itemize}
+
+\meth{Essaie des fonctions usuelles de même structure}{
+Il est parfois pertinent d'explorer des fonctions de structures similaires pour résoudre certaines équations différentielles. Par exemple, si l'on identifie une fonction $b(t)$ de la forme $t \mapsto P(t)e^{mt}$ (cas général), il est judicieux de tester une solution particulière de même type. Pour plus de détails, vous pouvez consulter ce lien : 
+\begin{center}
+\href{https://cours.jufont.net/Fontanet/EDO1/co/module_EDO_28.html}{https://cours.jufont.net/Fontanet/EDO1/co/module\_EDO\_28.html}. 
+\end{center}
+De même, lorsqu'on détermine une dimension de l'espace des solutions et que l'on souhaite en identifier une seconde, on peut appliquer cette logique en recherchant une solution de structure analogue. Par exemple, les fonctions trigonométriques et hyperboliques partagent des structures similaires.
+}
+Sinon on utilise la méthode de la variation de la constante : 
+\meth{Variation de la constante}{
+Puisque l'espace des solutions de l'équation homogène $(E_h)$ est de dimension 2, on peut l'écrire sous la forme : 
+\[
+    \operatorname{Solution \ E_h} = \left\{ \lambda_1 \times y_1(t) + \lambda_2 \times y_2(t) \right\}
+\]
+L'idée de la méthode de variation de la constante est de prendre la solution particulière sous la forme : 
+\[ 
+    y_p(t) = \lambda_1(t) \times y_1(t) + \lambda_2(t) \times y_2(t)
+\]
+Et on remplace dans l'équation $(E)$ ce qui donne le système :
+La méthode de variation des constantes s'écrit alors :
+$$
+\begin{cases} 
+\lambda_1'(t) y_1(t)  + \lambda_2'(t) y_2(t) = 0 \\ 
+\lambda_1'(t) y_1'(t) + \lambda_2'(t) y_2'(t) = b(t)
+\end{cases}
+$$
+Cela permettre Généralement de trouver un système des EDO d'ordre 1 très simples. 
+}
+
+\exm{}{
+Résoudre : $y^{\prime\prime}(t) +  y(t) = \frac{1}{\tan(t)} \quad t\in ]0,\frac{\pi}{2}[$
+\sol 
+On sait déjà, d'après l'exemple \ref{exm:famous_edo}, que la solution homogène s'écrit sous forme :
+\[
+y_h(t) = C_1 \cos(t) + C_2\sin(t)
+\]
+Pour chercher une solution particulier nous considérons la forme : 
+\[
+y_p(t) = C_1(t) \cos(t) + C_2(t) \sin(t)
+\]
+Donc, après un simple remplacement :
+$$
+\begin{cases} 
+C_1'(t) \cos(t)  + C_2'(t) \sin(t) = 0 \\ 
+C_1'(t) \cos'(t) + C_2'(t) \sin'(t) = \frac{1}{\tan(t)}
+\end{cases}
+$$
+Donc :
+$$
+\begin{cases} 
+ C_1'(t) \cos(t) + C_2'(t) \sin(t) = 0 \\ 
+-C_1'(t) \sin(t) + C_2'(t) \cos(t) = \frac{1}{\tan(t)}
+\end{cases}
+$$
+Donc :
+$$
+\begin{cases} 
+C_2'(t) &= \ \frac{\cos(t)}{\tan(t)} =   \frac{\cos^2(t)}{\sin(t)}  \\
+C_1'(t) &= -\frac{\sin(t)}{\tan(t)}  = -\cos(t) \\
+\end{cases}
+$$
+Comme $\ln|\tan(t/2)| + \cos(t)$ est une primitive de $\frac{\cos^2(t)}{\sin(t)} $ alors :
+$$
+\begin{cases} 
+C_2(t) &= \ln(\tan(t/2)) + \cos(t)\\
+C_1(t) &= \sin(t) \\
+\end{cases}
+$$
+Ce qui donne finalement, 
+\cc{
+\operatorname{Solution \ E} = \bigg\{ t\mapsto
+C_1 \cos(t) + C_2\sin(t) +   2\sin(t)\cos(t) +   \ln(\tan(t/2))\sin(t)  \ \bigg|  \ C_1,C_2\in \RR
+\bigg\} }
+}
+
+\subsubsection{Méthodes de simplification des EDO} \label{sec:simplify}
+\meth{Changement de la fonction Inconnue}{
+Cette méthode consiste à changer la fonction $y$ en une autre $z$ avec $z(t) = h(t)y(t)$.  On obtient les dérivés comme suit :
+\[
+\begin{cases}
+\left( y(t) h(t) \right)^\prime &= y(t) \cdot h'(t) + y'(t) \cdot h(t) \\
+\left( y(t) h(t) \right)^{\prime\prime} &= y(t) \cdot h''(t) + 2 y'(t) \cdot h'(t) + y''(t) \cdot h(t)
+\end{cases}
+\]
+
+\begin{itemize}
+\item Lorsqu'on remplace, il est souvent, avec un choix adéquate de $h$, que les coefficients se simplifient en des coefficients constante.  
+\item Généralement la fonction $h$ est donnée par l'exercice il faut juste maîtriser l'application.  
+\end{itemize}
+}
+
+\exm{}{
+Résoudre : $ty^{\prime\prime}(t) +  2y^\prime(t) + ty(t) = 0 \quad t\in ]0,\infty[$
+\sol 
+En posant \( z(t) = t y(t) \), commençons par exprimer \( z(t) \) et ses dérivées en termes de \( y(t) \). \\
+On a : 
+\[
+\begin{cases}
+z^\prime(t) &= ty^\prime(t) + y(t) \\
+z^{\prime\prime}(t) &= ty^{\prime\prime}(t) + 2y\prime(t)  \\ 
+\end{cases}
+\]
+On trouve alors facilement que : 
+\[
+z^{\prime\prime}(t)  + z(t) = 0
+\]
+Cette équation est déjà résolution dans l'exemple \ref{exm:famous_edo}, sa solution s'écrit sous forme :
+\[
+z(t) = C_1 \cos(t) + C_2\sin(t)
+\]
+Et donc : 
+\[
+y(t) = \frac{C_1 \cos(t) + C_2\sin(t)}{t}
+\]
+On conclut finalement, la solution générale de l'équation : 
+\cc{
+\operatorname{Solution \ E} = \bigg\{ t\mapsto
+\frac{C_1 \cos(t) + C_2\sin(t)}{t} \ \bigg|  \ C_1,C_2\in \RR
+\bigg\} }
+}
+\meth{Changement de la variable}{
+Il se peut qu'il soit nécessaire de changer la variable, on pose alors $t = \varphi(u)$. et $z(u) = y(\varphi(u))$
+Et on cherche à reformuler l'équation en une autre plus simple. Avec ce changement on obtient : 
+\[
+\begin{cases}
+    z^\prime(u) &=   \varphi^\prime(u)\times y^\prime(t) \\ 
+    z^{\prime\prime}(u) &=   \varphi^{\prime\prime}(u)\times y^\prime(t) +  \varphi^{\prime}(u)^2\times y^{\prime\prime}(t) 
+\end{cases}
+\]
+\begin{itemize}
+\item Lorsqu'on remplace, il est souvent, avec un choix adéquate, que les coefficients se simplifient en des coefficients constante.  
+\item Généralement le changement de variable est donnée par l'exercice il faut juste maîtriser l'application rigoureuse de changement.  
+\item On donne des changements célèbres qui peuvent marcher dans qlq exercices : 
+\[
+  \left\{ \begin{array}{lll}
+        \varphi(u) & = A^{-1}(u) & \textit{Avec : } A \textit{ Primitive de } a_1 \\
+        \varphi(u) & = B^{-1}(u) & \textit{Avec : } B \textit{ Primitive de } \sqrt{a_0}
+    \end{array} \right.
+\]
+
+\end{itemize}
+}
+
+\exm{}{
+Résoudre : $y^{\prime\prime}(t) +  \frac{2t}{(1+t^2)}y^\prime(t) + \frac{1}{(1+t^2)^2}y(t) = 0 \quad t\in ]0,\infty[$
+\sol 
+Puisque les coefficients ne sont pas constants, il n'existe pas de méthode générale applicable. Bien que le développement en séries entières soit une possibilité, il semble difficile, notamment parce que les coefficients eux-mêmes ont des développements en séries entières complexes.
+
+Nous optons alors pour un changement de variable. Parmi les choix les plus célèbres, nous considérons les suivants :
+
+\begin{itemize}
+    \item Pour \( a_1(t) = \frac{2t}{1+t^2} \), la primitive est : \( t \mapsto \ln(1+t^2) \). Ainsi, nous avons : \( t = \varphi_\textit{choix 1}(u) = \sqrt{e^u - 1} \), ce qui semble compliquer les calculs.
+    
+    \item Pour \( a_0(t) = \frac{2t}{1+t^2} \), la primitive de \( \sqrt{a_0} \) est : \( t \mapsto \arctan(t) \). Nous définissons alors : \( t = \varphi_\textit{choix 2}(u) = \tan(u) \), ce qui est simple et semble convenir. Nous allons l'utiliser.
+\end{itemize}
+
+Nous posons \( t = \tan(u) \) et \( z(u) = y(\tan(u)) \). Avec ce changement de variable, nous obtenons les relations suivantes :
+
+\[
+\begin{aligned}
+    z^\prime(u) &= \tan^\prime(u) \times y^\prime(t) \\
+    &= (1+\tan^2(u))y^\prime(t) 
+\end{aligned}
+\]
+On a également : 
+\[
+\begin{aligned}
+    z^{\prime\prime}(u) &= \tan^{\prime\prime}(u) \times y^\prime(t) + \tan^{\prime}(u)^2 \times y^{\prime\prime}(t) \\
+    &= (1+\tan^2(u))\tan(u) \times y^\prime(t) + (1+\tan^2(u))^2 \times y^{\prime\prime}(t) 
+\end{aligned}
+\]
+
+En remplaçant, nous trouvons :
+
+\[
+\begin{aligned}
+    y^{\prime\prime}(t) + \frac{2\tan(u)}{1+\tan^2(u)}y^\prime(t) + \frac{1}{(1+\tan^2(u))^2}y(t) &= 0 \\ 
+    (1+\tan^2(u))^2y^{\prime\prime}(t) + 2\tan(u)(1+\tan^2(u))y^\prime(t) + y(t) &= 0 \\ 
+    z^{\prime\prime}(u) + z(u) &= 0 
+\end{aligned}
+\]
+
+L'équation résultante est linéaire avec des coefficients constants, ce qui permet de résoudre la solution sans difficulté.
+\[
+  z^{\prime\prime}(u) + z(u) = 0 \quad u\in ]-\frac{\pi}{2} , +\frac{\pi}{2}[
+\]
+
+En effet c'est déjà résolut dans l'exemple \ref{exm:famous_edo}. La solution générale est :
+\[
+z(u) = C_1 \cos(u) + C_2 \sin(u)
+\]
+Et donc, comme $u=\arctan(t)$ on déduit : 
+\[
+y(t) = z(\arctan(t)) = C_1 \cos(\arctan(t)) + C_2 \sin(\arctan(t))
+\]
+Ce qui donne l'ensemble des solutions :
+\cc{\operatorname{Solution} = \bigg\{t \mapsto   C_1 \cos(\arctan(t)) + C_2 \sin(\arctan(t))\bigg| C_1, C_2\in\RR \bigg\} 
+}
+}
+
+\subsection{Problème de raccordement}
+Parfois on se retrouve dans des cas où la dérivé d'ordre supérieur dispose d'un coefficient non unitaire et qui s'annule en une point $t_0$ (S'il ne  s'annule pas, on peut diviser par ce coefficient pour s'en débarrasser et ainsi revenir au cas normal). Càd : 
+
+\[
+\begin{cases}
+    (E_1) :& \alpha(t)y^\prime + a(t) = b(t) \\ 
+    (E_2) :& a_2(t) y^{\prime\prime}(t) =  a_{1}(t) y^{\prime}(t)  + a_0(t) y(t) + b(t)
+\end{cases}
+\]
+
+Une telle cas s'appelle un problème de raccordement, la résolution de cette problème se fait en trois étapes :
+\begin{itemize}
+    \item On divise l'intervalle $I$ en des petits intervalles $I_1, I_2$ de telle façon que ce coefficient ne s'annule pas avec : $I = I_1 \cap \{t_0\} \cap I_2$.
+    \item On résoudre les EDO sur chaque intervalle, on trouve par exemple une fonction de $t$ et des constantes :
+    \[
+    \begin{cases}
+        y_1(t) &= f(t, ctes_1) \textit{ Si : } t\in I_1 \\ 
+        y_1(t) &= f(t, ctes_2) \textit{ Si : } t\in I_2
+    \end{cases}\]
+    \item On utilise la condition de continuité et la dérivabilité au point $t_0$ pour déduire une relation entre les deux constantes. 
+\end{itemize}
+
+
+
+\exm{}{
+Résoudre : $4ty^{\prime\prime}(t) + 2y^\prime(t) - y(t) = 0 \quad t\in \RR$
+\sol 
+\begin{enumerate}
+\item On peut constater ici que $t$ s'annule dans $\RR$ donc il faut divise l'intervalle en $\RR = \RR_-^* \cap \{0\} \cap \RR_+^*$.  Et on considère deux EDOs: 
+\[
+\begin{cases}
+    (E_+) &: 4ty^{\prime\prime}(t) + 2y^\prime(t) - y(t) = 0 \quad t\in \RR_+^* \\ 
+    (E_-) &: 4ty^{\prime\prime}(t) + 2y^\prime(t) - y(t) = 0 \quad t\in \RR_-^* 
+\end{cases}
+\]
+\item Puis on résoudre l’équation dans chaque intervalle.
+\begin{itemize}
+    \item \textbf{Résolution dans $\RR_+^*$ : } Déjà fait, l'ensemble des solutions est :
+    \[
+    \operatorname{Solution \ E_+} =  \bigg\{  a_0  \cosh(\sqrt{t}) + a_1  \sinh(\sqrt{t}) \bigg| a_0,a_1\in \RR \bigg\}
+    \]
+    \item \textbf{Résolution dans $\RR_-^*$ : } Laissé exercice pour le lecteur, l'ensemble des solutions est :
+    \[
+    \operatorname{Solution \ E_-} =  \bigg\{  b_0  \cosh(\sqrt{-t}) + b_1  \sinh(\sqrt{-t}) \bigg| b_0,b_1\in \RR \bigg\}
+    \]
+\end{itemize}
+
+\item Maintenant il faut utiliser les conditions de la continuité/dérivabilité au point $0$. 
+\begin{itemize}
+    \item \textbf{Continuité : }
+    \[
+    a_0 = \lim_{t\rightarrow 0^+ } a_0  \cosh(\sqrt{t}) + a_1  \sinh(\sqrt{t}) = \lim_{t\rightarrow 0^- }  b_0  \cosh(\sqrt{-t}) + b_1  \sinh(\sqrt{-t}) = b_0
+    \]
+    Donc : $b_0=a_0$
+    \item \textbf{Dérivabilité ordre 1 : }
+    La fonction $t\mapsto \cosh(\sqrt{t})$ (resp. $t\mapsto \cosh(\sqrt{-t})$) est dérivable en $0^+$ (resp. $0^-$) \\
+    La fonction $t\mapsto \sinh(\sqrt{t})$ (resp. $t\mapsto \sinh(\sqrt{-t})$) n'est pas dérivable en $0^+$ (resp. $0^-$) \\ (essaie d'étudier la limite : $\lim_{t\rightarrow 0^+} \frac{\sinh(\sqrt{t})}{t}$
+    Donc $a_1=0$ (resp. $b_1=0$). 
+    \item \textbf{Continuité de la dérivé d'ordre 1 : }
+    \[
+    \frac{1}{2}a_0 = 
+    \lim_{t\rightarrow 0^+ } a_0 \frac{\sinh(\sqrt{t})}{2\sqrt{t}} =
+    \lim_{t\rightarrow 0^- }  -b_0  \frac{\sinh(\sqrt{-t})}{2\sqrt{-t}}
+    = -\frac{1}{2}b_0
+    \]
+    Donc : $b_0=-a_0$. Cela montre que $a_0=b_0=0$
+\end{itemize}
+\item Conclusion : On conclut finalement, que seul la fonction nulle qui est solution de l'EDO dans $\RR$ tout entière. 
+\end{enumerate}
+}
+\newpage
+\section{Exercices}
+\exop{Une famille des EDO -- \textit{Extrait de CNC'2007}}
+{
+Pour tout le problème, on définit une famille d'équations
+différentielles $(F_{\lambda})_{\lambda\in\RR^+}$ par : $$\forall
+\lambda\in\RR^+,\quad
+y''+\frac{1}{x}y'-\left(1+\frac{\lambda^2}{x^2}\right)y=0.\eqno(F_{\lambda})$$
+par "solution d'une équation différentielle", on fait référence
+{\it aux solutions à valeurs réelles}.\medskip
+
+Soient $\lambda\geq 0$, $\alpha$ un réel et $\displaystyle\sum_{n\geq0}a_nz^n$
+une série entière, à coefficients réels et de rayon de
+convergence $R>0$. Pour tout $x\in]0,R[$, on pose
+$$y_{\alpha}(x)=\sum_{n=0}^{+\infty}a_nx^{n+\alpha}.$$
+
+On rappelle la fonction Gamma, notée \(\Gamma(n)\), est une généralisation de la fonction factorielle pour les nombres réels et complexes. Elle est définie pour tout nombre réel \(x > 0\) par l'intégrale suivante :
+\[
+\Gamma(x) = \int_0^\infty t^{x-1} e^{-t} \, dt
+\]
+Pour les entiers naturels, la relation entre la fonction Gamma et les factorielles est donnée par :
+\[
+\Gamma(n) = (n-1)!
+\]
+Ou dans le cas générale : 
+\[\Gamma(a+1) = a \cdot \Gamma(a) \quad \forall a\in \RR^*_+\]
+
+\begin{enumerate}
+\item
+On suppose que la fonction $y_{\alpha}$ est solution de l'équation
+différentielle $(F_{\lambda})$ et que $a_0\not=0$. Montrer que
+$$\alpha^2=\lambda^2,\quad \big((\alpha+1)^2-\lambda^2\big)a_1=0,\quad{\rm et}\quad \forall\ n\geq2,\ \big((\alpha+n)^2-\lambda^2\big)a_n=a_{n-2}.$$
+\item
+On suppose que $\alpha=\lambda$ et que la fonction $y_{\alpha}$
+est solution de l'équation différentielle $(F_{\lambda})$ avec
+$a_0\not=0$.
+\begin{enumerate}
+\item
+Montrer que $$\forall\ p\in\NN,\ a_{2p+1}=0\quad{\rm et}\quad
+a_{2p}=\frac{a_0\Gamma(\alpha+1)}{2^{2p}p!\Gamma(\alpha+p+1)}.$$
+\item
+Les $a_n$ étant ceux trouvés précédemment ; calculer le rayon de
+convergence de la série entière $\displaystyle\sum_{n\geq0}a_nz^n$.
+\item
+Montrer que si $a_02^{\lambda}\Gamma(\lambda+1)=1$ alors $$\forall\
+x>0,\quad
+y_{\lambda}(x)=\sum_{p=0}^{+\infty}\frac{1}{p!\Gamma(\lambda+p+1)}\left(\frac{x}{2}\right)^{2p+\lambda},$$
+puis donner un équivalent de la fonction $y_{\lambda}$ au
+voisinage de $0$. 
+\end{enumerate}
+\item
+On suppose que $2\lambda\not\in\NN$ ; si $p\in\NN^*$, on note le
+produit $(\alpha+p)(\alpha+p-1)\ldots(\alpha+1)$ par
+$\displaystyle\frac{\Gamma(\alpha+p+1)}{\Gamma(\alpha+1)}$ si $\alpha\in
+\CC \setminus \{-1,-2,\ldots\ \}$. \begin{enumerate}
+\item
+En reprenant la question précédente avec $\alpha=-\lambda$,
+montrer que la fonction $$x\longmapsto
+\sum_{p=0}^{+\infty}\frac{1}{p!\Gamma(-\lambda+p+1)}\left(\frac{x}{2}\right)^{2p-\lambda}$$
+est aussi solution, sur $\RR_+^*$, de l'équation différentielle
+$(F_{\lambda})$.
+\item
+Vérifier que la famille $(y_{\lambda},y_{-\lambda})$, d'éléments
+de ${\cal C}(\RR_+^*,\RR)$, est libre et décrire l'ensembles des
+solutions, sur $\RR_+^*$, de l'équation différentielle
+$(F_{\lambda})$.
+ \end{enumerate}
+ \end{enumerate}
+
+}{
+
+Soit $\lambda >0,\;\;$ et $\alpha \in \RR,$ Et considérons la série entière : 
+$$y_{\alpha}(x)=\sum\limits_{n=0}^{+\infty }a_{n} x^{n+\alpha }$$
+
+\begin{enumerate}
+\item On a : $a_{0}\neq 0$ et $y_{\alpha }$ est solution sur $]0,R[$ de l'équation $(F_{\lambda })$.\\
+
+L'application $x\mapsto x^{\alpha}$ est de classe $\class^{\infty }$ sur $\RR_{+}^{*}$ et que $x\mapsto \sum_{n=0}^{\infty }a_{n}x^{n}$ est de classe $\class^{\infty }$ sur $]0,R[$ ( somme d'une série entière ), donc $y_{\alpha }$ est de classe $\class^{\infty }$ sur $]0,R[$ (produit de fonctions
+de classes $\class^{\infty }$ ). 
+
+Par un  calcul simple :
+\[
+\begin{cases}
+    y_{\alpha }^{\prime }(x) & =\alpha x^{\alpha
+-1}\sum\limits_{n=0}^{\infty }a_{n}x^{n}+x^{\alpha
+}\sum\limits_{n=1}^{\infty }na_{n}x^{n-1}=\sum\limits_{n=0}^{\infty }(\alpha
++n)a_{n}x^{\alpha +n-1} \\ 
+y_{\alpha }^{\prime \prime }(x) &= \sum\limits_{n=1}^{\infty }(\alpha
++n)(\alpha +n-1)a_{n}x^{\alpha +n-2}
+\end{cases}
+\]
+Si $y_{\alpha } \text{ est solution sur } \; ]0,R[ \; \text{ de } \; (F_{\lambda })$, Donc pour tout  $x\in ]0,R[$ on a es équivalence suivantes : 
+\begin{align*}
+    y''(x)+\frac{1}{x}y'(x)-\left(1+\frac{\lambda^2}{x^2}\right)y(x) &=0 \\ 
+     -(x^{2}+\lambda ) \sum\limits_{n=0}^{\infty } a_{n} x^{\alpha + n}  \sum\limits_{n=0}^{\infty } (\alpha + n) a_{n} x^{\alpha + n} + \sum\limits_{n=1}^{\infty } (\alpha + n)(\alpha + n - 1) a_{n} x^{\alpha + n} &= 0 \\
+    \; \sum\limits_{n=0}^{\infty } \big( (n + \alpha )^{2} - \lambda ^{2} \big) a_{n} x^{\alpha + n} - \sum_{n=2}^{\infty } a_{n-2} x^{\alpha + n} &= 0 \\
+    [\text{comme :} x^{\alpha} \neq 0.]\quad
+   \sum\limits_{n=0}^{\infty } \big( (n + \alpha )^{2} - \lambda ^{2} \big) a_{n} x^{n} - \sum\limits_{n=2}^{\infty } a_{n-2} x^{n} &= 0,
+\end{align*}
+
+On fait tendre $x$ vers $0^{+,}$ obtenir $\alpha ^{2}-\lambda ^{2}=0$ car $%
+a_{0}\neq 0$ et puis $((\alpha +1)^{2}-\lambda ^{2})a_{1}=0$ et on obtient finalement  une relation de récurrence : 
+$$\forall n\geq 2 :\quad ((\alpha +n)^{2}-\lambda^{2})a_{n}=a_{n-2} \eqno (1)$$
+
+\item  $\alpha =\lambda ,$ $a_{0}\neq 0$ et $y_{\lambda }$ est solution sur $%
+]0,R[$ de $(F_{\lambda })$ .
+
+\begin{enumerate}
+\item  On a: $y_{\lambda }(x)=\sum\limits_{n=0}^{\infty }a_{n}x^{\lambda +n}=x^{\lambda }\sum\limits_{n=0}^{\infty }a_{n}x^{n}.$ On d'après (1) on a : pour tout $n\geq 2$
+$$((\lambda +n)^{2}-\lambda ^{2})a_{n}=a_{n-2} \eqno (2)$$
+
+Puisque : ($\lambda +1)^{2}-\lambda ^{2}\neq 0$ , on a $a_{1}=0$ et par la relation $(2),$ on a: $a_{2p+1}=0$ pour tout $p\in \Bbb{N}$ .et pour tout $p\in \Bbb{N}^*$ :
+$$a_{2p}=\dfrac{1}{(\lambda +2p)^{2}-\lambda ^{2}}a_{2(p-1)}$$
+
+On peut donc déduire facilement que : 
+\begin{align*}
+    a_{2p} &= a_0\times \prod\limits_{k=1}^{p}\dfrac{1}{%
+(\lambda +2k)^{2}-\lambda ^{2}} \\
+           &= a_0\times \prod\limits_{k=1}^{p}\dfrac{1}{4k(k+\lambda)}  \\
+           &=a_0\dfrac{1}{4^{p}p!}\prod\limits_{k=1}^{p}\dfrac{1}{\lambda +k} \\
+           &=a_0\dfrac{1}{4^{p}p!}\prod\limits_{k=1}^{p}\dfrac{\Gamma(\lambda +k)}{\Gamma(\lambda +k+1)}  \quad [ \textit{Car : } \Gamma(a+1)=a\Gamma(a)]\\
+           &=a_0\dfrac{1}{2^{2p}p!}\dfrac{\Gamma(\lambda +1)}{\Gamma (\lambda +p+1)}.
+\end{align*}
+En conclusion:
+\cc{\forall p\in \Bbb{N},\;\;\;a_{2p}=\dfrac{a_{0}}{2^{2p}p!}\dfrac{\Gamma
+(\lambda +1)}{\Gamma (\lambda +p+1)} }
+
+\item  Pour $x>0$, Appliquons la règle de D'Alembert \ref{thm:Regle D'Alembert}, on a: 
+$$\left| \dfrac{a_{2p}x^{2p}}{a_{2(p-1)}x^{2(p-1)}}
+\right| =\dfrac{a_{2p}}{a_{2(p-1)}}x^{2}=\dfrac{1}{(\lambda
++2p)^{2}+\lambda ^{2}}x^{2}\underset{p\rightarrow +\infty
+}{\rightarrow }0,$$
+donc le rayon de convergence $R$ est infini .
+\item  On suppose $a_{0}2^{\lambda }\Gamma (\lambda +1)=1.$
+\newline On a: $\forall x>0,$ :
+\begin{align*} 
+y_{\lambda }(x)
+    &= \sum\limits_{p=0}^{+\infty }a_{2p}x^{2p+\lambda } \\
+    & = \sum\limits_{p=0}^{+\infty }\dfrac{a_{0}}{2^{2p}p!}\dfrac{\Gamma
+(\lambda +1)}{\Gamma (\lambda +p+1)}x^{2p+\lambda } \\
+    & =\sum\limits_{p=0}^{+\infty }\dfrac{a_{0}}{p!}\dfrac{\Gamma
+(\lambda +1)}{\Gamma (\lambda +p+1)}\left(\dfrac{x}{2}\right)^{2p+\lambda }2^{\lambda } \\
+    &= \sum\limits_{p=0}^{+\infty }\dfrac{1}{p!}\dfrac{1}{\Gamma
+(\lambda +p+1)}\left(\dfrac{x}{2}\right)^{2p+\lambda } \quad [\textit{Car : } a_{0}2^{\lambda }\Gamma
+(\lambda +1)=1. ] 
+\end{align*}
+
+\textbf{Équivalent au voisinage de $0:$} \newline
+D'après les propriétés des séries entières, on a:
+\[
+\sum\limits_{p=0}^{\infty }\frac{1}{p!}\frac{1}{\Gamma (\lambda +p+1)}\left(\frac{%
+x}{2}\right)^{2p}\underset{x\rightarrow 0^{+}}{\sim }\frac{1}{\Gamma (\lambda +1)%
+}
+\]
+Donc
+\[
+y_{\lambda }(x)\underset{x\rightarrow 0^{+}}{\sim }\frac{1}{\Gamma
+(\lambda +1)}\left(\frac{x}{2}\right)^{\lambda }
+\]
+\end{enumerate}
+
+\item  On suppose ici que $2\lambda \notin \Bbb{N}$ .
+\begin{enumerate}
+\item  D'après la formule $(1)$ et par un raisonnement analogique au  question $2)$ et en exploitant l'extension de la fonction Gamma (cf. \ref{exo:GammaC}), on peut déduire aisément que  la fonction $y_{-\lambda }$ est
+aussi solution sur $\RR_{+}^{*}$ de (F$_{\lambda })$.
+\item  Montrons $(y_{\lambda },y_{-\lambda })$ est un système
+fondamental de solutions sur $\RR_{+}^{*}$ de $(F_{\lambda })$
+.\newline Soit $(\alpha ,$ $\beta )$ $\in \Bbb{R}^{2}$ tel que
+$\alpha y_{\lambda }+\beta y_{-\lambda }=0.$\newline Comme
+$y_{\lambda }(x)\underset{x\rightarrow 0^{+}}{\sim }\dfrac{1}{\Gamma
+(\lambda +1)}(\dfrac{x}{2})^{\lambda }$ et $y_{-\lambda }(x)\underset{%
+x\rightarrow 0^{+}}{\sim }\dfrac{1}{\Gamma (-\lambda +1)}(\dfrac{x}{2}%
+)^{-\lambda },$ on a : $y_{\lambda }(x)\underset{x\rightarrow 0^{+}}{%
+\rightarrow }0$ et $y_{-\lambda }(x)\underset{x\rightarrow 0^{+}}{%
+\rightarrow }+\infty ,$ donc si l'on suppose $\alpha \neq 0,$ alors en
+faisant tendre $x$ vers $0,$ on aboutit à une contradiction.\newline
+On conclut que $\alpha =0$ et puis $\beta =0,$ donc les solutions $%
+y_{\lambda }\;$et $y_{-\lambda }$ sont linéairement indépendantes .%
+\newline
+$(F_{\lambda })$ est une équation différentielle linéaire du
+second ordre à coefficients continus et sans second membre, son ensemble
+de solutions est donc un espace vectoriel réel de dimension deux. En conséquence: $($ $y_{\lambda },y_{-\lambda })$ est un système fondamental de solutions de $(F_{\lambda })$ et que toute solution sur $\Bbb{%
+R}_{+}^{*}$ de $(F_{\lambda })$ est de la forme $:$%
+\[
+y=\alpha y_{\lambda }+\beta y_{-\lambda }\;\;\;\;\;o\grave{u}%
+\;\;\;\;\;\alpha ,\beta \in \RR
+\]
+\end{enumerate}
+\end{enumerate}
+}
+\end{document}

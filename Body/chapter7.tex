@@ -1,0 +1,502 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{LES TECHNIQUES DE CALCUL DES INTÉGRALES ET DES SÉRIES}
+
+\section{Techniques de base}
+
+\subsection{Pour les intégrales}
+Les méthodes de base sont des techniques fondamentales pour résoudre des intégrales simples. Elles reposent sur des manipulations directes de l'intégrande pour simplifier le calcul.
+
+\meth{Addition}{
+Utilisée lorsque l'intégrande est une somme de termes intégrables individuellement.
+Soient \( f, g : ]a, b[ \rightarrow \mathbb{R} \) deux fonctions de classe \( \class1 \) telles que $\int_{]a,b[} f(x)dx$  et $\int_{]a,b[} g(x)dx$ convergent, alors la formule est :
+\[
+\int_{]a,b[} (f(x) + g(x)) \, dx = \int_{]a,b[}f(x) \, dx + \int_{]a,b[} g(x) \, dx.
+\]
+}
+\exm{}{
+Calculons \( \int (x^2 + 3x) \, dx \).
+\sol
+En séparant les termes, on obtient
+\[
+\int (x^2 + 3x) \, dx = \int x^2 \, dx + \int 3x \, dx.
+\]
+Chaque terme est ensuite intégré séparément :
+\[
+= \frac{x^3}{3} + \frac{3x^2}{2} + C,
+\]
+où \( C \) est la constante d'intégration.
+}
+
+\meth{Intégration par parties}{
+Basée sur la formule \( \int u \, dv = uv - \int v \, du \), cette méthode est utile lorsque l'intégrande est le produit de deux fonctions dont l'une est facilement dérivable et l'autre intégrable.\\
+Soient \( f, g : ]a, b[ \rightarrow \mathbb{R} \) deux fonctions de classe \( \class1 \) telles que \( \lim_{t \to a} f(t)g(t) \) et \( \lim_{t \to b} f(t)g(t) \) existent. Alors les intégrales \( \int_a^b f(t)g'(t) \, dt \) et \( \int_a^b f'(t)g(t) \, dt \) sont de même nature. Lorsqu'elles sont convergentes, on a
+\[
+\int_a^b f'(t)g(t) \, dt = f(b)g(b) - f(a)g(a) - \int_a^b f(t)g'(t) \, dt.
+\]
+}
+\exm{}{
+Calculons \( \int_{0}^{+\infty} x e^{-x} \, dx \).
+\sol
+Choisissons les fonctions :
+\[
+\begin{cases}
+    u(x) &= x \\ 
+    v^\prime(x) &= e^{-x}
+\end{cases}
+\Longrightarrow
+\begin{cases}
+    u^\prime(x) &= 1 \\ 
+    v(x) &= -e^{-x}
+\end{cases}
+\]
+On vérifie aisément que :
+\begin{itemize}
+    \item Ils s'agissent sont de classe $\class^1$,
+    \item Les limites existent : $\lim_{x\rightarrow 0} u(x)v(x)dx = 1$ et $\lim_{x\rightarrow +\infty} u(x)v(x)dx = 0$
+    \item La convergence de $\int_0^{+\infty} u^\prime(x)v(x)dx$
+\end{itemize}
+Donc on peut appliquer la formule,
+\[
+\int_0^{+\infty} x e^{-x} \, dx = \left[ -x e^{-x}\right]_0^{+\infty} - \int_0^{+\infty} -e^{-x} \, dx.
+\]
+On obtient finalement
+\[
+\int_0^{+\infty} x e^{-x} \, dx = 1
+\]
+}
+
+\meth{Changement de variable}{
+Consiste à transformer l'intégrale avec une nouvelle variable pour simplifier l'intégrande. \\ 
+Soit \( f \) une fonction continue sur \( ]a, b[ \) et \( \varphi : ]\alpha, \beta[ \rightarrow ]a, b[ \) bijective, strictement croissante et de classe \( \class^1 \). Les intégrales \( \int_a^b f(t) \, dt \) et \( \int_\alpha^\beta f \circ \varphi(u) \varphi'(u) \, du \) sont de même nature et en cas de convergence on a :
+\[
+     \int_a^b f(t) \, dt  = \int_\alpha^\beta f \circ \varphi(u) \varphi'(u) \, du 
+\]
+}
+\exm{}{
+Calculons \( \int_0^{+\infty} x e^{-x^2} \, dx \).
+\sol
+Posons, $x = \phi(u) = \sqrt{u}$, on a $\phi : ]0,+\infty[ \mapsto ]0,+\infty[$ 
+ est une fonction bijective, croissante et de classe $\class^1$. De plus on a :
+Donc, la nature de l'intégrale   $ \int_0^{+\infty} x e^{-x^2} \, dx$ est celle de l'intégrale : $ \int_0^{+\infty} x e^{-u} \frac{1}{2\sqrt{u}} \, du = \int_0^{+\infty} \frac{1}{2}e^{-u}  \, du$ et de plus :
+\[
+\int_0^{+\infty} x e^{-x^2} \, dx =  \int_0^{+\infty} x e^{-u} \frac{1}{2\sqrt{u}} \, du = \int_0^{+\infty} \frac{1}{2}e^{-u}  \, du = 1
+\]
+}
+
+
+\section{Méthode de Feynman}
+
+\subsection{Application aux intégrales}
+La méthode de Feynman permet de simplifier le calcul d'intégrales complexes en introduisant un paramètre supplémentaire pour obtenir une formulation paramétrique.
+
+\meth{Méthode de Feynman pour les intégrales}{
+Pour calculer une intégrale de la forme $\int_{a}^{b} f(u) \, du$, on peut définir une fonction paramétrée comme suit : 
+\[
+F(x) = \int_{a}^{b} \varphi(u, x) \, du
+\]
+L'objectif est ensuite d'étudier la fonction $F(x)$ en trouvant, par exemple, une équation différentielle ordinaire (EDO) dont elle est solution. En résolvant cette EDO, on obtient une expression pour $F(x)$, permettant ainsi de déduire une expression de l'intégrale initiale. \\
+Les choix célèbres de la fonction $\varphi(u, x) $ sont :
+\begin{itemize}
+    \item \textbf{Transformé de Laplace : } $\varphi(u, x) = f(x)e^{-xu}$ 
+    \item \textbf{Transformé de Fourier : } $\varphi(u, x) = f(x)e^{-ixu}$ 
+    \item \textbf{Dilatation de variable : } $\varphi(u, x) = f(x.u)$ 
+\end{itemize}
+}
+
+\exm{Intégrale de Gauss}{
+Calculer l'intégrale de Gauss :
+\[
+\int_0^{+\infty} e^{-x^2}dx
+\]
+\sol
+Considérons,
+\[
+f(t) = \int_0^{\infty} \frac{e^{-t^2(1 + x^2)}}{1 + x^2} \, \mathrm{d}x
+\]
+La dérivée de \( f(t) \) par rapport à \( t \) est [nous laissons la vérification des hypothèses pour le lecteur] :
+\[
+f'(t) = \int_0^{\infty} \frac{-2t e^{-t^2(1 + x^2)} (1 + x^2)}{1 + x^2} \, \mathrm{d}x
+\]
+ce qui se simplifie en :
+\[
+f'(t) = -2t e^{-t^2} \int_0^{\infty} e^{-t^2 x^2} \, \mathrm{d}x
+\]
+Posons \( u = tx \), ce qui donne \( \mathrm{d}u = t \, \mathrm{d}x \), où \( t \) est une constante.
+En remplaçant dans l'équation, on obtient :
+\[
+f'(t) = -\frac{2t e^{-t^2}}{t} \int_0^{\infty} e^{-u^2} \, \mathrm{d}u
+\]
+Nous savons que
+\[
+I = \int_0^{\infty} e^{-u^2} \, \mathrm{d}u
+\]
+Par conséquent,
+\[
+f'(t) = -2 e^{-t^2} I
+\]
+où \( I \) est une constante.
+Maintenant, en intégrant les deux côtés avec les bornes de \( 0 \) à \( \infty \), on a :
+\[
+\int_0^{\infty} f'(t) \, \mathrm{d}t = \int_0^{\infty} -2 e^{-t^2} I \, \mathrm{d}t
+\]
+\[
+\int_0^{\infty} f'(t) \, \mathrm{d}t = -2I \int_0^{\infty} e^{-t^2} \, \mathrm{d}t
+\]
+Ainsi,
+\[
+f(\infty) - f(0) = -2I^2 \quad \text{(Équation (2))}
+\]
+
+Calculons maintenant les valeurs limites de \( f(t) \) :
+
+\[
+f(\infty) = \int_0^{\infty} \frac{e^{-\infty \cdot (1 + x^2)}}{1 + x^2} \, \mathrm{d}x = 0
+\]
+\[
+f(0) = \int_0^{\infty} \frac{1}{1 + x^2} \, \mathrm{d}x  = \frac{\pi}{2}\quad [\textit{C'est un arctangente}]
+\]
+}
+
+\subsection{Application aux séries}
+Cette méthode peut également être étendue aux séries pour faciliter le calcul de certaines sommes en introduisant un paramètre supplémentaire.
+
+\meth{Méthode de Feynman pour les séries}{
+Pour calculer une somme de la forme $\sum u_n$, on peut considérer une fonction paramétrée de la série :
+\[
+F(x) = \sum u_n(x)
+\]
+L'objectif est ensuite d'étudier la fonction $F(x)$, souvent en trouvant une série entière associée ou, si possible, une EDO. En résolvant cette équation, on peut alors obtenir une expression pour $F(x)$ et, par conséquent, pour la somme initiale.\\
+Les choix célèbres de la série des fonctions $u_n(x) $ sont :
+\begin{itemize}
+    \item \textbf{Série entière : } $u_n(x) = u_nz^n$ 
+    \item \textbf{Séries de Fourier [Hors programme] : }  $u_n(x) = u_ne^{inx}$  
+\end{itemize}
+}
+
+Vous trouverez plus des exemples dans la partie des exercices.
+
+
+\section{Méthode de AMD}
+C'est un truque qui consiste à changer une intégrale en une série ou une série en une intégrale à l'aide des théorèmes d'inversion \textit{Intégrales - Somme}. 
+
+\meth{Méthode de AMD}{
+\textbf{Cas des intégrales : } Pour calculer un intégrale $\int_{]a,b[} f(u)du$ on essaie d'exprimer $f$ en somme d'une série des fonctions  $\sum f_n$ puis on utilise une formule d'inversion (\textbf{après avoir vérifier les conditions d'application}) pour déduire :
+\[
+\int_{]a,b[} f(u)du = \sum \int_{]a,b[} f_n(u)du 
+\]
+De telle façons que la série résultant est plus facile à calculer. \\
+\textbf{Cas des séries : } Analogiquement, et c'est le cas le plus pratique, on peut pour calculer une série $\sum_n u_n$ exprimer les termes $u_n$ en une intégrale $\int_{]a,b[} f_n(u)du$ et puis on utilise une formule d'inversion (\textbf{après avoir vérifier les conditions d'application}) pour déduire :
+\[
+\sum_n u_n = \int_{]a,b[} \left(\sum  f_n(u)\right)du 
+\]
+On pourra penser à utiliser les remplacements suivants:
+\begin{align*}
+\frac{1}{n} &= \int_0^1 t^{n-1} \, dt\\
+\frac{1}{\alpha n + \beta} &= \int_1^{\infty} t^{\alpha n + \beta -1} \, dt \\ 
+\frac{1}{n^\alpha} &= \int_0^{\infty} t^{\alpha} e^{-\alpha t} \, dt\\
+n! &= \int_0^{\infty} t^n e^{- t} \, dt
+\end{align*}
+}
+
+
+\exop{}{
+Calculer la série :
+\[
+\sum_{n=1}^{+\infty} \frac{\cos(n\theta )}{n}
+\]
+}{
+
+Soit \(\theta \in \mathbb{R}\). calculons pour \(\theta \in \mathbb{R}\), \(\theta \neq 0\) \([2 \pi]\), la somme :
+
+\[ S(\theta) = \sum_{n=1}^{+\infty} \frac{\cos(n\theta)}{n} \]
+
+Soit \(\theta\) une telle réelle. L'idée consiste à transformer :
+\[ \frac{\cos(k\theta)}{n}  \quad \textit{vers}\quad \int_0^1 x^{n-1} \cos(n\theta) \, dx\]
+Et donc :
+\[ \sum \frac{\cos(k\theta)}{n}  \quad \textit{vers}\quad \sum \int_0^1 x^{n-1} \cos(n\theta) \, dx\].
+Et si on peut inverser intégrale-somme (c'est ce qu'on va voir) on obtiendra :
+\[ \sum_{n=1}^{+\infty}  \frac{\cos(k\theta)}{n}  \quad \textit{vers}\quad \int_0^1 \sum_{n=1}^{+\infty}  x^{n-1} \cos(n\theta) \, dx\]
+Ainsi on sera obligé de calculer \(\sum_{n=1}^{+\infty} x^{n-1} \cos(n\theta)\). Ce calcul est plus facile en utilisant les complexes.   En effet :
+\[
+\sum_{n=1}^{+\infty} x^{n-1} \cos(n\theta) = \Re \left( \sum_{n=0}^{+\infty} x e^{i \theta} \right) = \Re \left( \frac{e^{i\theta}}{1 - x e^{i \theta}} \right)
+\]
+
+Pour la rédaction, on commencera par poser :
+\[
+C(x) = \sum_{n=0}^{+\infty} x^{n} e^{i (n + 1) \theta} = \frac{e^{i\theta}}{1 - x e^{i\theta}}
+\]
+Cette série est bien définie sur \([0,1[\). On va appliquer le théorème de convergence terme à terme \ref{thm:CTT} 
+\begin{enumerate}
+\item pour tout entier, $n$ la fonction $f_n : x\mapsto x^{n} e^{i (n + 1) \theta} $ est continue par morceaux sur $I$.
+\item $\sum_n f_n \xrightarrow{CVS \text{ sur } I } C$ avec $C$ une fonction définie sur $[0,1[$ et continue par morceaux sur cet intervalle.
+\item \(\sum \int_0^1 |x^n e^{i(n+1) \theta}| \, dx = \sum \frac{1}{n + 1}\) diverge
+\end{enumerate}
+Donc on peut par appliquer cette théorème!!!, nous essayons une autre théorème, la théorème de convergence dominé \ref{thm:CDSerie}:
+\begin{enumerate}
+\item pour tout entier, $n$ la fonction $f_n$ est continue par morceaux sur $[0,1[$.
+\item $\sum_n f_n \xrightarrow{CVS \text{ sur } [0,1[ } C$ avec $C$ une fonction définie sur $[0,1[$ et continue par morceaux sur cet intervalle.
+\item On a : 
+\[
+S_{N} = \sum_{n=0}^{N-1} x^n e^{i(n+1)\theta} = C(x)\left( 1-x^Ne^{N\theta}\right) 
+\]
+Donc :
+\[
+|S_N| \leq \left|C(x)1+x^Ne^{N\theta}\right| \leq |C(x)||1+x^Ne^{N\theta}|\leq |C(x)|\left(|1|+|x^Ne^{N\theta}|\right) \leq 2|C(x)| 
+\]
+Il existe donc une fonction $\phi$ (à savoir $=2|C(x)|$ ) continue par morceaux et intégrable sur $[0,1[$ tq : 
+\[ \forall N \in \NN \text{ \ \ : \ \ }  \left| \sum_{k=0}^{N} f_n(x) \right| = |S_N| \leq \phi(x) \ \forall x \in I\]
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item $C$ et $f_n$ sont intégrables sur $[0,1[$ pour tout entier $n\in\NN$.
+\item La série $\displaystyle \sum_n \int_{0}^1 f_n(x)dx  $ converge et La formule d'inversion : 
+\end{itemize}
+\begin{equation}
+\sum_{n=0}^{+\infty} \int_{0}^1 f_n(x)dx = \int_{0}^1 \left( \sum_{n=0}^{+\infty} f_n(x) \right) dx  = C(x)
+\end{equation} 
+Nous avons aboutit à notre objective :
+\begin{align*}
+    \sum_{n=1}^{+\infty}  \frac{\cos(n\theta)}{n}
+    &= \Re\left(   \sum_{n=1}^{+\infty} \frac{e^{in\theta}}{n}  \right) \\
+    &= \Re\left(   \sum_{n=1}^{+\infty} \int_0^1 x^{n-1} e^{in\theta}dx  \right) \\
+    &= \Re\left( \int_0^1   \sum_{n=1}^{+\infty} x^{n-1} e^{in\theta}dx  \right) \quad \textit{Par inversion} \\
+    &= \Re\left( \int_0^1 \frac{e^{i\theta}}{1 - x e^{i\theta}} dx\right) \quad \textit{Déjà calculé.}\\
+    &=  - \lno{|2 \sin(\frac{\theta}{2})|}  \quad \textit{Laissé au lecteur}
+\end{align*} 
+}
+
+\newpage
+\section{Résumé de probabilité }
+Nous donnons un résumé des formules probabilités utile (c'est pas un cours, il faut lire votre cours)
+\input{Body/chapter8.tex}
+
+\newpage
+\section{Exercices}
+
+
+\exop{}{
+Nous cherchons à calculer :
+\[
+\int_0^{+\infty} \frac{\cos(t)}{(1+t^2)}
+\]
+Pour ce faire nous considérons la fonction :
+\[
+f(x) = \frac{\cos(xt)}{(1+t^2)}
+\]
+Et la fonction :
+\[
+h(x) = \frac{t\sin(xt)}{(1+t^2)^2}
+\]
+\begin{enumerate}
+    \item Montrer les fonctions sont bien définies sur $\RR$. et que la fonction $f$ est paire et la fonction $h$ est impaire. 
+    \item Montrer que : 
+    \[ 
+        \forall x\in\RR : xf(x) = 2h(x)
+    \]
+    \item Montre que la fonction $f$ est continue et borné sur $\RR$.
+    \item Montre que la fonction $h$ est de classe $\class^1$ sur $]0,+\infty[$, puis établir :
+    \[\forall x \in\RR \quad : h^\prime(x) = f(x) - \int_{0}^{+\infty} \frac{\cos(xt)}{(1+t^2)^2}dt  \]
+    \item Notons $k(x)=\int_{0}^{+\infty}\frac{\cos(xt)}{(1+t^2)}dt$, montre que $k$ est de classe $\class^1$, et que :
+    \[
+    k^\prime(x) = -h(x)
+    \]
+    \item En déduire que $f$ est de classe $\class^2$ sur $]0,+\infty[$ et que : 
+    \[f^{\prime\prime}(x) = f(x) \quad \forall x\in ]0,+\infty[\]
+    Et puis montrer que : 
+    \[
+    f(x) = \frac{\pi}{2}e^{-|x|} \quad \forall x\in \RR
+    \]
+    \item Conclure la valeur de l'intégrale.
+\end{enumerate}
+}{
+\begin{enumerate}
+    \item Soit, $x\in \RR$, on a pour tout $t>0$ :  $\left|\frac{\cos(xt)}{(1+t^2)}\right|\leq \frac{1}{1+t^2}$ ainsi comme $\int_0^{+\infty}  \frac{1}{1+t^2}$ converge donc $\int_0^{+\infty} \frac{\cos(xt)}{(1+t^2)}$ et par conséquence $f(x)$ est bien définie.  même chose pour la fonction $h$. 
+    \item C'est facile à le montrer, déjà on a l'hypothèse de dominance vérifié :
+    $$\left|\frac{\cos(xt)}{(1+t^2)}\right|\leq \frac{1}{1+t^2}$$
+    De plus, la bornitude se découle aisément par  :
+    \[ \forall x\in\RR \quad : 
+    \left| \int_0^{+\infty} \frac{\cos(xt)}{(1+t^2)} dt\right| \leq \int_0^{+\infty} \frac{1}{(1+t^2)} dt
+    \]
+    \item  Soit $x \in \mathbb{R}$. On a, à l'aide d'une intégration par parties, pour tout $T$ de $[0 ;+\infty[$ :
+    $$
+    x \int_0^T \frac{\cos (x t)}{1+t^2} \mathrm{~d} t=\frac{\sin x T}{1+T^2}+2 \int_0^T \frac{t \sin (x t)}{\left(1+t^2\right)^2} \mathrm{~d} t
+    $$ d'où, en faisant tendre $T$ vers $+\infty: x f(x)=2 h(x)$.
+    \item Montrons que la fonction $h$ est de classe $\class^1$, notons $\phi(x,t)=\frac{t\sin(xt)}{(1+t^2)^2}$ on a :
+        \begin{itemize}
+        \item  \textbf{Dérivabilité}  \\  
+        La fonction $x \mapsto \phi(x,t)$ est dérivable et de classe $\class^{1}$ sur $]0,+\infty[$ pour tout $t\in ]0,+\infty[$, ainsi la dérivée par rapport au $x$ sont :
+        \[
+            \frac{\partial }{\partial x}\phi(x,t) = \frac{t^2\cos(xt)}{(1+t^2)^2} 
+        \]
+        \item  \textbf{Continuité par morceau}  \\ 
+        Pour tout réel  $x\in ]0,+\infty[$, les deux fonctions $t\mapsto \phi(x,t)$  et $t\mapsto \frac{\partial \phi}{\partial x}(x,t) $ sont continues par morceaux sur $]0,+\infty[$.
+        \item  \textbf{Intégrabilité}  \\  
+        Pour tout $x\in ]0,+\infty[$ la fonction $t \mapsto \phi(x,t)$  est intégrable sur $]0,+\infty[$.
+        \item  \textbf{Hypothèse de domination}  \\  
+        Il existe une fonction $\psi(t)=\frac{t^2}{(1+t^2)^2}$ définit et intégrable sur $]0,+\infty[$, et on a: 
+        \[ \left|\frac{\partial \phi}{\partial x}(x,t)\right| \leq \psi(t) \quad\forall (x,t)\in  ]0,+\infty[\times  ]0,+\infty[ \]
+        \end{itemize}
+        Donc on conclut que, $h$ est de classe $\class^1$ sur $]0,+\infty[$ et on a :
+    \cc{
+    h^{\prime}(x)=\int_{0}^{+\infty} \frac{t^{2} \cos(xt)} {(1+t^{2})^{2}} \; dt = \int_{0}^{+\infty}\frac{\cos(xt)}{(1+t^{2})}dt -  \int_{0}^{+\infty}\frac{\cos(xt)} {(1+t^{2})^{2}}dt = f(x) - k(x)
+    }
+  \item La même argumentation s'applique à $k: x \longmapsto \int_0^{+\infty} \frac{\cos (x t)}{\left(1+t^2\right)^2} \mathrm{~d} t$, et montre que $k$ est de classe $\class^1$ sur $[0 ;+\infty[$ et que :
+    \cc{
+    \forall x \in[0 ;+\infty[, k^{\prime}(x)=-\int_0^{+\infty} \frac{t \sin (x t)}{\left(1+t^2\right)^2} \mathrm{~d} t=-h(x)
+    }
+    \item On a : $f(x) = \frac{1}{x}h(x)$ donc $f$ est de classe $\class C^1$ sur $]0,+\infty[$ donc $h^\prime(x)=f(x)-k(x)$ est de classe $\class^1$ et par suite $h$ et $f$ sont de classe $\class^2$ sur $]0,+\infty[$. On déduit finalement $ \forall x \in] 0 ;+\infty[$: 
+    \begin{align*}
+    xf(x) &= 2h(x) \\ 
+ x f^{\prime}(x)+f(x)&=2 h^{\prime}(x) \\ 
+ x f^{\prime}(x)+f(x)&= 2 f(x)-2 k(x)  \\ 
+      x f^{\prime}(x) & = f(x)- 2k(x)  \\
+      x f^{\prime\prime}(x)+f^{\prime}(x) & = f^{\prime}(x)- 2k^{\prime}(x)  \\
+      x f^{\prime\prime}(x) & =2h(x)  \\
+      x f^{\prime\prime}(x) & =xf(x)  
+    \end{align*}
+Ce qui montre que :
+\cc{
+f^{\prime\prime}(x)  = f(x) 
+}
+\item L’équation différentielle est de second ordre, ses solutions sont de la forme :
+\[
+\forall x\in]0,+\infty[ \quad : f(x) = C_0e^{x} + C_1e^{-x}
+\]
+Or puisque la fonction est continue sur $\RR$ et donc en $0$ alors :
+\[
+\forall x\in[0,+\infty[ \quad : f(x) = C_0e^{x} + C_1e^{-x}
+\]
+De plus, puisque la fonction est borné alors $C_0=0$, Donc :
+\[
+f(x) = f(0)e^{-x}
+\]
+On la condition initiale :
+\[f(0) = \int_0^{+\infty} \frac{1}{1+t^2}dt = \frac{\pi}{2}\]
+Donc, $f(x) = \frac{\pi}{2}e^{-x}$ pour tout $x\in[0,+\infty[$ et finalement par parité de la fonction on déduit que :
+\cc{
+\forall x\in\RR \quad : f(x) = \frac{\pi}{2}e^{-|x|}
+}
+On peut maintenant déduire que :
+\cc{
+\int_0^{+\infty} \frac{\cos(t)}{1+t^2} dt = \frac{\pi}{2}
+}
+\end{enumerate}
+}
+
+
+\exop{}{
+On cherche à évaluer l'intégrale :
+\[
+\int_0^{+\infty} \frac{\sin t}{t}dt 
+\]
+
+    On note $f(x)=\int_0^{+\infty} \frac{1-\mathrm{e}^{-x t}}{t} \sin t \mathrm{~d} t$, nous cherchons à évaluer cette fonction pour tout $x$.
+\begin{enumerate}
+    \item Montrer que la fonction est bien définie, càd  pour tout $x$ de $[0 ;+\infty[$, l'intégrale impropre $\int_0^{+\infty} \frac{1-\mathrm{e}^{-x t}}{t} \sin t \mathrm{~d} t$ converge ;
+    \item  Montrer que $f$ est de classe $C^1$ sur $] 0 ;+\infty[$ et :
+        $$
+        \forall x \in] 0 ;+\infty[, f^{\prime}(x)=\frac{1}{1+x^2}.
+        $$
+    \item En déduire qu'il existe $C \in \mathbb{R}$ tel que : $\forall x \in] 0 ;+\infty[$,
+    $$
+    f(x)=\operatorname{Arctan} x+C .
+    $$
+    \item Montre que pour tout $x>0$:
+    \[0\leq f(x)-f(0) \leq 2x\]
+    \item Montre que $f$ est continue en $0$, puis déduire $C$.
+    \item En déduire la valeur de l'intégrale objectif de l'exercice. 
+\end{enumerate}
+}{
+\begin{enumerate}
+    \item Soit $x \in\left[0 ;+\infty\left[\right.\right.$. L'application $t \longmapsto \frac{1-\mathrm{e}^{-x t}}{t} \sin t$ est continue sur $] 0 ;+\infty\left[, \frac{1-\mathrm{e}^{-x t}}{t} \sin t \xrightarrow[t \rightarrow 0]{\longrightarrow} 0 ;\right.$ comme $\frac{1-\mathrm{e}^{-x t}}{t} \sin t=\frac{\sin t}{t}-\frac{\sin t}{t} \mathrm{e}^{-x t}$, que l'intégrale impropre $\int_1^{\rightarrow+\infty} \frac{\sin t}{t} \mathrm{~d} t$ converge, et que $($ si $x>0) t \longmapsto \frac{\sin t}{t} \mathrm{e}^{-x t}$ est intégrable sur $[1 ;+\infty[$, l'intégrale impropre $\int_0^{\rightarrow+\infty} \frac{1-\mathrm{e}^{-x t}}{t} \sin t \mathrm{~d} t$ converge.
+
+    \item Montrons que la fonction $f$ est de classe $\class^1$ sur $]0,+\infty[$, il suffit d'étudier : $x\mapsto  \int_0^{+\infty} \frac{e^{-x t}\sin(t)}{t}dt$, sur des intervalles $[a,+\infty[$ pour tout $a>0$. \\
+    Soit $a>0$, notons $\phi(x,t)=\frac{e^{-x t}\sin(t)}{t}$ on a : 
+        \begin{itemize}
+        \item  \textbf{Dérivabilité}  \\  
+        La fonction $x \mapsto \phi(x,t)$ est dérivable et de classe $\class^{1}$ sur $[a,+\infty[$ pour tout $t\in ]0,+\infty[$, ainsi la dérivée par rapport au $x$ sont :
+        \[
+            \frac{\partial }{\partial x}\phi(x,t) = -e^{-xt}\sin(t) 
+        \]
+        \item  \textbf{Continuité par morceau}  \\ 
+        Pour tout réel  $x\in [a,+\infty[$, les deux fonctions $t\mapsto \phi(x,t)$  et $t\mapsto \frac{\partial \phi}{\partial x}(x,t) $ sont continues par morceaux sur $]0,+\infty[$.
+        \item  \textbf{Intégrabilité}  \\  
+        Pour tout $x\in [a,+\infty[$ la fonction $t \mapsto \phi(x,t)$  est intégrable sur $]0,+\infty[$.
+        \item  \textbf{Hypothèse de domination}  \\  
+        Il existe une fonction $\psi(t)=e^{-at}$ définit et intégrable sur $]0,+\infty[$, et on a: 
+        \[ \left|\frac{\partial \phi}{\partial x}(x,t)\right| \leq \psi(t) \quad\forall (x,t)\in  [a,+\infty[\times  ]0,+\infty[ \]
+        \end{itemize}
+        Donc on conclut que, $h$ est de classe $\class^1$ sur $[a,+\infty[$ et on a :
+    \[f^{\prime}(x)=\int_{0}^{+\infty} \sin(t)e^{-xt}dt = \Im\left( \int_{0}^{+\infty} e^{-(x-i)t}dt \right) =  \Im\left( \frac{1}{x-i} \right) = \frac{1}{1+x^2}\]
+    
+    Cette propriété, s’étendre sur tout l'intervalle $]0,+\infty[$ car $\bigcup_{a>0} [a,+\infty[ = ]0,+\infty[$ et donc : 
+    \cc{ \forall x\in]0,+\infty[ \quad: f^{\prime}(x) = \frac{1}{1+x^2} }
+
+    \item Comme $f^\prime(x) = \frac{1}{1+x^2}$ Donc $\exists C\in\RR$ tq :
+    \cc{
+    f(x) = \arctan(x) + C \quad\forall x>0
+    }
+
+    % montre que f(x)-f(0) < 2x
+    \item On peut montrer aisément que :
+    \[
+        A(t) = -\sum_{n=0}^{+\infty} \frac{(-1)^n}{(n+1)!}t^n
+    \]
+    Et donc la fonction est de classe $\class^{\infty}$ de plus sa dérivé premier est : 
+    \[
+    A^\prime(t) = \frac{(1+t)e^{-t}-1}{t^2} \leq 0 \quad \forall t>0
+    \]
+    Puis,  Soit $x \in] 0 ;+\infty[$. Par le changement de variable $u=x t$ on a :
+    $$
+    \begin{aligned}
+    f(x) & =\int_0^{+\infty} \frac{1-\mathrm{e}^{-u}}{u} \sin \frac{u}{x} \mathrm{~d} u \\
+    & =\int_0^{+\infty} A(u) \sin \frac{u}{x} \mathrm{~d} u.
+    \end{aligned}
+    $$
+    On obtient, à l'aide d'une intégration par parties, pour tout $U$ de $[0 ;+\infty[$ :
+    $$
+    \int_0^U A(u) \cos \frac{u}{x} \mathrm{~d} u  =x-x A(U) \cos \frac{U}{x}+x \int_0^U A^{\prime}(u) \cos \frac{u}{x} \mathrm{~d} u .
+    $$
+    D'une part : $x A(U) \cos \frac{U}{x} \xrightarrow[U \rightarrow+\infty]{ } 0, \operatorname{car} A(U) \xrightarrow[U \rightarrow+\infty]{}$.
+    D'autre part, comme $A^{\prime} \leqslant 0$ :
+    $$
+    \begin{aligned}
+    \left|\int_0^U A^{\prime}(u) \cos \frac{u}{x} \mathrm{~d} u\right| \leqslant & \int_0^U\left(-A^{\prime}(u)\right)\left|\cos \frac{u}{x}\right| \mathrm{d} u \\
+    & \leqslant \int_0^U-\left(A^{\prime}(u)\right) \mathrm{d} u=1-A(U)
+    \end{aligned}
+    $$
+On en déduit, en faisant tendre  $U$ vers : $+\infty$ : \\
+\[
+\begin{aligned}
+0 \leqslant f(x)-f(0) & =f(x) \\
+& =\int_0^{+\infty} A(u) \cos \frac{u}{x} \mathrm{~d} u \leqslant 2 x.
+\end{aligned}
+\]
+
+    % Montre que f est continue en 0, puis déduire C
+    \item Puisque : $0\leq f(x) - f(0) \leq 2x$ alors en tendant $x\rightarrow 0$ on aurait la continuité en $0$. Et par conséquence $C=0$ donc :
+    \cc{
+    f(x) = \arctan(x) \quad\forall x>0
+    }
+
+    % déduire la valeur de integrale 
+    \item On a, pour tout $x$ de $] 0 ;+\infty[$ :
+    $$
+    \begin{aligned}
+    \left|\int_0^{+\infty} \frac{\mathrm{e}^{-x t} \sin t}{t} \mathrm{~d} t\right| & \leqslant \int_0^{+\infty} \mathrm{e}^{-x t}\left|\frac{\sin t}{t}\right| \mathrm{d} t \\
+    & \leqslant \int_0^{+\infty} \mathrm{e}^{-x t} \mathrm{~d} t=\frac{1}{x}
+    \end{aligned}
+    $$
+Donc $f(x) \underset{x \rightarrow+\infty}{\longrightarrow} \int_0^{+\infty} \frac{\sin t}{t} \mathrm{~d} t$.
+D'autre part : $f(x)=\operatorname{Arctan} x \underset{x \rightarrow+\infty}{\longrightarrow} \frac{\pi}{2}$.
+On conclut : 
+\cc{\int_0^{+\infty} \frac{\sin t}{t} \mathrm{~d} t=\frac{\pi}{2}}
+\end{enumerate}
+}
+
+
+
+\end{document}

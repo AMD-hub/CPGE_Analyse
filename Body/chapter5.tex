@@ -1,0 +1,1252 @@
+\documentclass[../Main.tex]{subfiles}
+
+\begin{document}
+
+
+\chapter{INTÉGRALES PARAMÉTRÉS}
+
+\intro{
+\textbf{Prérequis}
+\begin{itemize}
+\item Les généralisées 
+\item L'étude fonctions réelles
+\end{itemize} 
+
+\textbf{Objectifs}
+\begin{itemize}
+\item Savoir étudier une fonction définit une paramétrée 
+\end{itemize}
+}{
+Dans ce chapitre, On considère une fonction à deux variables $f : (x,t) \in A \times I \mapsto f(x,t)$ avec $A\subset \CC$ et $I$ un intervalle de $\RR$.
+
+On propose d'étudier dans ce chapitre la fonction $f$ définit par : $\displaystyle F : x \rightarrow \int_{I} f_x(t)dt $ sous le contraint de convergence. On verra les outils qui vont nous aider à étudier cette fonction : 
+\begin{itemize}
+	\item Leur limites/continuité : pour avoir une idée sur les branches infinies 
+	\item Leurs Dérivés/variations : qui nous indiquent la variation / la convexité ...  
+\end{itemize}
+
+}
+
+
+\section{Étude pratique d'une intégrale paramétré }
+Dans cette section, on conserve toujours les notations de l'Introduction de chapitre. Pour les exemples, on considère la fonction dite \textbf{Gamma d'EULER} définit par : 
+\[ \Gamma : x \longleftarrow \Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} dt \]
+\paragraph{Domaine de Définition : } 
+On rappelle que d'après un exemple précédent \ref{refered exm 1}, l'intégrale $ \int_0^{+\infty} t^{x-1}e^{-t} dt$ diverge lorsque  $x\leq 0$. 
+\\ Reste à montrer qu'elle converge pour $x>0$, en effet : on divise l'intégrale en deux parties $  \int_0^{+\infty} t^xe^{-t} dt = \int_0^{1} t^{x-1}e^{-t} dt + \int_1^{+\infty} t^{x-1}e^{-t} dt$ , puis on montre que chacune converge. 
+\\ Soit $x > 0$ on a :
+
+\begin{enumerate}
+	\item la fonction $ x \mapsto t^{x-1}e^{-t} $ est continue par morceaux sur $]0,+\infty[$ donc sur les deux intervalles $]0,1]$ et $[1,+\infty[$.
+	\item Traitons chaque intervalle toute seule :
+	\begin{itemize}
+		\item pour $]0,1]$ : \\
+		$ \displaystyle t^{x-1}e^{-t} \underset{t\rightarrow 0}{\sim} \frac{1}{t^{1-x}} $ ainsi comme $1-x<1$ donc l'intégrale est convergente par comparaison. 
+		\item pour $[1,+\infty[$ : \\
+		$ \displaystyle t^{x-1}e^{-t} \underset{t\rightarrow +\infty}{= o } \left( e^{-t}  \right) $ car  $t^{x-1} \underset{x \rightarrow +\infty}{\longrightarrow} 0 $ donc l'intégrale est convergente par comparaison. 
+	\end{itemize}
+\end{enumerate}
+	On conclut alors que les deux intégrales convergentes donc également $\displaystyle \int_0^{+\infty} t^{x-1}e^{-t} dt$. 
+	\\ Finalement l'intégrale converge $ \displaystyle \int_0^{+\infty} t^{x-1}e^{-t} dt$ SSI $x>0$ , donc le domaine de définition est $\RR^+_*$.
+\\
+Énonçons dans ce qui suit les théorèmes qui permettent l'étude de cette fonction et les appliquons sur elle-même.
+
+
+\subsection{Limite d'une intégrale paramétrée}
+
+\thm{Théorème de limite}{
+soit $a\in\bar{A}$,  Lorsque les conditions suivantes sont vérifiées :
+
+\begin{enumerate}
+
+\item \textbf{Limite } \\  
+La fonction $x \mapsto f(x,t)$ admet une limite en $a$.
+
+\item \textbf{Continuité par morceau} \\ 
+Pour tout $x\in A$ les deux fonctions $t \mapsto f(x,t)$ et $t \mapsto \lim{x\rightarrow a} f(x,t)$ sont continues par morceaux sur $I$.
+
+\item \textbf{Intégrabilité} \\ (pas nécessaire) 
+
+\item \textbf{Hypothèse de domination} \\
+Il existe une fonction $\phi$ définit et intégrable sur $I$ tq : 
+\[ |f(x,t)| \leq \phi(t) \quad\forall (x,t)\in A\times I\]
+\end{enumerate}
+
+On a le résultat suivant : 
+\begin{itemize}
+\item L'intégrale  $\int_{I} \lim_{x\rightarrow a} f(x,t)dt$ converge.
+\item L'intégrale  $\int_{I}  f(x,t)dt$ converge pour tout $x\in A$.
+\item La fonction $F$ admet une limite en $a$
+\item La formule d'inversion : 
+\end{itemize}
+\begin{equation}\label{eq:INV-LI}
+	  \int_{I} \lim_{x\rightarrow a} f(x,t)dt = \lim_{x\rightarrow a} \int_{I} f(x,t)dt
+\end{equation}
+}
+
+\exm{}{
+
+\textbf{Étude de limite en $0$ de la fonction $\Gamma$ :  \\ }
+Pour utiliser le théorème de limite en $0$  il nous suffit de restreint la fonction $\Gamma$ sur l'intervalle $]0,1/2]$ (qui est un voisinage de $0$ c.-à-d. $0\in]0,1/2]$ ).\\  En effet  :
+\begin{enumerate}
+\item  Pour tout $t>0$ la fonction $x \mapsto t^{x-1}e^{-t}$ admet une limite en $0$ qui est : $\frac{e^{-t}}{t}$.
+\item Pour tout $x\in ]0,1/2]$ la fonction $t \mapsto t^{x-1}e^{-t} $ est continue par morceaux sur $]0,+\infty[$. Ainsi, la fonction $ \displaystyle t \mapsto \lim_{x\rightarrow 0} t^{x-1}e^{-t} = \frac{e^{-t}}{t}$ est également continue par morceaux. 
+
+\setcounter{enumi}{3} 
+
+\item  Soit $(x,t) \in ]0,1/2] \times ]0,+\infty[ $ on a : 
+\[ |t^{x-1}e^{-t}| = \left(1+\frac{1}{t}\right)e^{-t} \]
+Alors en prenons $\phi : t \in ]0,+\infty[ \mapsto \left(1+\frac{1}{t^{1/2}}\right)e^{-t} $ qui est bien intégrable sur $]0,+\infty[$, alors on vérifie bien l'hypothèse de domination.
+\end{enumerate}
+D'où la fonction $\Gamma$ admet une limite en $0$ Ainsi la formule d'inversion limite-Intégrale \ref{INV-LI} nous donne : 
+\[ \lim_{x\rightarrow 0} \Gamma(x) = \int_0^{+\infty} \frac{e^{-t}}{t}dt = +\infty \]
+
+\textbf{Étude de limite en $+\infty$ de la fonction $\Gamma$ : \\ }
+\NB{On peut essayer d'abord le théorème de limite, néanmoins ce théoreme exige que $x\mapsto t^{x-1}e^{-t}$ ait une limite finie en tout $t>0$ ce qui n'est pas le cas ici en effet : 
+        $$ \lim_{x\rightarrow +\infty} t^{x-1}e^{-t}= l(t) =
+        \begin{cases}
+         +\infty & \text{Si}  \ t>1 \\
+         e^{-1}  & \text{Si} \ t=1 \\
+         0  & \text{Si} \ t<1
+        \end{cases} $$
+On voit alors qu'on peut pas appliquer le théorème... mais on deduit l'intuition que cette limite sera $+\infty$ donc on essaie a faire une inégalité de type : $$ t^{x-1}e^{-t} > qlqchose(x) \underset{x \rightarrow \infty }{\longrightarrow} +\infty $$ 
+Il est souvent qu'une telle égalité ne se produit que lorsqu'on décompose l'intégrale en plusieurs parties } 
+Soit $x>2$ , en écrivant : $$\displaystyle \int_0^{+\infty} t^{x-1}e^{-t}dt = \int_0^{2} t^{x-1}e^{-t}dt +  \int_2^{+\infty} t^{x-1}e^{-t}dt $$  Puis on montre que $\displaystyle \int_{0}^{2} t^{x-1}e^{-t}dt \underset{x \rightarrow +\infty }{\longrightarrow} +\infty $ .
+
+ En effet : \\ 
+Soit $t \in ]0,2]$ alors : $e^{-t} \geq e^{-2} $ puis : $$\displaystyle \int_{0}^{2} t^{x-1}e^{-t}dt \geq e^{-2} \times \left( \int_{0}^{2} t^{x-1} dt \right) = e^{-2} \times \left( \frac{2^x-1}{x}  \right)  \underset{x \rightarrow +\infty}{\sim } \frac{1}{x}\times \left( \frac{2}{x} \right) \underset{x \rightarrow +\infty}{\longrightarrow} +\infty $$ 
+
+
+}
+
+\subsection{Continuité d'une intégrale paramétrée}
+
+\thm{Théorème de continuité}{
+Lorsque les conditions suivantes sont vérifiés :
+\begin{enumerate}
+
+\item  \textbf{continuité}  \\  
+La fonction $x \mapsto f(x,t)$ est continue sur $A$ pour tout $t\in I$.
+
+\item  \textbf{continuité} par morceau  \\ 
+Pour tout $x\in A$ la fonction $t \mapsto f(x,t)$ est continue par morceaux sur $I$.
+
+\item  \textbf{intégrabilité}  \\ (par nécessaire) 
+
+
+\item  \textbf{hypothèse de domination}  \\  
+Il existe une fonction $\phi$ définit et intégrable sur $I$ tq : 
+\[ |f(x,t)| \leq \phi(t) \quad\forall (x,t)\in A\times I\]
+
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item L'intégrale $\int_{I} f(x,t)dt$ pour tout $x\in A$.
+\item La fonction $F$ est continue sur $A$.
+\end{itemize}
+}
+
+\exm{}{
+
+Pour utiliser le théorème de continuité, on peut montrer la continuité sur tout intervalle $[a,b] $ , tq : $b>1>a>0$ puis déduire la continuité sur tout l'intervalle $]0,+\infty[$ en effet  soit $b>a>0$ :  
+\begin{enumerate}
+\item  La fonction $x \mapsto t^{x-1}e^{-t}$ est continue sur $[a,b]$  pour tout $t>0$.
+
+\item Pour tout $x\in [a,b] $ la fonction $t \mapsto t^{x-1}e^{-t} $ est continue par morceaux sur $]0,+\infty[$. 
+
+\setcounter{enumi}{3} 
+
+\item  Soit $(x,t) \in [a,b] \times ]0,+\infty[ $ on a : 
+\[ |t^{x-1}e^{-t}| \leq t^{b-1}e^{-t} + t^{a-1}e^{-t} \] 
+Alors en prenons $\phi : t \in ]0,+\infty[ \mapsto t^{b-1}e^{-t} + t^{a-1}e^{-t} $ qui est bien intégrable sur $]0,+\infty[$, alors on vérifie bien l'hypothèse de domination.
+\end{enumerate}
+D'où la fonction $\Gamma$ est continue sur tout intervalle $[a,b]$ et alors continue sur $]0,+\infty[$.
+
+}
+
+
+\subsection{Dérivés d'une intégrale paramétrée}
+
+\thm{Théorème de Dérivée première}{
+Lorsque les conditions suivantes sont vérifiés :
+\begin{enumerate}
+
+\item  \textbf{dérivabilité}  \\  
+La fonction $x \mapsto f(x,t)$ est dérivable et de classe $\class^1$ sur $A$ pour tout $t\in I$.
+
+\item  \textbf{continuité par morceau}  \\ 
+Pour tout $x\in A$ les deux fonctions $t\mapsto f(x,t)$  et $t\mapsto \frac{\partial f}{\partial x}(x,t) $ sont continues par morceaux sur $I$.
+
+\item  \textbf{intégrabilité}  \\  
+Pour tout $x\in A$ la fonction $t \mapsto f(x,t)$  est intégrable sur $I$.
+
+
+\item  \textbf{hypothèse de domination}  \\  
+Il existe une fonction $\phi$ définit et intégrable sur $I$ tq : 
+\[ |\frac{\partial f}{\partial x}(x,t)| \leq \phi \quad\forall (x,t)\in A\times I\]
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item L'intégrale $\int_{I}  \frac{\partial f}{\partial x}(x,t) dt$ converge pour tout $x\in A$
+\item La fonction $F$ est de classe $\class^1$ sur $A$
+\item La formule d'inversion : 
+\end{itemize}
+\begin{equation}\label{INV-DI}
+\int_{I}  \frac{\partial f}{\partial x}(x,t) dt =  \frac{\partial}{\partial x} \left( \int_{I} f(x,t) \right) 
+\end{equation} 
+}
+
+
+\exm{}{\label{exm:GammaDerv}
+Pour utiliser le théorème de  dérivée première, on peut montrer la continuité sur tout intervalle $[a,b]$ , tq : $b>1>a>0$ puis déduit la classe sur tout l'intervalle $]0,+\infty[$. \\ En effet,  soit $b>a>0$ :  
+\begin{enumerate}
+\item  La fonction $x \mapsto t^{x-1}e^{-t}$ est dérivable et de classe $\class^1$ sur $[a,b]$  pour tout $t>0$. Ainsi l'expression de sa dérivée : 
+\[ \frac{\partial t^{x-1}e^{-t}}{\partial x} = \ln(t) \times t^{x-1}e^{-t} \textbf{\ \ \ } \forall (x,t) \in  [a,b] \times  ]0,+\infty [ \] 
+
+\item Pour tout $x\in [a,b] $ les deux fonctions : \\ $t \mapsto t^{x-1}e^{-t} $ et $ t\mapsto \ln(t) \times t^{x-1}e^{-t} $ sont continues par morceaux sur $]0,+\infty[$. 
+
+\item La fonction $t \mapsto  t^{x-1}e^{-t} $ est intégrable sur $]0,+\infty[$ pour tout $b>x>a$ .
+\item  On peut remarquer d'abord que : $| \ln(t) | \leq |t| \quad\forall t>0 $  \\ 
+Puis , soit $(x,t) \in [a,b] \times ]0,+\infty[ $ on a : 
+\[ |\ln(t) \times t^{x-1}e^{-t}| \leq t\times(t^{a-1}+t^{b-1})e^{-t} =  (t^{a}+t^b)e^{-t} \]
+Alors en prenons $\phi : t \in ]0,+\infty[ \mapsto (t^{a}+t^b)e^{-t}  $ qui est bien intégrable sur $]0,+\infty[$, alors on vérifie bien l'hypothèse de domination.
+\end{enumerate}
+D'où la fonction $\Gamma$ est de classe $\class^1$ sur tout intervalle $[a,b] $ et alors de classe $\class^1$ sur $]0,+\infty[$. Ainsi la formule d'inversion dérivée~intégrale \ref{INV-DI} nous donne : 
+\[ \Gamma'(x) = \int_0^{+\infty} \ln(t) \times t^{x-1}e^{-tx} dt   \] 
+}
+
+\thm{Théorème des Dérivés supérieurs}{
+Lorsque les conditions suivantes sont vérifiés :
+\begin{enumerate}
+
+\item  \textbf{dérivabilité}  \\  
+La fonction $x \mapsto f(x,t)$ est dérivable et de classe $\class^{\infty}$ sur $A$ pour tout $t\in I$.
+
+\item  \textbf{continuité par morceau}  \\ 
+Pour tout entier $n \in \NN$ et tout réel  $x\in A$, les deux fonctions $t\mapsto f(x,t)$  et $t\mapsto \frac{\partial^{n} f}{\partial^{n} x}(x,t) $ sont continues par morceaux sur $I$.
+
+\item  \textbf{intégrabilité}  \\  
+Pour tout $x\in A$ la fonction $t \mapsto f(x,t)$  est intégrable sur $I$.
+
+
+\item  \textbf{hypothèse de domination}  \\  
+Pour tout entier $n\in\NN$, il existe une fonction $\phi_n$ définit et intégrable sur $I$ tq : 
+\[ |\frac{\partial^{n} f}{\partial^{n} x}(x,t)| \leq \phi_n \quad\forall (x,t)\in A\times I\]
+\end{enumerate}
+
+On a le résultat suivant : 
+\begin{itemize}
+\item L'intégrale  $\int_{I} \frac{\partial^{n} f}{\partial^{n} x}(x,t) dt  $ converge pour tout entier $n\in \NN$ et tout $x \in A$.
+\item La fonction $F$ est de classe $\class^{\infty}$ sur $A$.
+\item La formule d'inversion : 
+\end{itemize}
+\[  \forall p \in \NN^* \textbf{\ \ \ \ \ \ : \ \ \ \ } \int_{I}  \frac{\partial^{p} f}{\partial^{p} x}(x,t) dt =  \frac{\partial^{p}}{\partial^{p} x} \left( \int_{I} f(x,t)dt \right) \]
+}
+
+\exm{}{
+On vous laisse le soin de montrer la convexité de la fonction gamma.
+}
+
+\paragraph{Trace finale de la fonction Gamma } \hrulefill 
+
+\begin{center}
+    \includegraphics[width=0.9\linewidth]{img/gamma.jpg}\\ 
+    \textbf{Courbe de la fonction Gamma}
+\end{center}
+
+\subsection{Propriété de LOCALITÉ}
+Pour comprendre cette notion, on vous rappelle que la définition de la continuité (resp. dérivabilité ) sur un ensemble : lorsque la fonction est continue (resp. dérivable) en tout point de cet ensemble. En conséquence de cela, si on veut démontrer la continuité (resp. dérivabilité) d'une fonction sur un intervalle $\displaystyle I=\bigcup_{\alpha \in A } I_\alpha$ il suffit de démontrer la continuité (resp. dérivabilité) de cette fonction sur tout  intervalle $I_\alpha$. On pourra de même voir la classe comme une propriété locale. Ainsi, on vous avertit de ne jamais utiliser des assertions comme : " $f$ est continue " sans indiquer la région de continuité… il faut dire " $f$ est continue sur l'intervalle ... "
+\\ 
+On donne alors la méthode suivante : 
+\meth{Étude sur un ouvert}{
+Il est souvent de rencontrer des exercices qui proposent l'étude sur un intervalle ouvert $I=]a,b[$ dont la convergence uniforme n'est pas établie, Dans ce cas, il est ultime d'utilité de décomposé cet intervalle en union des intervalles faciles a traité par exemple : 
+\begin{itemize}
+\item $\displaystyle I=]a,b[=I=\bigcup_{a < \alpha < b } [\alpha , b[ $ 
+\item $\displaystyle I=]a,b[=I=\bigcup_{a < \beta < b } ]a , \beta] $ 
+\item $\displaystyle I=]a,b[=I=\bigcup_{a < \alpha < \beta < b } ]a , \beta] $ 
+\item $\displaystyle I=]a,b[=I=\bigcup_{n \geq 1 } [a +\frac{1}{n} , b-\frac{1}{n}] $ 
+\end{itemize}
+Puis, en l'étudiant sur ces intervalles, on déduit l'étude sur l'intervalle tout entière.
+}
+
+\exm{}{
+	Cela est déjà illustré dans les exemples de la fonction $\Gamma$
+}
+
+
+\subsection{Quelque pistes supplémentaires}
+
+
+
+\meth{Étude de monotonie } {
+	Lorsqu’on veut démontrer l’hypothèse de domination, il est utile d'observer la monotonie de la fonction, surtout pour les fonctions usuelles (exp / ln / cos / sin / sinh ...)
+}
+
+\exm{}{
+	Pour la fonction  $F$ définit par l'intégrale suivante : \\ $\displaystyle F : x\in [1,+\infty[ \mapsto \int_0^{+\infty} \frac{\sin(xt)}{t} e^{-xt}dt$ , puisque la fonction $x\mapsto e^{-xt}$ est décroissante sur l'intervalle  $[1,+\infty[$ pour tout $t>0$ ce qui justifie le passage suivant 
+\\ 	
+ $\displaystyle	\left| \frac{\sin(xt)}{t} e^{-xt} \right| \leq e^{-xt}  \leq e^{-t}$ pour tout $x \geq 1$ et tout $t>0$ . 
+	
+}
+
+
+
+\meth{Étude de fonction}{ 
+	Lorsqu’on veut démontrer l’hypothèse de domination, il se peut qu'on ne puisse pas observer la monotonie facilement, donc il faut faire une étude de la fonction (en faisant la dérivée, le tableau de variation puis en déterminant le maximum)
+}
+
+
+
+\meth{Faire les cas } {
+	Parfois, lorsqu’on veut démontrer l’hypothèse de domination, on peut être obligé à faire des inégalités selon le cas de $t$ (la variable sur laquelle on intègre). Par exemple : 
+	    $$ f(x,t) \leq \fparts{\phi_1(t)}{\  t\in ]a,c]}{\phi_2(t)}{ \ t\in [c,b[} $$
+    Dans une telle situation, on peut regrouper les deux cas en prenons la somme : $\phi=\phi_1+\phi_2$ on aura : 
+        $$ f(x,t) \leq \phi(t) \textbf{\ \ \ } \forall t\in ]a,b[$$
+}
+
+\exm{}{
+    Précédemment, on a montré que si : $b>1>a>0$ alors : 
+    \[ |t^{x-1}e^{-t}| \leq t^{b-1}e^{-t} + t^{a-1}e^{-t} \] 
+    En effet, cela découle de l'inégalité suivante :  
+    \[ 
+        e^{\ln(t)(x-1)}e^{-t} \leq \fparts{t^{a-1}e^{-t} }{\ t\in [a,1] \text{ car la fonction $x\mapsto e^{\ln(t)(x-1)}$ est croissante $\ln(t)\geq 0$}}{ t^{a-1}e^{-t}}{\ t\in [1,b] \text{ car la fonction $x\mapsto e^{\ln(t)(x-1)}$ est décroissante $\ln(t)\leq 0$}}
+    \]
+}
+ 
+\meth{Élimination des cas limites}{ 
+    Lorsqu'on veut démontrer l'hypothèse de domination, il se peut que le "$x$" soit dans un domaine très léger et qu'on ait des problèmes aux limites de ce domaine qui nous empêche vérifier l'hypothèse. Dans ce cas, il est préférable de restreindre l'étude sur des segments puis déduire le comportement global en utilisant la propriété de localité. 
+}
+
+\exm{}{
+    Dans l'exemple de la fonction $\Gamma$ on a : limiter l'étude sur les segments : $[a,b]$ car les deux bornes posent un problème :
+    \begin{itemize}
+        \item au voisinage de $+\infty$ : si $t>1$ la fonction $x\mapsto t^{x-1}e^{-t}$ diverge vers $+\infty$ alors, elle n'est pas majorable. 
+        \item au voisinage de $0$ : si $t<1$ la fonction $x\mapsto t^{x-1}e^{-t}$ diverge vers $+\infty$ alors, elle n'est pas majorable. 
+    \end{itemize}
+    Dans le cas général : 
+    \begin{itemize}
+        \item Si la fonction $x\mapsto f(x,t)$ est décroissante, on préfère d'utiliser les intervalles : $[\alpha,b[$
+        \item Si la fonction $x\mapsto f(x,t)$ est croissante, on préfère d'utiliser les intervalles : $]a,\beta]$
+        \item Sinon, généralement les intervalles $[\alpha,\beta]$ marchent dans la majorité des cas
+    \end{itemize}
+}
+
+\meth{Étude combinée suites/série des fonctions avec intégrales à paramètre  }{
+    Il est parfois nécessaire qu'on utilise une étude combinée pour aboutir au résultat voulu.\\ 
+    Par exemple on peut remplacer l'étude de la fonction : $\displaystyle \int_0^{+\infty} f(x,t)dt$ par : 
+    \begin{itemize}
+        \item L'étude de la suite : 
+        \[ \left(f_n=\displaystyle \int_{\frac{1}{n}}^{+\infty} f(x,t)dt\right)_{n\geq 1} \] 
+        lorsqu'on a un problème de zéro.
+        \item L'étude de la suite : 
+        \[ \left(f_n=\displaystyle \int_{0}^{n} f(x,t)dt\right)_{n\geq 1} \] 
+        ou bien la série :
+        \[ \displaystyle \sum_n f_n=\sum_n  \int_{n}^{n+1} f(x,t)dt \]
+        lorsqu'on a un problème à l'infini.
+    \end{itemize}
+}
+
+\exm{}{
+Montrer que la fonction $F$ est continue en $0$ : 
+\[ F(x) = \int_{0}^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt \]
+\textit{On admet que le domaine de définition de la fonction est $\R^+$}  \\
+
+Si on veut utiliser théorème d'inversion limite-intégrale en un voisinage $[0,a]$ de $0$, on doit montrer l'hypothèse de domination. cad on doit chercher une fonction $\phi(t)$ indépendante de $x$ qui majore $\frac{\sin(t)}{t}e^{-xt}$ pour tout $t>0$ et tout $x\in [0,a]$. Une étude simple de la fonction montre que la meilleure majoration qu'on peut faire est par : $\left|\frac{\sin(t)}{t}\right|$ qui est la borne sup de la fonction. Malheureusement cette majoration ne fournit pas une fonction intégrable sur $]0,+\infty[$. \\
+On se serve de l'étude de la suite des fonctions : 
+ \[ \left(f_n=\displaystyle \int_{\frac{1}{n}}^{+\infty} \frac{\sin(t)}{t}e^{-xt} dt\right)_{n\geq 1} \] 
+On note d'abord :
+\begin{itemize}
+    \item Pour tout $x>0$ : \\ 
+    $F_x : X>0 \mapsto \int_{1}^{X} \frac{\sin(t)}{t}e^{-xt}dt$
+    \item Pour tout $n\in \N^*$ : \\ 
+    $f_n : x>0 \mapsto \int_{\frac{1}{n}}^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt$
+\end{itemize}
+\begin{enumerate}
+    \item \textbf{Convergence simple : \\ } 
+    soit $x>0$ l'intégrale :  $\int_{0}^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt$ converge, alors par définition de la convergence d'une intégrale généralisée : la fonction $F$ admet des limites en $0$ et en $+\infty$ ainsi on a : 
+    \[ \lim_{X\rightarrow 0} F(X) - \lim_{Y\rightarrow +\infty} F(Y) = \int_{0}^{+\infty} \frac{\sin(t)}{t}e^{-xt} dt \]
+    Puis par caractérisation séquentielle de la limite : \begin{align*}
+        \int_{0}^{+\infty} \frac{\sin(t)}{t}e^{-xt} dt 
+            &= \lim_{X\rightarrow 0} F(X) - \lim_{Y\rightarrow +\infty} F(Y) \\
+            &= \lim_{X\rightarrow 0} \left( F(X) - \lim_{Y\rightarrow +\infty} F(Y) \right) \\
+            &= \lim_{X\rightarrow 0} \left( \int_{X}^{+\infty} \frac{\sin(t)}{t}e^{-xt} dt \right) \\
+            &= \lim_{n\rightarrow +\infty} \left( \int_{\frac{1}{n}}^{+\infty} \frac{\sin(t)}{t}e^{-xt} dt \right) 
+    \end{align*}
+    Ce qui montre : 
+    \cc{ f_n  \xrightarrow{\textbf{CVS}} F} 
+
+    \item \textbf{La fonction limite : \\ } 
+    Soit un entier $n\geq 0$ : \\
+    Montrons que :
+    \[ \lim_{x\rightarrow 0} f_n(x) = \int_{\frac{1}{n}}^{+\infty} \frac{\sin(t)}{t} dt  \] 
+    En fait, c'est une intégrale à paramètre qu'on peut calculer sa limite en utilisant la formule d'inversion limie-intégrale :
+    \begin{enumerate}
+        \item Soit $t\geq\frac{1}{n}$, la fonction $x\mapsto \frac{\sin(t)}{t}e^{-xt}$ admet une limite lorsque $x$ tend vers $0$ qui est : $\frac{\sin(t)}{t}$ 
+        
+        \item Soit $x>0$, les deux fonctions : $t\mapsto \frac{\sin(t)}{t}e^{-xt}$ et $t\mapsto \frac{\sin(t)}{t} $  sont continues par morceaux sur $[\frac{1}{n},+\infty[$
+        
+        \item Soit $(x,t) \in ]0,+\infty[\times[\frac{1}{n},+\infty[$ : \\ 
+        \[ \frac{\sin(t)}{t}e^{-xt} \leq e^{-\frac{t}{n}} =\phi_n(t)\]
+        Ainsi la fonction $\phi_n : t \in [\frac{1}{n},+\infty[ \longmapsto e^{-\frac{t}{n}}$ est intégrable, donc on vérifie bien l'hypothèse de domination.
+    \end{enumerate}
+    Les condition d'application étant vérifiées on peut déduire : 
+    \cc{\lim_{x\rightarrow 0} f_n(x) = \int_{\frac{1}{n}}^{+\infty} \frac{\sin(t)}{t} dt }
+    
+    \item \textbf{Convergence uniforme : \\}
+    On propose de montrer que $f_n \xrightarrow{\textbf{CVU}} F$ pour cela on montre que : \[||f_n - F ||_\infty^{]0,+\infty[} \rightarrow 0\].\\
+    En effet, soit $n\in \N^*$ et $x>0$ alors :
+    \begin{align*}
+        \left| f_n(x) - F(x) \right|
+        &= \left|\int_0^{\frac{1}{n}} \frac{\sin(t)}{t}e^{-xt}dt \right| \\
+        &\leq \int_0^{\frac{1}{n}} \left|\frac{\sin(t)}{t}e^{-xt}\right|dt \\
+        &\leq \int_0^{\frac{1}{n}} \underset{\leq 1 }{\underbrace{|\frac{\sin(t)}{t}|}} \underset{\leq 1 }{\underbrace{|e^{-xt}|}}dt \\
+        &\leq \int_0^{\frac{1}{n}} 1dt \\
+        &\leq \frac{1}{n}  \\
+    \end{align*}
+    Ce qui montre que :
+    \[ ||f_n - F ||_\infty^{]0,+\infty[} \leq \frac{1}{n} \rightarrow 0\] 
+    D'où : 
+    \cc{f_n \xrightarrow{\textbf{CVU}} F}
+\end{enumerate}
+
+    On déduit finalement que : 
+    \begin{align*}
+        \lim_{x\rightarrow 0} \lim_{n\rightarrow +\infty} f_n(x) &= \lim_{n \rightarrow +\infty} \lim_{x\rightarrow 0} f_n(x) \\
+        \lim_{x\rightarrow 0} \int_0^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt  &= \lim_{n \rightarrow +\infty}  \int_{\frac{1}{n}}^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt = \int_{0}^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt
+    \end{align*}
+    
+    D'où :
+    \cc{ \lim_{x\rightarrow 0} F(x) = \int_{0}^{+\infty} \frac{\sin(t)}{t}e^{-xt}dt = F(0) }
+    Ce qui montre la continuité de $F$ en $0$.
+}
+
+
+\newpage
+
+\section{Transformé de LAPLACE  }
+\exop{Transformé de LAPLACE }{
+Dans tout ce problème, on rappelle que l'ensemble $\S$ est celui définit dans l'exercice : \eqref{ensemble S} \\
+ Pour toute fonction $f$ élément de $\S$, on définit la fonction $\L(f)$ qui associe à chaque réel $x\in\R^+$ l'élément (la convergence est établie par appartenance à $\S$) : 
+    \[ \L(f)(x) = \int_0^{+\infty} f(t)e^{-xt}dt \]
+    Lorsque la fonction $f$ est un élément de $\S$ la fonction $\L(f)$ est bien définie sur $\R^+$.
+    \begin{enumerate}
+        \item \textbf{Étude asymptotique : } \\
+\begin{enumerate}
+    \item  On suppose que $f$ est une fonction bornée sur $\RR^{+}$.
+    \begin{enumerate}
+        \item Déterminer la limite de $\L(f)(x)$ quand $x$ tend vers $+\infty$.
+        \item Montrer que, si de plus $f$ est de classe $\class^1$ sur $\RR^{+}$et $f^{\prime}$ est bornée sur $\RR^{+}$, alors $\displaystyle \lim _{x \rightarrow+\infty} x \L(f)(x)=f(0)$.
+    \end{enumerate}
+    \item On suppose que $\displaystyle\lim _{t \rightarrow+\infty} f(t)=l$ où $l$ est un réel.
+    \begin{enumerate}
+        \item Montrer que $f$ est bornée sur $\RR^{+}$.
+        \item Montrer que pour tout $x \in \RR^{*+}$ : $$ x \L(f)(x)=\int_0^{+\infty} f\left(\frac{t}{x}\right) e^{-t} d t$$.
+        \item  En déduire $\displaystyle\lim _{x \rightarrow 0^{+}} x \L(f)(x)$.
+    \end{enumerate}
+\end{enumerate}
+
+        \item \textbf{Étude de fonction : } \\
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item  Démontrer que pour tout élément $f$ de $\S$, la fonction $\L(f)$ est de classe $\class^1$ sur $\RR^{*+}$ et que l'on a $\left(\L(f)\right)^{\prime}=- \L\left(g_1\right)$ où $g_1$ est une fonction à déterminer.
+        \item Plus généralement, démontrer que pour tout élément $f$ de $\S$, la fonction $\L(f)$ est de classe $\class^{\infty}$ sur $\RR^{*+}$ et déterminer pour tout $k \in \NN$ : 
+        \[ \left(\L(f)\right)^{(k)} = (-1)^k\L\left(g_k\right)\]
+        Où $g_k$ est une fonction (dépendante de $k$) à déterminer.
+    \end{enumerate}
+    
+\item  Soit $f$ une fonction  bornée sur $\RR^{+}$ et $p\in\N^*$
+\begin{enumerate}
+    \item  Montrer que si la fonction $f$ est de classe $\class^1$ sur  $\RR^{+}$ et $f'\in\S$, alors pour tout $x \in \RR^{*+}$ :
+$$
+\L\left(f^{\prime}\right)(x)=x \L(f)(x)-f(0)
+$$
+    \item  Montrer que si la fonction $f$ est de classe $\class^{p}$ sur  $\RR^{+}$ et $f^{(p)}\in\S$ ainsi que toutes les dérivées $ f^{(k)}\text{\ tq \ } k\in\{ 1, \cdots ,p-1\} $ sont des éléments de $\S$, alors pour tout $x \in \RR^{*+}$ et tout $k\in\{ 1, \cdots ,p-1\} $ :
+$$
+\L\left(f^{(p)}\right)(x)=x^k \L(f)(x)-\sum_{i=1}^px^{i-1} f^{(p-i)}(0)
+$$
+\end{enumerate}
+       \end{enumerate}     
+        \item \textbf{Étude d'injectivité :}
+        \begin{enumerate}
+
+            \item Soit $h$ une fonction réelle continue sur $[0,1]$ telle que, pour tout entier $m \in \NN, \int_0^1 t^m h(t) d t=0$.
+            \begin{enumerate}
+                \item  Montrer que pour tout polynôme $P$ à coefficients réels, \[\int_0^1 P(t) h(t) d t=0\]
+                \item En déduire que $h$ est la fonction nulle.
+            \end{enumerate}
+        \item  Soit $f$ un élément de $\S$, on pose pour tout $t \geq 0, h(t)=\int_0^t e^{- u} f(u) d u$.
+            \begin{enumerate}
+                \item  Montrer que pour tout entier $k>0$ :
+                \[ \L(f)(1+k)= k \L\left(h\right)(k) \]
+                \item On suppose que pour tout entier $k>0, \L(f)(1+k)=0$. 
+            \begin{enumerate}
+                \item Montrer que pour tout entier $k>0, \int_0^1 u^k h\left(\ln u\right) d u$ converge et il vaut 0.
+                \item En déduire que $h_n$ est la fonction nulle.
+            \end{enumerate}
+        \end{enumerate}
+        \item  Montrer que l'application $\L$ définie sur $\S$ est injective.
+
+        \end{enumerate}
+\end{enumerate}
+}{
+    \begin{enumerate}
+        \item \textbf{Étude asymptotique : } \\
+\begin{enumerate}
+    \item  soit $f$ est une fonction bornée sur $\RR^{+}$.
+    \begin{enumerate}
+        \item \textit{Déterminons la limite de $\L(f)(x)$ quand $x$ tend vers $+\infty$. \\}
+        La fonction $f$ étant bornée alors il existe un $M>0$ tq pour tout réel $x\geq0$ $|f(x)\leq M|$ alors : 
+        \[ 
+            \forall x > 0 \textbf{\ \ \ }  |\L(f)(x)| \leq \int_0^{+\infty} |f(t)|e^{-xt}dt \leq M\times \int_0^{+\infty} e^{-xt}dt  = \frac{M}{x} 
+        \]
+        D'où : \cc{ \lim_{x\rightarrow +\infty} \L(f)(x) = 0 }
+        
+        
+        
+        
+        \item \textit{supposons de plus que $f$ est de classe $\class^1$ sur $\RR^{+}$et $f^{\prime}$ est bornée sur $\RR^{+}$, Montrons alors :  $\displaystyle \lim _{x \rightarrow+\infty} x \L(f)(x)=f(0)$}\\
+                            soit $x>0$ et $X>0$ les deux fonctions $t\mapsto f(t)$ et $t \mapsto e^{-xt}$ sont de classe $\class^1$ donc, on peut intégrer par parties : 
+            \[  \int_0^{X} f'(t)e^{-xt}dt =  \big[ f(X)e^{-Xx} - f(0) \big]  +  \int_0^{X} xf(t)e^{-xt}dt
+            \]
+	Puisque le chacune des termes ont une limite finie : \\ $\big[ f(X)e^{-Xx} - f(0) \big] $ (la fonction $f$ est bornée) \\ et $ \int_0^{X} xf(t)e^{-xt}dt$ (la fonction $f$ est un élément de $\S$) \\ alors, on peut faire un passage à la limite : $X \rightarrow +\infty$ on obtient la formule suivante : 
+	      \[  \int_0^{+\infty} f'(t)e^{-xt}dt =   \int_0^{+\infty} xf(t)e^{-xt}dt - f(0)
+            \]
+            
+            Puisque $f'\in\S$ on peut lui associer la fonction $\L(f)$, Ce qui permet d'ecritre : $\L(f')(x) = f(0) +x\L(f)(x)$ pour tout $x>0$, Ainsi $f'$ étant bornée alors d'après question précédente :  $$\lim_{x\rightarrow+\infty} \L(f')(x) = 0$$
+            ce qui nous fournit la formule suivante :
+            \cc{ \lim _{x \rightarrow+\infty} x \L(f)(x)=f(0)}
+        
+    \end{enumerate}
+    \item \textit{Supposons que $\displaystyle\lim _{t \rightarrow+\infty} f(t)=l$ où $l$ est un réel.}
+    \begin{enumerate}
+        \item\textit{ Montrons que $f$ est bornée sur $\RR^{+}$.} \\ \label{qst bornetude}
+        En effet :  Comme $\lim_{x\rightarrow +\infty} f(t) = l$, alors il existe $A > 0$ tel que $|f(x) - l| \leq 1$ pour tout $ x \geq A$. \\ Sur le segment $[0, A]$ f est bornée (cf. toute fonction continue est bornée sur les segments) donc il existe un certain $M > 0$ tq $|f(x)|\leq M$.\\
+        En regroupons les deux cas, on obtient : $\forall x \in \RR$ , $|f(x)| \leq \max(M, |l|+1)$. \\ Donc la fonction f est bornée sur $\R^+$.
+        \item\textit{ Soit $x \in \RR^{*+}$, Montrons que  : $ \displaystyle x \L(f)(x)=\int_0^{+\infty} f\left(\frac{t}{x}\right) e^{-t} d t$.}
+        
+        \[ \L(f)(x) = \int_0^{+\infty} f(t)e^{-xt}dt \underset{u=xt}{=}  \int_0^{+\infty} f\left(\frac{u}{x}\right)e^{-u}\frac{du}{x} \]
+        \\ Ce qui montre que : \\ 
+         \cc{ x \L(f)(x)=\int_0^{+\infty} f\left(\frac{t}{x}\right) e^{-t} d t }
+        \item \textit{Déduisons : $\displaystyle\lim _{x \rightarrow 0^{+}} x \L(f)(x)$.} \\
+        Appliquons théorème d'inversion limite-Intégrale n sur $]0,+\infty[$ au point $0\in \bar{]0,+\infty[}$.
+        \begin{itemize}
+            \item La fonction $t \mapsto f\left(\frac{t}{x}\right)e^{-t}$ admet une limite en $0$ pour tout $t>0$ ainsi la fonction limite : 
+            \[ t \mapsto\lim_{x\rightarrow 0^{+}} f\left(\frac{t}{x}\right)e^{-t} = l\times e^{-t} \]
+            \item Les deux fonctions  $t \mapsto f\left(\frac{t}{x}\right)e^{-t}$  et $t \mapsto l\times e^{-t}$ sont continues par morceaux pour tout $x>0$
+            \item Soit $(x,t) \in \left(\R^+_*\right)^2$ On a : 
+            $$\left|f\left(\frac{t}{x}\right)e^{-t} \right|\leq M\times e^{-t} $$ 
+            Avec $M$ est celui de question \ref{qst bornetude}
+        \end{itemize}
+        Par théorème d'inversion limite-Intégrale, on déduit qui : 
+        \cc{ \lim _{x \rightarrow 0^{+}} x \L(f)(x) \lim _{x \rightarrow 0^{+}}  =\int_0^{+\infty} f\left(\frac{t}{x}\right) e^{-t} d t = \int_0^{+\infty} l\times e^{-t} d t = l  }
+        
+    \end{enumerate}
+
+
+\end{enumerate}
+        \item \textbf{Étude de fonction : } \\
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item \textit{ Soit $f$ un élément de $\S$, Montrons que la fonction $\L(f)$ est de classe $\class^1$ sur $\RR^{*+}$ et  calculons sa dérivé. \\}
+        Appliquons théoreme d'inversion dérivé-intégrale sur chaque intervalle $\left([a,+\infty[\right)_{a>0}$.. \\
+        En effet, soit $a>0$ :
+        \begin{itemize}
+        
+            \item Pour tout $t>0$ La fonction $x\mapsto f(t)e^{-xt}$ est de classe $\class^1$ sur $[a,+\infty[$ ainsi sa dérivée est : 
+            \[ x\mapsto \frac{\partial}{\partial x}f(t)e^{-xt} = -tf(t)e^{-xt} \]
+            
+            \item Pour tout $x\geq a$ les fonctions $t\mapsto f(t)e^{-xt}$ et $t\mapsto -tf(t)e^{-xt}$ sont continues par morceaux sur $[0,+\infty[$ 
+            
+            \item Pour tout $x\geq a$ la fonction $t\mapsto f(t)e^{-xt}$ est intégrable (étant un élément de $\S$)
+            
+            \item Soit $(x,t)\in [a,+\infty[\times]0,+\infty[$ on a : 
+            \[ \big| -tf(t)e^{-xt} \big|\leq t|f(t)|e^{-at} \]
+            On prend la fonction $\phi : t \mapsto  t|f(t)|e^{-at} $ cette fonction est bien intégrable donc on vérifie bien l'hypothèse de domination
+        \end{itemize}
+        On en déduit par théorème d'inversion dérivée-intégrale  que sur chaque intervalle $\left([a,+\infty[\right)_{a>0}$ la fonction $\L(f)$ est de classe $\class^1$, et puis par localité de la propriété "classe" il en découle que : la fonction $\L(f)$ est de classe $\class^1$ sur $]0,+\infty[$ ainsi sa dérivée pour tout $x>0$ : 
+        \cc{ 
+            \L(f)'(x) = \frac{\partial}{\partial x} \left(\int_0^{+\infty} f(t)e^{-xt}dt \right) = \int_0^{+\infty} -tf(t)e^{-xt}dt  =\L(g_1)(x)
+        }
+            avec $g_1 : t \mapsto -tf(t)$
+        
+        \item \textit{ Soit $f$ un élément de $\S$, Montrons que la fonction $\L(f)$ est de classe $\class^{+\infty}$ sur $\RR^{*+}$ et  calculons tous ses dérivées successives. \\}
+        Appliquons théorème d'inversion dérivé-intégrale (dérivées supérieures) sur chaque intervalle $\left([a,+\infty[\right)_{a>0}$… \\
+        En effet, soit $a>0$ :
+        \begin{itemize}
+
+            \item pour tout $t>0$, la fonction $x\mapsto f(t)e^{-xt}$ est de classe $\class^{+\infty}$ sur $[a,+\infty[$ ainsi ses dérivées est : 
+            \[ x\mapsto \frac{\partial^{p}}{\partial^p x}f(t)e^{-xt} = (-t)^pf(t)e^{-xt} \textbf{ \ \ \ } \forall p\in\N^*  \]
+            
+            \item Soit $p\in\N$, pour tout $x\geq a$ les fonctions $t\mapsto f(t)e^{-xt}$ et $t\mapsto (-t)^pf(t)e^{-xt}$ sont continues par morceaux sur $[0,+\infty[$ 
+            
+            \item Pour tout $x\geq a$ la fonction $t\mapsto f(t)e^{-xt}$ est intégrable (étant un élément de $\S$)
+            
+            \item Soit $(x,t)\in [a,+\infty[\times]0,+\infty[$ on a : 
+            \[ \big| (-t)^pf(t)e^{-xt} \big|\leq t^p|f(t)|e^{-at} \]
+            On prend la fonction $\phi : t \mapsto  t^p|f(t)|e^{-at} $ cette fonction est bien intégrable donc on vérifie bien l'hypothèse de domination.
+        \end{itemize}
+        On en déduit par théorème d'inversion dérivé-intégrale  que sur chaque intervalle $\left([a,+\infty[\right)_{a>0}$ la fonction $\L(f)$ est de classe $\class^{+\infty}$, et puis par localité de la propriété "classe" il en découle que : la fonction $\L(f)$ est de classe $\class^{+\infty}$ sur $]0,+\infty[$ ainsi ses dérivées pour tout $x>0$ : 
+        \cc{ 
+             \L(f)^{(p)}(x) = \frac{\partial^{p}}{\partial^{p} x} \left(\int_0^{+\infty} f(t)e^{-xt}dt \right) = \int_0^{+\infty} (-t)^pf(t)e^{-xt}dt  
+            }
+        Donc :
+        \[ 
+            \L(f)^{(p)}(x) =\L(g_p)(x)
+        \]
+            avec $g_p : t \mapsto (-t)^pf(t)$
+        
+        
+        
+    \end{enumerate}
+    
+\item  Soit $f$ une fonction  bornée sur $\RR^{+}$ et $p\in\N^*$
+\begin{enumerate}
+    \item  \label{H zero} \textit{supposons que $f$ est de classe $\class^1$ sur  $\RR^{+}$ et que $f'\in\S$, puis montrons que pour tout $x \in \RR^{*+}$ :
+    $$
+    \L\left(f^{\prime}\right)(x)=x \L(f)(x)-f(0)
+    $$}
+    soit $x>0$ et $X>0$ les deux fonctions $t\mapsto f(t)$ et $t \mapsto e^{-xt}$ sont de classe $\class^1$, donc on peut intégrer par parties : 
+            \[  \int_0^{X} f'(t)e^{-xt}dt =  \big[ f(X)e^{-Xx} - f(0) \big]  +  \int_0^{X} xf(t)e^{-xt}dt
+            \]
+	Puisque le chacune des termes ont une limite finie : \\ $\big[ f(X)e^{-Xx} - f(0) \big] $ (la fonction $f$ est bornée) \\ et $ \int_0^{X} xf(t)e^{-xt}dt$ (la fonction $f$ est un élément de $\S$) \\ alors, on peut faire un passage à la limite : $X \rightarrow +\infty$ on obtient la formule suivante : 
+	      \[  \int_0^{+\infty} f'(t)e^{-xt}dt =   \int_0^{+\infty} xf(t)e^{-xt}dt - f(0)
+            \]
+        Puisque $f'\in\S$ on peut lui associer la fonction $\L(f)$, Ce qui permet d'écrire : \cc{\L(f')(x) = f(0) +x\L(f)(x) \text{ \ \ pour tout } x>0}
+        
+    \item  
+\textit{    Énonçons l'assertion qu'on va montrer par récurrence : }
+    \[ \mathcal{H}_p : \textbf{Si :} 
+    \begin{cases}
+        \text{$f$ est de classe $\class^{p}$ sur  $\RR^{+}$} \\
+        \text{$f^{(p)}\in\S$} \\
+        \text{  $\forall k\in\{ 0, \cdots ,p-1\} \textbf{\ \ } f^{(k)} $ est bornée}  
+    \end{cases} \] \[  
+    \textbf{Alors : } 
+    \begin{cases}
+        \text{$\forall x \in \RR^{*+}$ et $\forall k\in\{ 1, \cdots ,p-1\} $ } : \\ \\
+     $$
+    \L\left(f^{(k)}\right)(x)=x^k \L(f)(x)-\sum_{i=1}^kx^{i-1} f^{(k-i)}(0)
+    $$
+    \end{cases} 
+    \]
+    \begin{itemize}
+        \item Pour $p=0$ c'est déja vérifié \ref{H zero}
+        \item supp que $\mathcal{H}_p$ est vérifié pour un certain $p\in\N$ et montrons que : $\mathcal{H}_{p+1}$ l'est aussi : \\
+        En effet, supposons que : 
+        \[
+    \begin{cases}
+        \text{$f$ est de classe $\class^{p+1}$ sur  $\RR^{+}$} \\
+        \text{$f^{(p+1)}\in\S$} \\
+        \text{  $\forall k\in\{ 0, \cdots ,p\} \textbf{\ \ } f^{(k)} $ est bornée} \\ 
+    \end{cases}
+        \]
+    Puisque cela entraîne que $f$ vérifie les hypothèses de $H_p$ alors par conséquence : 
+       \[ \begin{cases}
+       \text{ $\forall x \in \RR^{*+}$ et $\forall k\in\{ 1, \cdots ,p-1\} $  : }\\ \\
+     $$
+    \L\left(f^{(k)}\right)(x)=x^k \L(f)(x)-\sum_{i=1}^kx^{i-1} f^{(k-i)}(0)
+    $$
+    \end{cases}  \]
+    Reste à montrer le cas $k=p+1$ , pour ce fait on prend $\psi=f^{(p)}$ et on applique $H_0$.. comme :
+            \[
+    \begin{cases}
+        \text{$\psi$ est de classe $\class^{1}$ sur $\RR^{+}$} \\ \text{(car $\psi=f^{(p)}$ est dérivable et $\psi'=f^{(p+1)}$ est continue sur  $\RR^{+}$) } \\
+        \text{$\psi=f^{(p+1)}\in\S$} \\
+        \text{  $\psi=f^{(p)}$ est bornée} \\ 
+    \end{cases}
+        \]
+        Alors : 
+        \begin{align*}
+            \L(\psi')(x) & = x\L(\psi)(x) - \psi(0) \\
+            \L(f^{(p+1)})(x) & = x\L(f^{(p)})(x) - f^{(p)}(0)\\
+            \L\left(f^{(p+1)}\right)(x) &=x\left(x^p \L(f)(x)-\sum_{i=1}^{p}x^{i-1} f^{(p-i)}(0)\right)-f^{(p)}(0) \\
+             &= x^{p+1} \L(f)(x)-\sum_{i=1}^{p+1}x^{i-1} f^{(p+1-i)}(0)
+        \end{align*} 
+        Ce qui montre le résultat :
+        \cc{  \L\left(f^{(p+1)}\right)(x) = x^{p+1} \L(f)(x)-\sum_{i=1}^{p+1}x^{i-1} f^{(p+1-i)}(0) }
+    \end{itemize}
+\end{enumerate}
+       \end{enumerate}     
+       
+        \item \textbf{Étude d'injectivité :}
+        \begin{enumerate}
+            \item Soit $h$ une fonction réelle continue sur $[0,1]$ telle que, pour tout entier $m \in \NN, \int_0^1 t^m h(t) d t=0$.
+            \begin{enumerate}
+                \item \textit{ soit un polynôme $P$ à coefficients réels, montrons que : $$ \int_0^1 P(t) h(t) d t=0$$} \\
+                En effet, puisque tout polynôme est combinaison linéaire de monômes, on a pour tout polynôme $P$ :  
+                    $$ \int_0^1 P(t) h(t) d t=0$$
+                    
+                \item \textit{Déduisons que $h$ est la fonction nulle.} \\D'après le théorème de Weierstrass, il existe une suite de polynômes $\left(P_n\right)_{n \in \NN}$ qui converge uniformément vers $h$ sur $[0,1]$. 
+                \\ On  applique le théorème d'inversion limite-intégrale : 
+                \begin{itemize}
+                
+                    \item La suite des fonctions $(P_n\times h)_{n\geq 0} \xrightarrow{CVS}  h^2 $
+                    
+                    \item Pour tout $n\in\N$ la fonction $x\mapsto P_n(x)h(x)$ est intégrable sur $[0,1]$ d'intégrale égale à : 
+                    \[ \int_0^1 P_n(x)h(x)dx = 0\]
+                    
+                    \item La suite des fonctions $(P_n\times h)_{n\geq 0} \xrightarrow{CVU}  h^2 $
+                    
+                \end{itemize}
+                
+                Donc on déduit que : 
+                \cc{
+               \int_0^1 h^2(x)dx = \int_0^1 \lim_n P_n(x)h(x)dx = \lim_n \int_0^1 P_n(x)h(x)dx = 0
+                }
+                ce qui montre que  $\int_0^1(h(x))^2 \mathrm{~d} x=0, \mathrm{~d}^{\prime}$ où, puisque $h$ est continue sur $[0,1], h=0$.
+                
+                
+                
+            \end{enumerate}
+        \item  Soit $f$ un élément de $\S$, posons pour tout $t \geq 0, h(t)=\int_0^t e^{- u} f(u) d u$.
+            \begin{enumerate}
+                \item  \textit{Montrons que pour tout entier $k>0$ :
+                \[ \L(f)(1+k)= k \L\left(h\right)(k) \] \\ }
+                \item Soit $x \in] 0,+\infty[$ et $k>0$, alors :
+                $$
+                \begin{aligned}
+                \L(f)(1+k) &=\int_0^{+\infty} e^{-(1+k) t} f(t) \mathrm{d} t \\
+                &=\int_0^{+\infty} e^{- t} f(t) e^{- k t} \mathrm{~d} t \\
+                &=\int_0^{+\infty} h^{\prime}(t) e^{- k t} \mathrm{~d} t \\
+                &=\left[e^{- k t} h(t)\right]_0^{+\infty} +k \int_0^{+\infty} h(t) e^{- k t} \mathrm{~d} t \\
+                &= k \L\left(h\right)(k)
+                \end{aligned}
+                $$
+                car $\lim _{t \rightarrow+\infty} e^{- k t} h(t)=0\left(h\right.$ est bornée sur $] 0,+\infty[.)$
+                
+                \item\textit{ supposons que pour tout entier $k>0, \L(f)(1+k)=0$}. \\
+                
+            \begin{enumerate}
+                \item\textit{ Montrons que pour tout entier $k>0$,l'intégrale $\int_0^1 u^k h\left(\ln u\right) d u$ converge et il vaut $0$.}
+                \\ Soit $k \in \NN^*$. On a :
+                \begin{align*}
+                   0 & =\L(f)(1+(k+1)) \\
+                     & =(k+1) \int_0^{+\infty} e^{-(k+1)  t} h(t) \mathrm{d} t \\
+                      & \underset{u=e^{-t}}{=} (k+1) \int_0^1 u^k g\left(-\ln(u)\right) \mathrm{d} u,
+                \end{align*}
+
+                D'où
+                \cc{
+                \int_0^1 u^k h\left(-\ln(u)\right) \mathrm{d} u=0
+                }
+                \item \textit{Déduisons que $h$ est la fonction nulle : \\ }
+                
+                Soit $g$ l'application définie sur $[0,1]$ par :
+                $$
+                g(u)= \begin{cases}h\left(-\ln(u)\right) & \text { si } u \in] 0,1] \\ \int_0^{+\infty} e^{-v} f(v) \mathrm{d} v & \text { si } u=0 .\end{cases}
+                $$
+                est continue sur $[0,1]$ et donc $\forall n \in \NN, \int_0^1 u^n g(u) \mathrm{d} u=0$ et d'après le théorème de Weierstrass $g$ est nulle sur $[0,1]$ et donc $h$ est nulle sur $] 0,+\infty[$.
+            \end{enumerate}
+        \end{enumerate}
+        \item  \textit{Montrerons l'injectivité de l'application $\L$ définie sur $\S$.}\\
+        D'abord l'application $\L$ est lineaire donc il suffit de montrer que son noyau est réduit à zéro. 
+        \\ Soit $f\in \textbf{Ker}(\L)$ donc : $\L(f)=0$ en particulier $\L(f)(1+k)=0$ pour tout $k \in \NN$. Comme dans les questions précédentes $h=0$ et donc $\forall t \geq 0,0=h^{\prime}(t)=e^{- t} f(t)$, on conclut que $f=0$ sur $[0,+\infty[$.
+
+        \end{enumerate}
+\end{enumerate}
+}
+
+
+\newpage
+
+\section{Transformé de FOURIER  }
+\exop{Transformé de FOURIER }{
+On considére l'ensemble suivante :  \\
+\begin{itemize}
+\item[-] ${\B}$ le $\C$-espace vectoriel des fonctions $f\ :\ \RR\mapsto \C$ continues sur $\RR$ telles que $\forall k\in \N$, la fonction $x\mapsto x^kf(x)$ est bornée sur $\RR$.
+\end{itemize}\  \\
+Pour toute fonction $f\in \B$, on considère la fonction ${\F}(f)$ ({\it transformée de Fourier de $f$}) définie par
+\[\forall \xi,\ {\F}(f)(\xi)=\int_{-\infty}^{+\infty}f(t)e^{-2\pi it\xi}dt\]
+
+\begin{enumerate}
+    \item \textbf{Étude de fonction : } \\ 
+    \begin{enumerate}
+        \item Soit $f\in \B$. montrer que la fonction ${\F}(f)$ est continue sur $\RR$.
+        \item Soit $f\in {\B}$.
+            \begin{enumerate}
+            \item Justifier que, pour tout entier naturel $n$, la fonction $x\mapsto x^nf(x)$ est intégrable sur $\RR$.
+            \item Démontrer que la fonction ${\F}(f)$ est de classe $\class^\infty$ sur $\RR$ et que
+            \[\forall n\in \N,\ \forall \xi\in \RR,\ ({\F}(f))^n(\xi)=(-2i\pi)^n\int_{-\infty}^{+\infty}t^nf(t)e^{-2i\pi \xi t}dt\]
+            \end{enumerate}
+
+    \end{enumerate}
+    
+    \item \textbf{Un exemple : \\}
+        On considère la fonction $\theta\ :\ \RR\mapsto \C$ définie par $\theta(x)=\exp(-\pi x^2)$, pour $x\in \RR$.
+        \begin{enumerate}
+        \item justifier que $\theta\in \B$ et que ${\F}(\theta)$ est solution de l'équation différentielle
+        \[\forall \xi\in \RR,\ y'(\xi)=-2\pi\xi y(\xi)\]
+        \item Établir que ${\F}(\theta)=\theta$.\\
+        {\it On admettra que  $\displaystyle \int_{-\infty}^{+\infty}\theta(x)\;dx=1$.}
+        \end{enumerate}
+    
+    
+    \item \textbf{Formule d'inversion de Fourier : \\}
+    Soit $f\in \B$. on suppose que ${\F}(f)$ est intégrable sur $\RR$. Pour tout entier naturel non nul $n$, on pose : 
+        \[I_n=\int_{-\infty}^{+\infty}{\F}(f)(\xi)\theta\left (\frac{\xi}{n}\right )d\xi\qquad J_n=\int_{-\infty}^{+\infty}f\left(\frac{t}{n}\right ){\F}(\theta)(t)dt\]
+        \begin{enumerate}
+        \item Montrer que $\lim\limits_{n\mapsto +\infty}I_n=\int_{-\infty}^{+\infty}{\F}(f)(\xi)\;d\xi$.
+        \item Calculer $\lim\limits_{n\mapsto +\infty}J_n$.
+        \item Prouver que $\forall n\in \N^*,\ I_n=J_n$.\\
+        {\it On admettra la formule de Fubini : 
+        \[\int_{-\infty}^{+\infty}\left (\int_{-\infty}^{+\infty}f(t)\theta\left (\frac{\xi}{n}\right )e^{-2i\pi \xi t}d\xi\right )dt=\int_{-\infty}^{+\infty}\left (\int_{-\infty}^{+\infty}f(t)\theta\left (\frac{\xi}{n}\right )e^{-2i\pi \xi t}dt\right )d\xi\]
+        }
+        \item Démontrer que $f(0)=\int_{-\infty}^{+\infty}{\F}(f)(\xi)\;d\xi$.\\
+        En déduire, en utilisant la fonction $h\ :\ t\mapsto f(x+t)$, que
+        \[\forall x\in \RR,\ f(x)=\int_{-\infty}^{+\infty}{\F}(f)(\xi)e^{2i\pi x\xi}\;d\xi\]
+
+        \end{enumerate}
+\end{enumerate}
+}{
+\begin{enumerate}
+
+ \item \textbf{Étude de fonction : } \\ 
+    \begin{enumerate}
+        \item \textit{Soit $f\in \B$. montrons que la fonction ${\F}(f)$ est continue sur $\RR$.} \\
+         Il s'agit d'utiliser le théorème de continuité des intégrales à paramètres sur chaque intervalle $[-a,a]$ avec $a>0$.
+         \\  Soit donc $f\in \B$ et $a>0$.
+        \begin{enumerate}
+        \item $\forall t\in \RR,\ x\mapsto f(t)e^{-2i\pi xt}$ est continue sur $[-a,a]$.
+        \item $\forall x\in [-a,a],\ t\mapsto f(t)e^{-2i\pi xt}$ est continue par morceaux sur $\RR$.
+        \item $\forall x\in [-a,a],\ \forall t\in \RR,\ $ $$|f(t)e^{-2i\pi xt}|=|f(t)|$$ Le majorant est indépendant de $x$ et intégrable sur $\RR$.
+        \end{enumerate}
+        Le théorème s'applique et donne ${\F}(f)$ est continue sur chaque segment $[-a,a]$ et par conséquence continue sur $\RR$ tout entier.
+
+        
+        
+        \item \textit{Soit $f\in {\B}$.}
+            \begin{enumerate}
+            \item \textit{Soit un entier naturel $n$, montrons que la fonction $x\mapsto x^nf(x)$ est intégrable sur $\RR$.}
+            
+            
+            
+            
+            \item \textit{Démontrons que la fonction ${\F}(f)$ est de classe $\class^\infty$ sur $\RR$ et calculons ses dérivées successives :}
+
+         On veut maintenant utiliser le théorème de régularité des intégrales à paramètres sur tout segment $[-a,a]$ avec $a>0$. \\
+         Soit $a>0$ :
+        \begin{enumerate}
+        
+        \item $\forall n\in \N^*,\ \forall t\in \RR,\ x\mapsto f(t)e^{-2i\pi xt}$ est de classe $\class^\infty$ sur $[-a,a]$ de dérivée $n$-ième $x\mapsto (-2i\pi)^nt^nf(t)e^{-2i\pi xt}$.
+        
+        \item $\forall x\in \RR,\ t\mapsto f(t)e^{-2i\pi xt}$ et $x\mapsto (-2i\pi)^nt^nf(t)e^{-2i\pi xt}$ sont continues par morceaux sur $\RR$.
+    
+        \item $\forall x\in \RR,\ t\mapsto f(t)e^{-2i\pi xt}$ est intégrable sur $\RR$.
+        
+        \item $\forall n\in \N,\ \forall x\in [-a,a],\ \forall t\in \RR,\ $ 
+        $$ |(-2i\pi)^nt^nf(t)e^{-2i\pi xt}|=(2\pi)^n|t^nf(t)|$$
+        Le majorant est indépendant de $x$ et intégrable sur $\RR$.        \end{enumerate}
+        
+        Le théorème s'applique et donne ${\F}(f)\in C^\infty([-a,a])$ pour tout $a>0$ et alors : ${\F}(f)\in C^\infty(\R)$ avec :
+        \cc{\forall n\in \N,\ \forall x\in \RR,\ ({\F}(f))^{(n)}(\xi)=(-2i\pi)^n\int_{-\infty}^{+\infty}t^nf(t)e^{-2i\pi \xi t}\;dt}
+        
+
+
+            \end{enumerate}
+    \end{enumerate}
+    
+    \item \textbf{Un exemple : \\}
+        \begin{enumerate}
+        \item \textit{Montrons que $\theta\in \B$ \\ }
+        
+         $\theta$ est continue et $\theta(x)$ est négligeable devant toute puissance de $x$ au voisinage des infinis par croissances comparées. En particulier pour tout $n\in \N$, $x\mapsto x^n\theta(x)$ est continue et de limite finie (et m\^eme nulle) en $\pm \infty$ et donc bornée.  Ainsi
+                \[\theta\in \B\]
+        
+        \textit{Montrons que ${\F}(\theta)$ est solution de l'équation différentielle
+        \[\forall \xi\in \RR,\ y'(\xi)=-2\pi\xi y(\xi)\]} \\
+        
+        La question précédente donne la dérivabilité de $y={\F}(\theta)$ avec
+        \[\forall x\in \RR,\ y'(x)=(-2i\pi)\int_{-\infty}^{+\infty}te^{-\pi t^2}e^{-2i\pi x t}\;dt\]
+        On a alors
+        \[\forall x\in \RR,\ y'(x)+2\pi x y(x)=i\int_{-\infty}^{+\infty}(-2\pi t-2i\pi x)e^{-\pi t^2-2i\pi x t}\;dt\]
+        La fonction (de $t$) sous l'intégrale est la dérivée de $t\mapsto e^{-\pi t^2-2i\pi x t}$ dont la limite en $\pm \infty$ est nulle (son module vaut $\theta(t)$). L'intégrale est donc nulle et
+        \cc{\forall x\in \RR,\ y'(x)+2\pi x y(x)=0}
+        
+        \item\textit{ Déduisons que ${\F}(\theta)=\theta$.\\} 
+
+        On résout cette équation différentielle linéaire d'ordre $1$. Il existe une constante $c$ telle que
+        \[\forall x\in \RR,\ y(x)=ce^{-\pi x^2}\]
+        Avec l'intégrale donnée dans l'énoncé, on sait que $y(0)=1$ et donc que $c=1$. On a ainsi
+        \[\forall x\in \RR,\ y(x)=e^{-\pi x^2}\]
+        ce qui s'écrit, en revenant aux notations de l'énoncé,
+        \cc{{\F}(\theta)=\theta}
+
+
+        \end{enumerate}
+    
+    
+    
+    
+    \item \textbf{Formule d'inversion : \\ }
+    \begin{enumerate}
+    \item \textit{Montrons que $\lim\limits_{n\mapsto +\infty}I_n=\int_{-\infty}^{+\infty}{\F}(f)(\xi)\;d\xi$.}
+    
+    On veut utiliser le théorème de convergence dominée sur $\RR$ avec la fonction
+    \[u_n\ :\ x\mapsto {\F}(f)(x)\theta\left (\frac{x}{n}\right )\]
+    
+    \begin{enumerate}
+    \item Pour tout $n$, $u_n$ est continue par morceaux sur $\RR$.
+    \item Comme $\theta$ est continue  en $0$, $(u_n)$ converge simplement sur $\RR$ vers ${\F}(f)$ ($\theta(0)=1$) et cette limite simple est continue par morceaux sur $\RR$.
+    \item Pour tout $n$, $|u_n|\leq |{\F}(f)|$ ($|\theta|$ est majorée par $1$) et le majorant est intégrable sur $\RR$.
+    \end{enumerate}
+    Le théorème s'applique et indique que
+    \cc{\lim_{n\mapsto +\infty}I_n=\int_{-\infty}^{+\infty}{\F}(f)(x)\;dx}
+    
+    
+    \item \textit{Calculons $\lim\limits_{n\mapsto +\infty}J_n$.}
+    
+    On veut utiliser le théorème de convergence dominée sur $\RR$ avec la fonction
+    \[v_n\ :\ t\mapsto {\F}(\theta)(t)f\left (\frac{t}{n}\right )=\theta(t)f\left (\frac{t}{n}\right )\]
+    \begin{enumerate}
+    \item Pour tout $n$, $v_n$ est continue par morceaux sur $\RR$.
+    \item Comme $f$ est continue en $0$, $(v_n)$ converge simplement sur $\RR$ vers $f(0)\theta$ et cette limite simple est continue par morceaux sur $\RR$.
+    \item $f$ étant dans $\B$, elle est bornée sur $\RR$ ($f(t)=t^0f(t)$). \\ Pour tout $n$, $|v_n|\leq \|f\|_\infty \theta$ et le majorant est intégrable sur $\RR$.
+    \end{enumerate}    
+    Le théorème s'applique et indique que
+    \cc{\lim_{n\mapsto +\infty}J_n=f(0)\int_{-\infty}^{+\infty}\theta(t)\;dt=f(0)}
+        
+    
+    
+    \item \textit{Montrons que $\forall n\in \N^*,\ I_n=J_n$.\\}
+    En revenant à la définition de ${\F}(f)$, on a
+    \[I_n=\int_{-\infty}^{+\infty}\left (\int_{-\infty}^{+\infty}f(t)e^{-2i\pi x t}\theta\left (\frac{x}{n}\right )\;dt\right )\;dx\]
+    La formule de Fubini donne alors
+    \[I_n=\int_{-\infty}^{+\infty}\left (\int_{-\infty}^{+\infty}f(t)e^{-2i\pi x t}\theta\left (\frac{x}{n}\right )\;dx\right )\;dt\]
+    Dans l'intégrale interne, on effectue le changement de variable linéaire $u=x/n$ pour obtenir
+    \[I_n=n\int_{-\infty}^{+\infty}\left (\int_{-\infty}^{+\infty}f(t)e^{-2in\pi u t}\theta(u)\;du\right )\;dt\]
+    Dans l'intégrale extérieure, on effectue le changement de variable linéaire $v=nt$ pour obtenir
+    \[I_n=\int_{-\infty}^{+\infty}\left (\int_{-\infty}^{+\infty}f\left (\frac{t}{n}\right )e^{-2i\pi u t}\theta(u)\;du\right )\;dt\]
+    $f(t/n)$ ne dépendant pas de $u$, on peut le sortir par linéarité du passage à l'intégrale. On reconna\^\i t alors ${\F}(\theta)(u)$ et on conclut que
+    \cc{I_n=J_n}    
+    
+    \item \textit{Démontrons que $f(0)=\int_{-\infty}^{+\infty}{\F}(f)(\xi)\;d\xi$.\\}
+    
+    Il suffit de combiner les trois questions qui précèdent et l'unicité de la limite pour conclure que
+\cc{f(0)=\int_{-\infty}^{+\infty}{\F}(f)(x)\;dx}
+    
+    
+    
+    \textit{Déduisons :
+    \[\forall x\in \RR,\ f(x)=\int_{-\infty}^{+\infty}{\F}(f)(\xi)e^{2i\pi x\xi}\;d\xi\]}
+    
+    Fixons $x\in \RR$ et posons $h\ : \ t\mapsto f(x+t)$. $h$ est continue, comme $f$. De plus, pour $|t|$ assez grand,
+    \[t^nh(t)=\frac{t^n}{(x+t)^n}(x+t)^nf(x+t)\mathop{\sim}_{t\mapsto \pm \infty}(x+t)^nf(x+t)\]
+    ce qui montre que $t\mapsto t^nh(t)$ est bornée, comme $f$, aux voisinages des infinis et donc sur $\RR$ (puisque continue et donc bornée sur tout segment). On peut alors appliquer ce qui précède à $h$ et affirmer que
+    \[f(x)=h(0)=\int_{-\infty}^{+\infty}{\F}(h)(y)\;dy\]
+    On remarque alors, avec le changement de variable affine $u=x+t$, que
+    \[ \hspace{-0.3cm} {\F}(h)(y)=\int_{-\infty}^{+\infty}f(x+t)e^{-2i\pi t y}dt=e^{2i\pi yx}\int_{-\infty}^{+\infty}f(u)e^{-2i\pi u y}du=e^{2i\pi yx}{\F}(f)(y)\]
+    On a ainsi montré que
+    \cc{f(x)=\int_{-\infty}^{+\infty}e^{2i\pi yx}{\F}(f)(y)\;dy}
+        
+    \end{enumerate}
+
+\end{enumerate}
+}
+
+\section{Exercices }
+\exop{Plus sur la fonction Gamma}
+{ Dans cette exercice la fonction $\Gamma$ ici est le même dans les exemples précédents. \\
+On rappelle que : pour $x\in\RR$ $x_+ := \max(0, x)$ est la partie positive de $x$.
+\begin{enumerate}
+    \item Montrer que pour tout $x>0$ : 
+    \[ \Gamma(x+1) = x\Gamma(x)\]
+    \item Soit $x>0$, considérons la fonction :
+    \[ f_x : s\in\RR\mapsto \left(1 + \frac{s}{\sqrt{x}}\right)_+^{x} e^{-\sqrt{x}s}\]
+    Montrer que : 
+    \[ \Gamma(x+1) = x^{x+\frac{1}{2}}e^{-x} \int_{-\infty}^{\infty} f_x(s) \, \mathrm{d}s \]
+    \item En déduire : 
+    \[ \Gamma(x+1) = x\Gamma(x) \sim \sqrt{2\pi} \, x^{x+\frac{1}{2}}e^{-x} \]
+    \textit{On admet que : $\displaystyle \int_{-\infty}^{\infty} e^{-\frac{s^2}{2}} \, \mathrm{d}s
+= \sqrt{2\pi} $}
+\end{enumerate}
+}{
+\begin{enumerate}
+    \item Il suffit de faire une intégration par parties, soit $x>0$ et soit $A>0$ : 
+    \begin{align*}
+        \Gamma(x+1) &= \int_0^{A} t^{x}e^{-t}dt  \\
+                    &= \left[ -t^xe^{-t} \right]_0^A + x \int_0^{A} t^{x-1}e^{-t}dt \\
+                    &= -A^xe^{-A} +x\int_0^{A} t^{x-1}e^{-t}dt
+    \end{align*}
+    Par passage à la limite $A\rightarrow +\infty$ on déduit : 
+    \cc{ \Gamma(x+1) = x\Gamma(x) }
+    
+    \item Soit $x>0$ :
+    \begin{align*}
+    \Gamma(x+1) &= \int_0^{+\infty} t^{x}e^{-t}dt \\
+            &\underset{t = x + \sqrt{x}s}{=} \int_{-\sqrt{x}}^{+\infty} \left(x +\sqrt{x}s\right)^{x} e^{-(x + \sqrt{x}s)} \sqrt{x}\, \mathrm{d}s \\
+            &= x^{x+\frac{1}{2}}e^{-x} \int_{-\sqrt{x}}^{+\infty} \left(1 + \frac{s}{\sqrt{x}}\right)^{x} e^{-\sqrt{x}s} \, \mathrm{d}s \\
+            &= x^{x+\frac{1}{2}}e^{-x} \int_{-\infty}^{+\infty} f_x(s) \, \mathrm{d}s
+    \end{align*}
+    Ce qui montre le résultat :
+    \cc{ \Gamma(x+1) =  x^{x+\frac{1}{2}}e^{-x} \int_{-\infty}^{+\infty} f_x(s) \, \mathrm{d}s}
+    
+    \item Il suffit en fait de démontrer que : 
+    \[ \lim_{x\rightarrow +\infty} \int_{-\infty}^{+\infty} f_x(s)ds = \sqrt{2\pi}\]
+    
+    \begin{itemize}
+        \item Soit $s\in\RR$ cherchons la limite de  $x\mapsto f_x(s) = \left(1 + \frac{s}{\sqrt{x}}\right)_+^{x} e^{-\sqrt{x}s} $
+        \\ 
+        Pour $x \geq |s|$ on a : $\left| \frac{s}{x} \right| \leq 1$ alors : $\left(1 + \frac{s}{\sqrt{x}}\right)_+ =\left(1 + \frac{s}{\sqrt{x}}\right)$
+        \\ Puis :
+        \begin{align*}
+    f_x(s)  &= \left(1 + \frac{s}{\sqrt{x}}\right)^{x} e^{-\sqrt{x}s} \\ 
+            &= \exp\big[x\ln\left(1 + \frac{s}{\sqrt{x}}\right) - \sqrt{x}s \big] \\ 
+            &= \exp\big[x\left(\frac{s}{\sqrt{x}}-\frac{1}{2}\frac{s^2}{x}+o\left( \frac{1}{x }\right)\right)  - \sqrt{x}s  \big] \\ 
+            &= \exp\big[-\frac{s^2}{2}+o\left( 1\right)   \big] \\ 
+            &\underset{x\rightarrow+\infty}{\sim} e^{-\frac{s^2}{2}}
+        \end{align*}
+        Cela montre que : $x\mapsto f_x(s) = \left(1 + \frac{s}{\sqrt{x}}\right)_+^{x} e^{-\sqrt{x}s} $ a une limite finie et il vaut : $e^{-\frac{s^2}{2}}$
+        
+        \item Pour tout $x>0$ : la fonction $f_x$ est continue par morceaux sur $\RR$.
+        
+        \item Soit $(x,s)\in ]0,+\infty[\times\RR$ puisque $f_x(s)$ dépend d'est ce $s<-\sqrt{x}$ ou \\ $s<-\sqrt{x}$, on va faire deux inégalité puis on fait la somme. 
+        \begin{enumerate}
+            \item \textbf{cas : $s<-\sqrt{x}$ \\} 
+            Dans ce cas $f_x(s)=0\leq 0$
+            \item \textbf{cas : $s>-\sqrt{x}$ \\}
+            Il en découle de cela que : $x>s^2$ puis : 
+            \begin{align*}
+    f_x(s)  &= \exp\big[x\ln\left(1 + \frac{s}{\sqrt{x}}\right) - \sqrt{x}s \big] \\ 
+            &\leq \exp\big[x\left(\frac{s}{\sqrt{x}}-\frac{1}{2}\frac{s^2}{x}\right)  - \sqrt{x}s  \big] \\ 
+            &\leq \exp\big[-\frac{s^2}{2} \big] \\ 
+            &\leq e^{-\frac{s^2}{2}}
+        \end{align*}
+        \end{enumerate}
+        Ainsi on regroupons les deux cas :
+        \[ 0\leq f_x(s) \leq e^{-\frac{s^2}{2}} \] 
+        Alors, on verifie bien l'hypothèse de domination.
+    \end{itemize}
+    Il en decoule de théorème d'inversion limite-intégrale  \ref{INV-LI-dom} que :
+    \cc{ \lim_{x\mapsto\infty}\int_{-\infty}^{\infty} f_x(s) \, \mathrm{d}s
+= \int_{-\infty}^{\infty} \lim_{x\mapsto\infty}f_x(s) \, \mathrm{d}s
+= \int_{-\infty}^{\infty} e^{-\frac{s^2}{2}} \, \mathrm{d}s
+= \sqrt{2\pi} }
+    Puis :
+    \cc{\Gamma(x+1) = x\Gamma(x) \sim \sqrt{2\pi} \, x^{x+\frac{1}{2}}e^{-x} }
+\end{enumerate}
+}
+
+
+\exop{Extension de la fonction Gamma -- \textit{Extrait CNC'2007} \label{exo:GammaC}}
+{
+Considérons maintenant la même fonction Gamma mais dans le plan complexe (sous condition d’intégrabilité):
+\[
+\Gamma(z) = \int_{0}^{+\infty} t^{z-1}e^{-t}dt
+\]
+\begin{enumerate}
+\item
+À quelle condition, nécessaire et suffisante, sur le complexe
+$z$ la fonction $\ t\longmapsto t^{z-1}e^{-t}\ $ est-elle
+intégrable sur l'intervalle $]0,+\infty[$?
+
+\item
+On pose \quad $\displaystyle\Gamma(z)=\int_0^{+\infty}t^{z-1}e^{-t}\
+dt,\quad z\in\CC\ {\rm et}\ \Re(z)>0.$ 
+\begin{enumerate}
+\item
+Soit $z$ un complexe  tel que $\Re(z)>0$ ; montrer que
+$$\Gamma(z+1)=z\Gamma(z).$$
+\item
+En déduire, pour tout réel $\alpha>-1$ et tout $p\in\NN^*$,
+l'identité
+$$\Gamma(\alpha+p+1)=(\alpha+p)(\alpha+p-1)\ldots(\alpha+1)\Gamma(\alpha+1).$$
+
+\item
+Montrer que pour tout $x>0,\ \Gamma(x)>0$.
+
+\item
+Calculer $\Gamma(1)$ et en déduire la valeur de $\Gamma(n+1)$
+pour tout entier naturel $n$.\end{enumerate}
+\item
+\begin{enumerate}
+\item
+Soit $z$ un complexe  tel que $\Re(z)>0$ ; montrer
+soigneusement que
+$$\Gamma(z)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{n!}\frac{1}{n+z}+\int_1^{+\infty}t^{z-1}e^{-t}\ dt.$$
+\item
+Montrer que la fonction $\ \displaystyle z\longmapsto
+\sum_{n=0}^{+\infty}\frac{(-1)^n}{n!}\frac{1}{n+z}$ est définie
+sur la partie $\CC\setminus\{0,-1,-2,\ldots\ \}$ du plan complexe
+et qu'elle y est continue.
+
+{\it La formule précédente permet de prolonger la fonction
+$\Gamma$ à $\ \CC\setminus\{0,-1,-2,\ldots\ \}$ .}
+% \item  Montre que pour $z\in  \CC\setminus\{0,-1,-2,\ldots\ \}$ on a : 
+% \[
+% \Gamma(z+1) = z \Gamma(z)
+% \]
+\end{enumerate}
+\item
+Soient $a$ et $b$ deux réels avec $0<a<b$, et soit $t>0$.
+\begin{enumerate}
+\item
+Déterminer max$(t^{a-1},t^{b-1})$ selon les valeurs de $t$.
+\item
+Montrer que $$\forall x\in[a,b],\quad 0\leq t^{x-1}\leq{\rm
+max}(t^{a-1},t^{b-1}).$$
+\item
+En déduire que la fonction $\Gamma$ est de classe $\class^1$ sur
+$\RR^*_+$ et donner l'expression de sa dérivée sous forme
+intégrale.
+\item
+Donner un équivalent de la fonction $\Gamma$ au voisinage de $0$.
+\end{enumerate}
+\end{enumerate}
+}
+{
+\begin{enumerate}
+\item  L’application $t\mapsto t^{x-1}e^{-t}=e^{-t}e^{(z-1)\ln (t)}$ est
+continue sur $]0,+\infty [,$ et que pour tout $t>0,$ $\left|
+e^{-t}t^{z-1}\right| =e^{-t}t^{\Re(z)-1},$ donc par l’exercice précédente l'application $t\mapsto t^{z-1}e^{-t}$ est
+intégrable sur $]0,+\infty [$ si et seulement si $\Re(z)>0$ .
+
+\item  Quelques formules utiles:
+\begin{enumerate}
+\item  Les applications $t\mapsto t^{z}$ et $t\mapsto e^{-t}$ sont de classes $\class^{1}$ sur $]0,+\infty [$. De plus : 
+$$\forall z\in \CC \tq \Re(z)>0 \quad : \left| e^{-t}t^{z}\right| =e^{-t}t^{\Re(z)-1}%
+\underset{t\rightarrow+\infty }{\rightarrow}0.$$
+Donc on peut appliquer l'intégration par parties  à l'intégrale  : $\int\limits_{0}^{+\infty }t^{z}e^{-z-1}dt$, Soit $z\in \CC$ tel que $\Re(z)>0,$ on a: 
+\begin{align*}
+\Gamma (z+1) &=  \int\limits_{0}^{+\infty }t^{z}e^{-z-1}dt \\
+             &=\left[-e^{-t}t^{z}\right] _{t=0}^{+\infty}+z\int\limits_{0}^{+\infty}t^{z-1}e^{-t}dt \\
+             &=z\Gamma (z)
+\end{align*}
+Ce qui montre la formule :
+\cc{\forall z\in \CC \tq \Re(z)>0 \quad :   \Gamma(z+1) = z\Gamma (z) }
+
+\item  Soit $z\in \CC$ tel que $\Re(z)>0$ et $p\in \NN^{*},$ on
+a: 
+\begin{align*}
+ \Gamma (z+p)   &= \Gamma ((z+p-1)+1)\\
+                &=(z+p-1)\Gamma (z+p-1) \\ 
+                &=(z+p-1)(z+p-2)\Gamma (z+p-2) \\ 
+                &=\prod\limits_{k=1}^{p}(z+p-k)\Gamma (z)
+\end{align*}
+et par suite:\newline
+\[
+\forall z\in \CC \tq \Re(z)>0 \quad : \Gamma (z+p)=\prod\limits_{k=1}^{p}(z+p-k)\Gamma (z)
+\]
+\newline
+On prend $z=\alpha +1,$ on a: $\Re(z)=\Re(\alpha +1)=\Re(\alpha )+1>0$ et par suite
+\begin{align*}
+\Gamma((\alpha +1)+p) & = \prod\limits_{k=1}^{p}((\alpha +1)+p-k)\Gamma(\alpha +1) \\
+                      & = \prod\limits_{k=1}^{p}(\alpha+k)\Gamma(\alpha +1) \\
+\Gamma((\alpha +1)+p) & = (\alpha+p)(\alpha+p-1)\cdots(\alpha+1)\Gamma (\alpha +1)
+\end{align*}
+
+\item  Pour tout $x>0,$ la fonction $t\mapsto t^{x-1}e^{-t}$ est continue et strictement positive, donc $\Gamma (x)=\int\limits_{0}^{+\infty
+}t^{x-1}e^{-t}dt$ $>0$.
+
+\item  Par un simple calcul, on a $\Gamma (1)=1$ et par $b)$ pour $\alpha =0,
+$ $p=n,$ on a:$:$%
+\[
+\Gamma (n+1)=\prod\limits_{k=1}^{n}k=n!
+\]
+\end{enumerate}
+
+\item  Développement en série de $\Gamma .$
+\begin{enumerate}
+\item  Soit $z\in \CC$ tel que $\Re(z)>0,$ Écrivons $e^{-t}=\sum\limits_{n=0}^{\infty }\dfrac{(-1)^{n}}{n!}t^{n},$ on a
+alors: 
+$$t^{z-1}e^{-t}=\sum\limits_{n=0}^{\infty }\dfrac{(-1)^{n}}{n!}t^{z+n-1}$$
+Et par conséquence : 
+\begin{align*}
+\Gamma(z)   & = \int_0^{+\infty} t^{z-1}e^{-t}\;dt \\
+            & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt   + \int_0^{1} t^{z-1}e^{-t}\;dt \\
+            & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt   + \int_0^{1}\left( \sum\limits_{n=0}^{\infty }\dfrac{(-1)^{n}}{n!}t^{z+n-1} \right)\;dt \\
+            & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt + \int_0^{1} \dfrac{(-1)^{0}}{0!}t^{z+0-1}     + \int_0^{1}\left( \sum\limits_{n=1}^{\infty }\dfrac{(-1)^{n}}{n!}t^{z+n-1} \right)\;dt 
+\end{align*}
+Nous cherchons à inverser somme-intégrale, pour ce faire nous allons utiliser théorème d'intégration terme à terme \ref{thm:CTT} :
+\begin{itemize}
+\item pour tout entier, $n\geq1$ la fonction $f_{n}: t \mapsto \dfrac{(-1)^{n}}{n!}t^{z+n-1}$ est continue par morceaux sur $I=]0,1[$.
+\item $\sum_n f_n$ Converge simplement sur $I$, (série exponentielle classique) 
+\item On $\forall n \in \NN^{*} \text{ \ \ : \ \ } \Re(z)+n-1\geq 0$ : 
+\[  |f_{n}(t)|=\dfrac{1}{n!}|t^{z+n-1}| = \dfrac{1}{n!}|t^{\Re(z)+n-1}| \leq  \frac{1}{n!}\quad \forall t \in I\]
+\end{itemize}
+Étant les conditions vérifiés, nous pouvons conclure : 
+\begin{itemize}
+\item La série $\displaystyle \sum_n \int_{0}^1 f_n(t)dt  $ converge
+\item La formule d'inversion est valide, ce qui permet de continuer le calcul : 
+\end{itemize}
+\begin{align*}
+\Gamma(z)   & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt + \int_0^{1} \dfrac{(-1)^{0}}{0!}t^{z+0-1}     + \int_0^{1}\left( \sum\limits_{n=1}^{\infty }\dfrac{(-1)^{n}}{n!}t^{z+n-1}\;dt \right) \\ 
+            & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt + \int_0^{1} \dfrac{(-1)^{0}}{0!}t^{z+0-1}     + \sum\limits_{n=1}^{\infty } \left(\int_0^{1} \dfrac{(-1)^{n}}{n!}t^{z+n-1} \;dt\right) \\ 
+            & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt + \sum\limits_{n=0}^{\infty } \left(\int_0^{1} \dfrac{(-1)^{n}}{n!}t^{z+n-1} \;dt \right) \\ 
+\Gamma(z) & = \int_1^{+\infty} t^{z-1}e^{-t}\;dt + \sum\limits_{n=0}^{\infty } \dfrac{(-1)^{n}}{n!}\frac{1}{z+n}  \\ 
+\end{align*}
+On conclut donc : 
+\cc{
+\forall z\in \CC \tq \Re(z)>0, \quad \Gamma(z)  = \int_1^{+\infty} t^{z-1}e^{-t}\;dt + \sum\limits_{n=0}^{\infty } \dfrac{(-1)^{n}}{n!}\frac{1}{z+n} 
+}
+\item  Posons $f_{n}(z)=\dfrac{(-1)^{n}}{n!}\dfrac{1}{z+n}$ pour $n\in \NN$ et $z\in \CC \setminus \ZZ^{-}$. \\
+Pour $n\in \NN,$ la fonction $f_{n}$ est continue sur
+$\CC\setminus \ZZ^{-}$ ( fraction rationnelle en $z$
+)\newline pour tout $z\in \CC\setminus \ZZ^{-}$ et tout
+$n\in \NN,$ on a: $\left| n+\Re
+(z)\right| \leq \left| n+z\right| ,$ Donc : $\left| \frac{1}{n+z}\right| \leq \left| \frac{1}{n+\Re(z)}\right|$ D'où : 
+$$\left| f_{n}(z)\right|
+=\dfrac{1}{n!}\dfrac{1}{\left| n+z\right| }\leq
+\dfrac{1}{n!}\dfrac{1}{\left| n+\Re(z)\right| }$$
+ donc $\sum f_{n}(z)$ converge absolument et par suite $\sum f_{n}$ converge simplement sur $\CC\setminus \ZZ^{-}.$  \\ 
+\textbf{Montrons maintenant la continuité :} On peut constaté aisément que la continuité n'est pas satisfait sur tout l'ouvert :$\CC\setminus \ZZ^{-}.$ Donc nous exploitons le fait que la continuité est une propriété local pour restreint l’étude sur une famille des compacts $B(a,r)$ que leur réunion égale l'ouvert $\CC\setminus \ZZ^{-}$. Pour notre cas nous cherchons une famille qui évite les valeurs de $\ZZ^-$, un choix possible est : 
+\[
+\F = \bigg\{ B\left(l+\frac{1}{2}+iy,r+\frac{\1_{l>0}}{2}\right)  \bigg\}_{\{l\in\ZZ, y\in\RR, r<1/2\}}
+\]
+Nous expliquons ce choix par le fait qu'on prend des cercle des centres en $-1.5,-2.5....$ et des rayons $r<\frac{1}{2}$ pour ne pas \textit{toucher} les valeurs $-1,-2...$, cependant pour les centres $1.5, 2.5,...$ on veut toucher les valeurs $1,2...$ donc nous augmentons le rayon à $1$, voir ce figure illustrative : 
+\begin{center}
+    \includegraphics[width=0.75\linewidth]{img/Family.png}
+\end{center}
+Soit : $l\in \ZZ, y\in\RR, r<1/2$, et soit le compact $K=B\left(\frac{1}{2}+iy,r\right)$ nous pourrons vérifier aisément : 
+\begin{enumerate}
+\item La fonction $f$ est bien définie sur $B\left(\frac{1}{2}+iy,r\right)$.
+\item Les fonctions $f_n$ sont continues sur $B\left(\frac{1}{2}+iy,r\right)$.
+\item $\forall z\in B\left(\frac{1}{2}+iy,r\right) \quad : |n+z|>|n+\Re(z)|=|n+\frac{1}{2}+l+r+\frac{\1_{l>0}}{2}|\Longrightarrow \frac{1}{|n+z|}\leq \frac{1}{|n+\frac{1}{2}+l+r+\frac{\1_{l>0}}{2}|}$ (car  $n+l+1/2$ ne s'annule pas).  et donc : 
+\[
+||f_n||_{+\infty}^K \leq \frac{1}{|n+\frac{1}{2}+l+r+\frac{\1_{l>0}}{2}|}\times\frac{1}{n!}
+\]
+Ce qui montre la convergence en norme car : $\sum  \frac{1}{|n+l+1/2|}\times\frac{1}{n!}$ converge donc : la série des fonctions $\sum_n f_n$ converge uniformément vers $f$.
+\end{enumerate}
+On a le résultat suivant : 
+\begin{itemize}
+\item La fonction $f$ est continue sur $K$ pour tout $K\in\F$, et par conséquence $f$ continue en $\bigcup_{K\in \F} K = \CC\setminus \ZZ$.
+\end{itemize}
+
+% \item  Soit $z\in  \CC\setminus\{0,-1,-2,\ldots\ \}$ Montrons que : \( \Gamma(z+1) = z \Gamma(z) \)
+\end{enumerate}
+
+\item  Soit $0<a<b$ et $t>0,$ on a: $t^{a-1}=e^{(a-1)\ln (t)}$ .
+\begin{enumerate}
+\item  Si $t\in ]0,1],,$ alors $\ln (t)\leq 0,$ donc $(a-1)\ln(t)\geqslant (b-1)\ln (t)$ et comme $x\mapsto e^{x}$ est croissante, on déduit que $t^{a-1}\geqslant t^{b-1}$ .
+Soit $\max(t^{a-1},t^{b-1})=t^{a-1}.$
+\newline
+Si $t>1,$ alors $\ln (t)>0,$ donc $t^{a-1}<t^{b-1}et$ par suite $\max
+(t^{a-1},t^{b-1})=t^{b-1}.$
+Donc : 
+Conclusion finale: Pour tous $0<a<b$ et $t>0,$ on a :
+\[
+\max (t^{a-1},t^{b-1}) = \fparts{t^{a-1}}{t\in]0,1]}{t^{b-1}}{t>1}
+\]
+\item Évidement on voit que : Pour tous $0<a<b$ et $t>0,$ on a :
+\[
+\max (t^{a-1},t^{b-1}) = \fparts{t^{a-1}}{\two t\in]0,1]}{t^{b-1}}{\two t>1}\leq t^{a-1}+t^{b-1}.
+\]
+
+
+\item  C'est déjà fait dans la parti d'étude de la fonction gamma : \ref{exm:GammaDerv}, nous concluons aisément que pour tout $x>0$ : 
+\cc{\Gamma ^{\prime }(x)=\int_{0}^{+\infty }\ln (t)t^{x-1}e^{-t}dt.}
+
+\item  On a $\Gamma (x+1)=x\Gamma (x)$ pour tout $x>0,$ et comme $\Gamma $
+est continue en $1,$ on a $\lim_{x\rightarrow 0^{+}}\Gamma (x+1)=\Gamma
+(1)=1,$ donc
+\[
+\Gamma (x)\underset{x\rightarrow 0^{+}}{\sim}\frac{1}{x}
+\]
+
+\end{enumerate}
+\end{enumerate}
+}
+
+
+\end{document}

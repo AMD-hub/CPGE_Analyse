@@ -1,0 +1,137 @@
+% \PassOptionsToPackage{draft}{microtype}
+\documentclass[french, a4paper, 12pt, twoside]{insea} 
+
+
+% =====================================
+%  GENERAL SETTING : 
+% ====================================
+\title{Méthodes Pour l'Analyse en Prépa}
+\author{ \and
+    \begin{tabular}{lll}
+      Unknown & GPGEist & (GPGE) 
+    \end{tabular} }
+
+
+    
+\graphicspath{{Images/}{../Images/}}
+\setkeys{Gin}{width=0.85\textwidth}
+
+
+
+% THE REFERENCES
+\addbibresource{References.bib}
+
+% =====================================
+% Special for this project
+% ====================================
+\input{theorems.tex}
+
+\newcommand{\class}{\C}
+\newcommand{\conv}{$\sum u_n$  conv }
+\newcommand{\diverge }{$\sum u_n$  div }
+\newcommand{\ddfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\newcommand{\intv}[2]{$ \left[ #1 \text{,} #2 \right] $}
+\newcommand{\cc}[1]{\begin{equation*} \fbox{$\displaystyle #1 $} \end{equation*}}
+\newcommand{\rcv}{\textbf{rcv}}
+\newcommand{\fparts}[4]{
+    \begin{cases}
+         #1 & \text{Si}  #2\\
+         #3  & \text{Si} #4 
+    \end{cases}
+    }
+\newcommand{\tq}{ \text{\ \ tq \ \ : }}
+\newcommand{\two}{ \text{\ \ : \ \ } }
+\newcommand{\pitsha}[1]{\textit{#1}}
+\newcommand{\sol}{\\ \textbf{Solution :} \\}
+
+
+\begin{document}
+
+% ----------------------------------------------------
+% -----           Guarde Page                   -----
+% ----------------------------------------------------
+\TitleInput{page.pdf}
+
+
+% ----------------------------------------------------
+% -----      Abstract / Preface / synthesis      -----
+% ----------------------------------------------------
+\chapter*{Preface}
+Cet ouvrage d’ANALYSE RÉEL s’adresse aux étudiants des classes prépa SPÉ. On suppose de leur part une maîtrise des techniques de l’étude d’une fonction réel telle qu’elle est enseignée dans les années de SUP et de TERMINALE. Ce bagage mathématique étant supposé acquis, nous avons délibérément pris le parti de développer, au début de ce livre, en fait le premier chapitre présente les techniques de majoration/minoration qui sont fréquemment utilisée. Les deux chapitres (2-3) présente les techniques nécessaires pour l’étude d’une fonction définie par une série des fonctions, puis les deux derniers chapitres (2-3) présentent les techniques nécessaires pour l’étude d’une fonction définie par une intégrale paramétrée.
+Cet ouvrage comporte de nombreux exercices, traditionnels comme le fameuses fonctions Zêta de Riemann et Gamma, comme les transformée usuelles Laplace et Fourier. La plupart reçoivent une solution détaillée. 
+% Les théorèmes, propositions, lemmes, définitions, corolaires, méthodes ont une numérotation dépendant du paragraphe dans lequel ils apparaissent. Dans le chapitre 6, § 1, par exemple, on trouvera successivement le Théorème 1.1, puis la Théorème 1.2. Les exemples ne sont pas numérotés. Les formules centrées ont une numérotation entre parenthèses ne dépendant que du chapitre dans lequel elles se trouvent. 
+%Les renvois aux théorèmes, propositions, lemmes, sont faits sous la forme : [cf. Théorème 6.1 page 27], par exemple.
+Il y a aujourd’hui beaucoup de traités d’analyse réel, en beaucoup de langues. Il ne nous est pas possible de les citer tous. On peut juste citer quelque exemple fameux entre les étudiants : 
+\begin{enumerate}
+    \item La série des ouvrages de \pitsha{Jean Marie Mounier}  :  ANALYSE MPSI / ANALYSE SPÉ.
+    \begin{itemize}
+        \item Une série qui propose un cours parfait pour les étudiants qui visent les divers concours (Mines-Pont, CentraleSupélec,  ….)
+        \item 	La série d’ailleurs touche les limites de programme, il sera alors indispensable de lui consacrer le temps nécessaire. 
+    \end{itemize}
+    \item 	Le classique \pitsha{TOUT EN UN } :
+    \begin{itemize}
+        \item 	Un ouvrage très détaillé pour le Self-Learning.
+        \item 	L’ouvrage explique avec richesse toutes les parties de cours alors, il sera alors indispensable de lui consacrer le temps nécessaire. 
+        \item Il est déconseillé pour la période de préparation.
+    \end{itemize}
+    \item L’annale \pitsha{100$\%$ CONCOURS PRÉPA : TOUS LES EXERCICES D'ANALYSE MP} : 
+    \begin{itemize}
+        \item 	Un ouvrage riche des exercices et méthodes.
+        \item	Il est vivement conseillé pour la période de préparation (écrits/oraux).
+        \item	Il est déconseillé pour la compréhension de cours (il ne présente que des résumés)
+    \end{itemize}
+\end{enumerate}
+En outre notre travail ne différera pas de l'esprit le dernier travail: Nous présentons les théorèmes les plus utilisés et les méthodes fréquentes dans les concours. Tout cela enrichit avec tous les exemples nécessaires pour comprendre les techniques qui vous permettront de faire une grande variété d'exercices.
+\\ 
+Si quelqu'un veut améliorer le travail merci de me contacter en : \href{mailto:elyousefi.ahmed@outlook}{elyousefi.ahmed@outlook}
+
+
+% ----------------------------------------------------
+% -----       Dedicace and acknowledegemt        -----
+% ----------------------------------------------------
+
+
+
+% ----------------------------------------------------
+% ----- Tables of contents/figs/tabs and ancro   -----
+% ----------------------------------------------------
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+
+% ----------------------------------------------------
+% -----           BODY of the Document           -----
+% ----------------------------------------------------
+
+\subfile{Body/chapter1.tex}
+\subfile{Body/chapter2.tex}
+\subfile{Body/chapter3.tex}
+\subfile{Body/chapter4.tex}
+\subfile{Body/chapter5.tex}
+\subfile{Body/chapter6.tex}
+\subfile{Body/chapter7.tex}
+\subfile{Body/chapter8.tex}
+
+
+
+% ----------------------------------------------------
+% -----                 Conclusion               -----
+% ----------------------------------------------------
+
+
+
+% ----------------------------------------------------
+% -----      bib+annexe of the Document          -----
+% ----------------------------------------------------
+\printbibliography
+% \subfile{Body/Supplements.tex}
+
+
+
+
+
+
+
+
+\end{document}
