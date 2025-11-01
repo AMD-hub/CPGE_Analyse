@@ -1,31 +1,8 @@
-\documentclass[12pt,a4paper]{article}
-
-% ======== PACKAGES ========
-\usepackage[margin=2.5cm]{geometry}
-\usepackage{tikz}          % For shading and drawing
-\usepackage{xcolor}        % For colors
-\usepackage[T1]{fontenc}   % Better font encoding
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage{textcomp}
-
-
-\definecolor{darkgray}{gray}{0.1} 
-\usepackage[colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    urlcolor =blue
-]{hyperref}
+\documentclass[Main.tex]{subfiles}
 
 
 
 
-\usepackage{helvet}        % For qhv font family (Helvetica-like)
-\renewcommand{\familydefault}{\sfdefault} % Make Helvetica default
-
-% ======== COMMANDS ========
-\newcommand{\BigTitle}{Maths pour GPGE}
-\newcommand{\LittleTitle}{Méthodes Pour l'Analyse en Prépa}
 
 % ======== DOCUMENT ========
 \begin{document}
@@ -34,7 +11,7 @@
 \begin{flushleft}
 
 % Title
-\textbf{\fontfamily{qhv}\selectfont\Huge \BigTitle}
+\textbf{\Huge Maths pour GPGE}
 
 % Line separator
 \par\noindent\rule{\textwidth}{4pt}\\[0.5cm]
@@ -43,7 +20,7 @@
 \begin{tikzpicture}
 \shade[bottom color=lightgray, top color=white]
     (0,0) rectangle (\textwidth,1.5)
-    node[midway] {\textbf{\large \textit{\LittleTitle}}};
+    node[midway] {\textbf{\large \textit{Méthodes Pour l'Analyse en Prépa}}};
 \end{tikzpicture}
 
 % Edition info
@@ -57,7 +34,8 @@
 \begin{tabular}{lcl}
     \textbf{Author}   & : & \textit{EL YOUSEFI AHMED} \\
     \textbf{Institut} & : & \textit{Institut National de Statistique et d'Économie Appliquée} \\
-    \textbf{E-mail}   & : & \href{mailto:elyousefi.ahmed@outlook.com}{elyousefi.ahmed@outlook.com}
+    \textbf{E-mail}   & : & \href{mailto:elyousefi.ahmed@outlook.com}{elyousefi.ahmed@outlook.com} \\ 
+    \textbf{Update}   & : & \href{https://raw.githubusercontent.com/AMD-hub/CPGE_Analyse/main/Main.pdf}{Get Last Update}
 \end{tabular}
 
 \end{flushleft}

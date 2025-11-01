@@ -1,123 +1,123 @@
 \babel@toc {french}{}\relax 
 \babel@toc {french}{}\relax 
-\contentsline {chapter}{Preface}{1}{chapter*.1}%
-\contentsline {chapter}{TABLE DE MATIÈRE\ttl@gmk {\@mkboth {\MakeUppercase []{TABLE DE MATIÈRE}}{\MakeUppercase []{TABLE DE MATIÈRE}}}}{2}{chapter*.2}%
-\contentsline {chapter}{\numberline {1}LES INÉGALITÉS }{6}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Techniques générales }{7}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Majorer un Produit/Rapport}{7}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Étude de fonction}{7}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}Inégalités Locales}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}En utilisant la limite}{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}En utilisant le Développement limité}{8}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}Quelques Inégalités classiques}{9}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Inégalités des Accroissements Finis [IAF]}{9}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Inégalité Triangulaire}{10}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Inégalité de CAUCHY-SCHWARTZ}{10}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}Inégalités de Convexité}{10}{subsection.1.3.4}%
-\contentsline {subsection}{\numberline {1.3.5}Inégalité des Moyennes}{12}{subsection.1.3.5}%
-\contentsline {section}{\numberline {1.4}Exercices }{13}{section.1.4}%
-\contentsline {chapter}{\numberline {2}LES SÉRIES NUMÉRIQUES}{14}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Séries Numériques définis explicitement}{15}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Les théorèmes fondamentaux des séries numériques}{15}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Schéma représentatif regroupons ces théorèmes}{17}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Application : Étude des suites en utilisant les séries numériques }{19}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}L'extension des théorèmes fondamentales des séries numériques }{19}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}L'étude d'une suite à l'aide des séries}{22}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Séries Numériques définis explicitement}{22}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Suite Définit par récurrence }{23}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Suite définit par solution d'une équation}{24}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Suite définit par une somme}{24}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Série Entière | rayon de convergence}{25}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Exercices }{28}{section.2.5}%
-\contentsline {chapter}{\numberline {3}LES SÉRIES DE FONCTIONS}{33}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Les quatre modes de convergences }{34}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Convergence Simple }{34}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Convergence Absolue }{34}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Convergence Normale }{35}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Convergence Uniforme }{36}{subsection.3.1.4}%
-\contentsline {section}{\numberline {3.2}Étude pratique d'une série des fonctions }{37}{section.3.2}%
-\contentsline {paragraph}{Domaine de Définition : }{37}{paragraph*.4}%
-\contentsline {subsection}{\numberline {3.2.1}Limite d'une série des fonctions}{37}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Continuité d'une série des fonctions}{39}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Dérivés d'une série des fonctions}{40}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Intégrale d'une série des fonctions}{42}{subsection.3.2.4}%
-\contentsline {paragraph}{Trace finale de la fonction Gamma }{42}{paragraph*.5}%
-\contentsline {subsection}{\numberline {3.2.5}Propriété de LOCALITÉ}{43}{subsection.3.2.5}%
-\contentsline {section}{\numberline {3.3}Étude des séries entières}{43}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Étude dans $\mathbb {C}$ :}{44}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Étude dans $\mathbb {R}$ : }{45}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Développement en série entière : }{46}{subsection.3.3.3}%
-\contentsline {section}{\numberline {3.4}Exercices }{50}{section.3.4}%
-\contentsline {chapter}{\numberline {4}INTÉGRALES GÉNÉRALISÉES}{56}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Définitions et propriétés fondamentales}{57}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Définition de la convergence d'une intégrale -- Intégrabilité}{57}{subsection.4.1.1}%
-\contentsline {subsubsection}{Cas d'un intervalle semi-ouvert :}{57}{subsubsection*.6}%
-\contentsline {subsubsection}{ Cas d'un intervalle ouvert :}{58}{subsubsection*.7}%
-\contentsline {subsubsection}{Définition de l'intégrabilité}{58}{subsubsection*.8}%
-\contentsline {subsection}{\numberline {4.1.2}MÉTHODES --- Intégrabilité des fonctions }{58}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}MÉTHODES --- Convergence d'intégrales généralisées }{61}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}MÉTHODES --- Divergences d'intégrales généralisées }{62}{subsection.4.1.4}%
-\contentsline {section}{\numberline {4.2}Théorèmes de convergence dominée}{63}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Exercices}{68}{section.4.3}%
-\contentsline {chapter}{\numberline {5}INTÉGRALES PARAMÉTRÉS}{70}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Étude pratique d'une intégrale paramétré }{71}{section.5.1}%
-\contentsline {paragraph}{Domaine de Définition : }{71}{paragraph*.9}%
-\contentsline {subsection}{\numberline {5.1.1}Limite d'une intégrale paramétrée}{72}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Continuité d'une intégrale paramétrée}{74}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Dérivés d'une intégrale paramétrée}{75}{subsection.5.1.3}%
-\contentsline {paragraph}{Trace finale de la fonction Gamma }{76}{paragraph*.10}%
-\contentsline {subsection}{\numberline {5.1.4}Propriété de LOCALITÉ}{77}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Quelque pistes supplémentaires}{78}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Transformé de LAPLACE }{83}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Transformé de FOURIER }{92}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Exercices }{97}{section.5.4}%
-\contentsline {chapter}{\numberline {6}LES ÉQUATIONS DIFFÉRENTIELLES ORDINAIRES}{105}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Problème de Cauchy}{106}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Des méthodes Générales pour les EDO d'ordre 1}{107}{subsection.6.1.1}%
-\contentsline {section}{\numberline {6.2}Les équation Linéaires }{108}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Méthodes de résolution}{109}{subsection.6.2.1}%
-\contentsline {subsubsection}{Pour les EDO d'ordre 1}{109}{subsubsection*.11}%
-\contentsline {subsubsection}{Pour les EDO d'ordre 2}{110}{subsubsection*.12}%
-\contentsline {subsubsection}{Méthodes de simplification des EDO}{115}{subsubsection*.13}%
-\contentsline {subsection}{\numberline {6.2.2}Problème de raccordement}{117}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Exercices}{120}{section.6.3}%
-\contentsline {chapter}{\numberline {7}LES TECHNIQUES DE CALCUL DES INTÉGRALES ET DES SÉRIES}{125}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Techniques de base}{125}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Pour les intégrales}{125}{subsection.7.1.1}%
-\contentsline {section}{\numberline {7.2}Méthode de Feynman}{127}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Application aux intégrales}{127}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Application aux séries}{128}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Méthode de AMD}{129}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Résumé de probabilité }{132}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Espérance}{132}{subsection.7.4.1}%
-\contentsline {paragraph}{Cas Discret}{132}{paragraph*.14}%
-\contentsline {paragraph}{Cas Continu}{132}{paragraph*.15}%
-\contentsline {subsection}{\numberline {7.4.2}Formule de Transfert}{132}{subsection.7.4.2}%
-\contentsline {paragraph}{Cas Discret}{132}{paragraph*.16}%
-\contentsline {paragraph}{Cas Continu}{132}{paragraph*.17}%
-\contentsline {subsection}{\numberline {7.4.3}Variance et Écart-type}{132}{subsection.7.4.3}%
-\contentsline {paragraph}{Cas Discret}{132}{paragraph*.18}%
-\contentsline {paragraph}{Cas Continu}{132}{paragraph*.19}%
-\contentsline {subsection}{\numberline {7.4.4}Fonction Génératrice des Moments (MGF)}{133}{subsection.7.4.4}%
-\contentsline {paragraph}{Cas Discret}{133}{paragraph*.20}%
-\contentsline {paragraph}{Cas Continu}{133}{paragraph*.21}%
-\contentsline {subsection}{\numberline {7.4.5}Fonction Caractéristique}{133}{subsection.7.4.5}%
-\contentsline {paragraph}{Cas Discret}{133}{paragraph*.22}%
-\contentsline {paragraph}{Cas Continu}{133}{paragraph*.23}%
-\contentsline {section}{\numberline {7.5}Exercices}{134}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Espérance}{139}{subsection.7.5.1}%
-\contentsline {paragraph}{Cas Discret}{139}{paragraph*.24}%
-\contentsline {paragraph}{Cas Continu}{139}{paragraph*.25}%
-\contentsline {subsection}{\numberline {7.5.2}Formule de Transfert}{139}{subsection.7.5.2}%
-\contentsline {paragraph}{Cas Discret}{139}{paragraph*.26}%
-\contentsline {paragraph}{Cas Continu}{140}{paragraph*.27}%
-\contentsline {subsection}{\numberline {7.5.3}Variance et Écart-type}{140}{subsection.7.5.3}%
-\contentsline {paragraph}{Cas Discret}{140}{paragraph*.28}%
-\contentsline {paragraph}{Cas Continu}{140}{paragraph*.29}%
-\contentsline {subsection}{\numberline {7.5.4}Fonction Génératrice des Moments (MGF)}{140}{subsection.7.5.4}%
-\contentsline {paragraph}{Cas Discret}{140}{paragraph*.30}%
-\contentsline {paragraph}{Cas Continu}{140}{paragraph*.31}%
-\contentsline {subsection}{\numberline {7.5.5}Fonction Caractéristique}{140}{subsection.7.5.5}%
-\contentsline {paragraph}{Cas Discret}{140}{paragraph*.32}%
-\contentsline {paragraph}{Cas Continu}{140}{paragraph*.33}%
+\contentsline {chapter}{Preface}{2}{chapter*.1}%
+\contentsline {chapter}{TABLE DE MATIÈRE\ttl@gmk {\@mkboth {\MakeUppercase []{TABLE DE MATIÈRE}}{\MakeUppercase []{TABLE DE MATIÈRE}}}}{3}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}LES INÉGALITÉS }{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Techniques générales }{8}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Majorer un Produit/Rapport}{8}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Étude de fonction}{8}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Inégalités Locales}{8}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}En utilisant la limite}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}En utilisant le Développement limité}{9}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Quelques Inégalités classiques}{10}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Inégalités des Accroissements Finis [IAF]}{10}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Inégalité Triangulaire}{11}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Inégalité de CAUCHY-SCHWARTZ}{11}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Inégalités de Convexité}{11}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Inégalité des Moyennes}{13}{subsection.1.3.5}%
+\contentsline {section}{\numberline {1.4}Exercices }{14}{section.1.4}%
+\contentsline {chapter}{\numberline {2}LES SÉRIES NUMÉRIQUES}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Séries Numériques définis explicitement}{16}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Les théorèmes fondamentaux des séries numériques}{16}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Schéma représentatif regroupons ces théorèmes}{18}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Application : Étude des suites en utilisant les séries numériques }{20}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}L'extension des théorèmes fondamentales des séries numériques }{20}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}L'étude d'une suite à l'aide des séries}{23}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Séries Numériques définis explicitement}{23}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Suite Définit par récurrence }{24}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Suite définit par solution d'une équation}{25}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Suite définit par une somme}{25}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Série Entière | rayon de convergence}{26}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Exercices }{29}{section.2.5}%
+\contentsline {chapter}{\numberline {3}LES SÉRIES DE FONCTIONS}{34}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Les quatre modes de convergences }{35}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Convergence Simple }{35}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Convergence Absolue }{35}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Convergence Normale }{36}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Convergence Uniforme }{37}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Étude pratique d'une série des fonctions }{38}{section.3.2}%
+\contentsline {paragraph}{Domaine de Définition : }{38}{paragraph*.4}%
+\contentsline {subsection}{\numberline {3.2.1}Limite d'une série des fonctions}{38}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Continuité d'une série des fonctions}{40}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Dérivés d'une série des fonctions}{41}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Intégrale d'une série des fonctions}{43}{subsection.3.2.4}%
+\contentsline {paragraph}{Trace finale de la fonction Gamma }{43}{paragraph*.5}%
+\contentsline {subsection}{\numberline {3.2.5}Propriété de LOCALITÉ}{44}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Étude des séries entières}{44}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Étude dans $\mathbb {C}$ :}{45}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Étude dans $\mathbb {R}$ : }{46}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Développement en série entière : }{47}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Exercices }{51}{section.3.4}%
+\contentsline {chapter}{\numberline {4}INTÉGRALES GÉNÉRALISÉES}{57}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Définitions et propriétés fondamentales}{58}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Définition de la convergence d'une intégrale -- Intégrabilité}{58}{subsection.4.1.1}%
+\contentsline {subsubsection}{Cas d'un intervalle semi-ouvert :}{58}{subsubsection*.6}%
+\contentsline {subsubsection}{ Cas d'un intervalle ouvert :}{59}{subsubsection*.7}%
+\contentsline {subsubsection}{Définition de l'intégrabilité}{59}{subsubsection*.8}%
+\contentsline {subsection}{\numberline {4.1.2}MÉTHODES --- Intégrabilité des fonctions }{59}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}MÉTHODES --- Convergence d'intégrales généralisées }{62}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}MÉTHODES --- Divergences d'intégrales généralisées }{63}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Théorèmes de convergence dominée}{64}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Exercices}{69}{section.4.3}%
+\contentsline {chapter}{\numberline {5}INTÉGRALES PARAMÉTRÉS}{71}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Étude pratique d'une intégrale paramétré }{72}{section.5.1}%
+\contentsline {paragraph}{Domaine de Définition : }{72}{paragraph*.9}%
+\contentsline {subsection}{\numberline {5.1.1}Limite d'une intégrale paramétrée}{73}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Continuité d'une intégrale paramétrée}{75}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Dérivés d'une intégrale paramétrée}{76}{subsection.5.1.3}%
+\contentsline {paragraph}{Trace finale de la fonction Gamma }{77}{paragraph*.10}%
+\contentsline {subsection}{\numberline {5.1.4}Propriété de LOCALITÉ}{78}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Quelque pistes supplémentaires}{79}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Transformé de LAPLACE }{84}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Transformé de FOURIER }{93}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Exercices }{98}{section.5.4}%
+\contentsline {chapter}{\numberline {6}LES ÉQUATIONS DIFFÉRENTIELLES ORDINAIRES}{106}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Problème de Cauchy}{107}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Des méthodes Générales pour les EDO d'ordre 1}{108}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}Les équation Linéaires }{109}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Méthodes de résolution}{110}{subsection.6.2.1}%
+\contentsline {subsubsection}{Pour les EDO d'ordre 1}{110}{subsubsection*.11}%
+\contentsline {subsubsection}{Pour les EDO d'ordre 2}{111}{subsubsection*.12}%
+\contentsline {subsubsection}{Méthodes de simplification des EDO}{116}{subsubsection*.13}%
+\contentsline {subsection}{\numberline {6.2.2}Problème de raccordement}{118}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Exercices}{121}{section.6.3}%
+\contentsline {chapter}{\numberline {7}LES TECHNIQUES DE CALCUL DES INTÉGRALES ET DES SÉRIES}{126}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Techniques de base}{126}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Pour les intégrales}{126}{subsection.7.1.1}%
+\contentsline {section}{\numberline {7.2}Méthode de Feynman}{128}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Application aux intégrales}{128}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Application aux séries}{129}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Méthode de AMD}{130}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Résumé de probabilité }{133}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Espérance}{133}{subsection.7.4.1}%
+\contentsline {paragraph}{Cas Discret}{133}{paragraph*.14}%
+\contentsline {paragraph}{Cas Continu}{133}{paragraph*.15}%
+\contentsline {subsection}{\numberline {7.4.2}Formule de Transfert}{133}{subsection.7.4.2}%
+\contentsline {paragraph}{Cas Discret}{133}{paragraph*.16}%
+\contentsline {paragraph}{Cas Continu}{133}{paragraph*.17}%
+\contentsline {subsection}{\numberline {7.4.3}Variance et Écart-type}{133}{subsection.7.4.3}%
+\contentsline {paragraph}{Cas Discret}{133}{paragraph*.18}%
+\contentsline {paragraph}{Cas Continu}{133}{paragraph*.19}%
+\contentsline {subsection}{\numberline {7.4.4}Fonction Génératrice des Moments (MGF)}{134}{subsection.7.4.4}%
+\contentsline {paragraph}{Cas Discret}{134}{paragraph*.20}%
+\contentsline {paragraph}{Cas Continu}{134}{paragraph*.21}%
+\contentsline {subsection}{\numberline {7.4.5}Fonction Caractéristique}{134}{subsection.7.4.5}%
+\contentsline {paragraph}{Cas Discret}{134}{paragraph*.22}%
+\contentsline {paragraph}{Cas Continu}{134}{paragraph*.23}%
+\contentsline {section}{\numberline {7.5}Exercices}{135}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Espérance}{140}{subsection.7.5.1}%
+\contentsline {paragraph}{Cas Discret}{140}{paragraph*.24}%
+\contentsline {paragraph}{Cas Continu}{140}{paragraph*.25}%
+\contentsline {subsection}{\numberline {7.5.2}Formule de Transfert}{140}{subsection.7.5.2}%
+\contentsline {paragraph}{Cas Discret}{140}{paragraph*.26}%
+\contentsline {paragraph}{Cas Continu}{141}{paragraph*.27}%
+\contentsline {subsection}{\numberline {7.5.3}Variance et Écart-type}{141}{subsection.7.5.3}%
+\contentsline {paragraph}{Cas Discret}{141}{paragraph*.28}%
+\contentsline {paragraph}{Cas Continu}{141}{paragraph*.29}%
+\contentsline {subsection}{\numberline {7.5.4}Fonction Génératrice des Moments (MGF)}{141}{subsection.7.5.4}%
+\contentsline {paragraph}{Cas Discret}{141}{paragraph*.30}%
+\contentsline {paragraph}{Cas Continu}{141}{paragraph*.31}%
+\contentsline {subsection}{\numberline {7.5.5}Fonction Caractéristique}{141}{subsection.7.5.5}%
+\contentsline {paragraph}{Cas Discret}{141}{paragraph*.32}%
+\contentsline {paragraph}{Cas Continu}{141}{paragraph*.33}%
 \contentsfinish 
